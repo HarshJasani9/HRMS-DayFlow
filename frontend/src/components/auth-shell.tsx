@@ -73,7 +73,7 @@ export function AuthShell({ children, subtitle, title }: AuthShellProps) {
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_12%_12%,rgba(216,247,232,0.95),transparent_32%),linear-gradient(135deg,#f7fbff_0%,#eff8f3_46%,#f7f7f4_100%)] px-3 py-3 text-ink sm:px-5 sm:py-5 lg:px-8">
-      <section className="mx-auto grid min-w-0 min-h-[calc(100vh-1.5rem)] w-full max-w-6xl overflow-hidden rounded-lg border border-white/90 bg-white/78 shadow-[0_28px_80px_rgba(23,33,29,0.14)] lg:min-h-[calc(100vh-2.5rem)] lg:grid-cols-[minmax(360px,0.88fr)_minmax(460px,1fr)]">
+      <section className="mx-auto grid min-w-0 min-h-[calc(100vh-1.5rem)] w-full max-w-6xl overflow-hidden rounded-lg border border-white/90 bg-card/78 shadow-[0_28px_80px_rgba(23,33,29,0.14)] lg:min-h-[calc(100vh-2.5rem)] lg:grid-cols-[minmax(360px,0.88fr)_minmax(460px,1fr)]">
         <section className="flex min-h-[calc(100vh-1.5rem)] min-w-0 flex-col px-6 py-6 sm:px-10 sm:py-8 lg:min-h-0 lg:px-14 lg:py-9">
           <BrandMark />
 
@@ -83,7 +83,7 @@ export function AuthShell({ children, subtitle, title }: AuthShellProps) {
               <h1 className="mt-5 text-3xl font-semibold leading-tight tracking-normal text-[#171717] sm:text-4xl">
                 {title}
               </h1>
-              <p className="mt-3 text-sm leading-6 text-slate-600">{subtitle}</p>
+              <p className="mt-3 text-sm leading-6 text-text-secondary">{subtitle}</p>
               {children}
             </div>
           </div>
@@ -103,7 +103,7 @@ function BrandMark() {
         <span className="absolute -right-1 -top-1 h-3 w-3 rounded-full border-2 border-white bg-brand-600" />
       </div>
       <div>
-        <p className="text-xs font-medium text-slate-500">HRMS</p>
+        <p className="text-xs font-medium text-text-muted">HRMS</p>
         <p className="truncate text-base font-semibold tracking-normal text-[#161616]">People Desk</p>
       </div>
     </div>
@@ -169,7 +169,7 @@ function AuthHero() {
           {heroImages.map((heroImage, index) => (
             <span
               className={`h-1.5 rounded-full transition-all ${
-                index === activeImageIndex ? "w-5 bg-brand-100" : "w-1.5 bg-white/55"
+                index === activeImageIndex ? "w-5 bg-brand-100" : "w-1.5 bg-card/55"
               }`}
               key={heroImage.alt}
             />

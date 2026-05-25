@@ -94,12 +94,8 @@ const stats: Stat[] = [
 ];
 
 export default function HomePage() {
-  useLayoutEffect(() => {
-    applyLightTheme();
-  }, []);
-
   return (
-    <div className="min-h-screen bg-white text-slate-900">
+    <div className="min-h-screen bg-page text-heading">
       <Navbar />
       <HeroSection />
       <StatsBar />
@@ -127,13 +123,13 @@ function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/80 border-b border-slate-200/60 backdrop-blur-xl shadow-sm"
+          ? "bg-card/80 border-b border-border/60 backdrop-blur-xl shadow-sm"
           : "bg-transparent"
       }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8">
         <Link href="/" className="flex items-center gap-2.5">
-          <div className="grid h-9 w-9 place-items-center rounded-lg bg-[#111] text-white">
+          <div className="grid h-9 w-9 place-items-center rounded-lg bg-heading text-page">
             <BriefcaseBusiness size={18} />
           </div>
           <span className="text-lg font-bold tracking-tight">
@@ -141,11 +137,11 @@ function Navbar() {
           </span>
         </Link>
 
-        <div className="hidden items-center gap-8 text-sm font-medium text-slate-600 md:flex">
-          <a href="#features" className="transition hover:text-slate-900">
+        <div className="hidden items-center gap-8 text-sm font-medium text-text-secondary md:flex">
+          <a href="#features" className="transition hover:text-heading">
             Features
           </a>
-          <a href="#ai-assistant" className="transition hover:text-slate-900">
+          <a href="#ai-assistant" className="transition hover:text-heading">
             AI Assistant
           </a>
         </div>
@@ -153,13 +149,13 @@ function Navbar() {
         <div className="flex items-center gap-3">
           <Link
             href="/login"
-            className="hidden rounded-lg px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 sm:inline-flex"
+            className="hidden rounded-lg px-4 py-2 text-sm font-semibold text-text-secondary transition hover:bg-active sm:inline-flex"
           >
             Sign in
           </Link>
           <Link
             href="/register"
-            className="inline-flex items-center gap-1.5 rounded-lg bg-[#111] px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-black/10 transition hover:bg-slate-800"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-heading px-4 py-2 text-sm font-semibold text-page shadow-lg shadow-black/10 transition hover:bg-heading/90"
           >
             Get Started
             <ArrowRight size={15} />
@@ -206,7 +202,7 @@ function HeroSection() {
           </span>
         </h1>
 
-        <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-slate-600 sm:text-lg">
+        <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-text-secondary sm:text-lg">
           DayFlow brings attendance, leave, payroll, recruitment, performance,
           and AI-powered insights into a single role-based platform — so your HR
           team can focus on people, not paperwork.
@@ -215,14 +211,14 @@ function HeroSection() {
         <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Link
             href="/register"
-            className="inline-flex h-12 items-center gap-2 rounded-xl bg-[#111] px-7 text-sm font-semibold text-white shadow-xl shadow-black/10 transition hover:bg-slate-800"
+            className="inline-flex h-12 items-center gap-2 rounded-xl bg-heading px-7 text-sm font-semibold text-page shadow-xl shadow-black/10 transition hover:bg-heading/90"
           >
             Start Free
             <ArrowRight size={16} />
           </Link>
           <Link
             href="/login"
-            className="inline-flex h-12 items-center gap-2 rounded-xl border border-slate-200 bg-white px-7 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-slate-300 hover:bg-slate-50"
+            className="inline-flex h-12 items-center gap-2 rounded-xl border border-border bg-card px-7 text-sm font-semibold text-text-secondary shadow-sm transition hover:border-border-strong hover:bg-hover"
           >
             Sign In
             <ChevronRight size={16} />
@@ -231,7 +227,7 @@ function HeroSection() {
 
         <div className="relative mx-auto mt-16 max-w-5xl">
           <div className="absolute -inset-4 rounded-2xl bg-gradient-to-b from-emerald-100/40 via-transparent to-transparent blur-xl" />
-          <div className="relative overflow-hidden rounded-xl border border-slate-200/70 shadow-2xl shadow-slate-200/50">
+          <div className="relative overflow-hidden rounded-xl border border-border/70 shadow-2xl shadow-slate-200/50">
             <Image
               src={landingHero}
               alt="DayFlow HR Dashboard"
@@ -248,14 +244,14 @@ function HeroSection() {
 
 function StatsBar() {
   return (
-    <section className="border-y border-slate-100 bg-slate-50/50 py-10">
+    <section className="border-y border-border-light bg-hover/50 py-10">
       <div className="mx-auto grid max-w-5xl grid-cols-2 gap-6 px-5 sm:grid-cols-4 sm:px-8">
         {stats.map((stat) => (
           <div key={stat.label} className="text-center">
-            <p className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+            <p className="text-2xl font-bold tracking-tight text-heading sm:text-3xl">
               {stat.value}
             </p>
-            <p className="mt-1 text-sm text-slate-500">{stat.label}</p>
+            <p className="mt-1 text-sm text-text-muted">{stat.label}</p>
           </div>
         ))}
       </div>
@@ -274,7 +270,7 @@ function FeaturesSection() {
           <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
             Complete HR Toolkit
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-slate-600">
+          <p className="mx-auto mt-4 max-w-2xl text-text-secondary">
             From onboarding to offboarding — every HR workflow in one secure,
             role-based application.
           </p>
@@ -294,16 +290,16 @@ function FeatureCard({ feature }: { feature: Feature }) {
   const Icon = feature.icon;
 
   return (
-    <div className="group rounded-2xl border border-slate-100 bg-white p-7 transition-all duration-300 hover:border-slate-200 hover:shadow-lg hover:shadow-slate-100/50 hover:-translate-y-0.5">
+    <div className="group rounded-2xl border border-border-light bg-card p-7 transition-all duration-300 hover:border-border hover:shadow-lg hover:shadow-border-light/50 hover:-translate-y-0.5">
       <div
         className={`inline-flex h-11 w-11 items-center justify-center rounded-xl ${feature.bgColor} ${feature.color}`}
       >
         <Icon size={20} />
       </div>
-      <h3 className="mt-5 text-lg font-semibold text-slate-900">
+      <h3 className="mt-5 text-lg font-semibold text-heading">
         {feature.title}
       </h3>
-      <p className="mt-2.5 text-sm leading-6 text-slate-500">
+      <p className="mt-2.5 text-sm leading-6 text-text-muted">
         {feature.description}
       </p>
     </div>
@@ -317,7 +313,7 @@ function AISection() {
       className="bg-gradient-to-b from-slate-50 to-white px-5 py-20 sm:px-8 lg:py-28"
     >
       <div className="mx-auto max-w-7xl">
-        <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-[#111] to-[#1a1a2e] p-8 text-white sm:p-14 lg:p-20">
+        <div className="overflow-hidden rounded-3xl bg-neutral-900 p-8 text-white sm:p-14 lg:p-20">
           <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
             <div>
               <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-emerald-400">
@@ -422,21 +418,21 @@ function CTASection() {
         <h2 className="mt-5 text-3xl font-bold tracking-tight sm:text-4xl">
           Ready to streamline your HR?
         </h2>
-        <p className="mx-auto mt-4 max-w-lg text-slate-600">
+        <p className="mx-auto mt-4 max-w-lg text-text-secondary">
           Get started in minutes. Four access tiers — Super Admin, HR Admin,
           Manager, and Employee — each with tailored dashboards and permissions.
         </p>
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Link
             href="/register"
-            className="inline-flex h-12 items-center gap-2 rounded-xl bg-[#111] px-7 text-sm font-semibold text-white shadow-xl shadow-black/10 transition hover:bg-slate-800"
+            className="inline-flex h-12 items-center gap-2 rounded-xl bg-heading px-7 text-sm font-semibold text-page shadow-xl shadow-black/10 transition hover:bg-heading/90"
           >
             Create Free Account
             <ArrowRight size={16} />
           </Link>
           <Link
             href="/login"
-            className="inline-flex h-12 items-center gap-2 rounded-xl border border-slate-200 bg-white px-7 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
+            className="inline-flex h-12 items-center gap-2 rounded-xl border border-border bg-card px-7 text-sm font-semibold text-text-secondary transition hover:bg-hover"
           >
             Sign In
           </Link>
@@ -448,15 +444,15 @@ function CTASection() {
 
 function Footer() {
   return (
-    <footer className="border-t border-slate-100 bg-slate-50/50 px-5 py-8 sm:px-8">
+    <footer className="border-t border-border-light bg-hover/50 px-5 py-8 sm:px-8">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 sm:flex-row">
         <div className="flex items-center gap-2">
-          <div className="grid h-7 w-7 place-items-center rounded-md bg-[#111] text-white">
+          <div className="grid h-7 w-7 place-items-center rounded-md bg-heading text-page">
             <BriefcaseBusiness size={14} />
           </div>
           <span className="text-sm font-semibold">{PRODUCT_NAME}</span>
         </div>
-        <p className="text-xs text-slate-400">
+        <p className="text-xs text-text-faint">
           &copy; {new Date().getFullYear()} {PRODUCT_NAME}. All rights reserved.
         </p>
       </div>
