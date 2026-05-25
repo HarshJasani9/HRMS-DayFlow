@@ -2,17 +2,158 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ────────────────────────────────────────────────────────
+   Design Tokens — Semantic color system for light & dark
+   ────────────────────────────────────────────────────────
+   Every UI surface, text, and border color is defined here
+   as a CSS custom property. Tailwind maps these into utility
+   classes via tailwind.config.ts so components use tokens
+   like `bg-card` or `text-heading` instead of raw values.
+   ──────────────────────────────────────────────────────── */
+
 :root {
   color-scheme: light;
-  --background: #f6f7f5;
-  --foreground: #17211d;
+
+  /* ── Page & layout backgrounds ── */
+  --color-page:          #f4f6f8;
+  --color-page-alt:      #f8fafc;
+  --color-surface:       #f6f7f5;
+
+  /* ── Card / panel backgrounds ── */
+  --color-card:          #ffffff;
+  --color-card-hover:    #f8fafc;
+  --color-card-raised:   #ffffff;
+
+  /* ── Sidebar ── */
+  --color-sidebar:       #f8fafc;
+  --color-sidebar-item:  #ffffff;
+
+  /* ── Header ── */
+  --color-header:        rgba(244, 246, 248, 0.92);
+
+  /* ── Input / form elements ── */
+  --color-input:         #ffffff;
+  --color-input-focus:   #ffffff;
+
+  /* ── Borders ── */
+  --color-border:        #e2e8f0;
+  --color-border-light:  #f1f5f9;
+  --color-border-strong: #cbd5e1;
+
+  /* ── Text ── */
+  --color-heading:       #020617;
+  --color-text:          #0f172a;
+  --color-text-secondary:#475569;
+  --color-text-muted:    #64748b;
+  --color-text-faint:    #94a3b8;
+
+  /* ── Interactive states ── */
+  --color-hover:         #f1f5f9;
+  --color-active:        #e2e8f0;
+  --color-focus-ring:    rgba(24, 122, 82, 0.28);
+
+  /* ── Shadows (used with Tailwind arbitrary values) ── */
+  --shadow-card:         0 8px 20px rgba(15, 23, 42, 0.06);
+  --shadow-elevated:     0 18px 45px rgba(15, 23, 42, 0.08);
+  --shadow-header:       0 8px 26px rgba(15, 23, 42, 0.04);
+
+  /* ── Brand accent (unchanged across themes) ── */
+  --color-brand-50:      #eefdf5;
+  --color-brand-100:     #d8f7e8;
+  --color-brand-600:     #187a52;
+  --color-brand-700:     #126340;
+
+  /* ── Status backgrounds ── */
+  --color-success-bg:    #f0fdf4;
+  --color-success-text:  #166534;
+  --color-warning-bg:    #fffbeb;
+  --color-warning-text:  #92400e;
+  --color-error-bg:      #fef2f2;
+  --color-error-text:    #991b1b;
+  --color-info-bg:       #eff6ff;
+  --color-info-text:     #1e40af;
+
+  /* ── Overlay / backdrop ── */
+  --color-overlay:       rgba(15, 23, 42, 0.3);
+
+  /* ── Legacy aliases (to support existing Tailwind tokens) ── */
+  --background:          var(--color-page);
+  --foreground:          var(--color-text);
 }
 
 .dark {
   color-scheme: dark;
-  --background: #000000;
-  --foreground: #f5f5f5;
+
+  /* ── Page & layout backgrounds ── */
+  --color-page:          #09090b;
+  --color-page-alt:      #0a0a0c;
+  --color-surface:       #111113;
+
+  /* ── Card / panel backgrounds ── */
+  --color-card:          #111113;
+  --color-card-hover:    #18181b;
+  --color-card-raised:   #18181b;
+
+  /* ── Sidebar ── */
+  --color-sidebar:       #0c0c0e;
+  --color-sidebar-item:  #18181b;
+
+  /* ── Header ── */
+  --color-header:        rgba(9, 9, 11, 0.92);
+
+  /* ── Input / form elements ── */
+  --color-input:         #18181b;
+  --color-input-focus:   #1c1c1f;
+
+  /* ── Borders ── */
+  --color-border:        #27272a;
+  --color-border-light:  #1c1c1f;
+  --color-border-strong: #3f3f46;
+
+  /* ── Text ── */
+  --color-heading:       #fafafa;
+  --color-text:          #e4e4e7;
+  --color-text-secondary:#a1a1aa;
+  --color-text-muted:    #71717a;
+  --color-text-faint:    #52525b;
+
+  /* ── Interactive states ── */
+  --color-hover:         #18181b;
+  --color-active:        #27272a;
+  --color-focus-ring:    rgba(52, 211, 153, 0.25);
+
+  /* ── Shadows ── */
+  --shadow-card:         0 8px 20px rgba(0, 0, 0, 0.25);
+  --shadow-elevated:     0 18px 45px rgba(0, 0, 0, 0.35);
+  --shadow-header:       0 8px 26px rgba(0, 0, 0, 0.2);
+
+  /* ── Brand accent ── */
+  --color-brand-50:      #0d1f17;
+  --color-brand-100:     #0f2a1e;
+  --color-brand-600:     #34d399;
+  --color-brand-700:     #6ee7b7;
+
+  /* ── Status backgrounds ── */
+  --color-success-bg:    #052e16;
+  --color-success-text:  #86efac;
+  --color-warning-bg:    #451a03;
+  --color-warning-text:  #fcd34d;
+  --color-error-bg:      #450a0a;
+  --color-error-text:    #fca5a5;
+  --color-info-bg:       #172554;
+  --color-info-text:     #93c5fd;
+
+  /* ── Overlay / backdrop ── */
+  --color-overlay:       rgba(0, 0, 0, 0.55);
+
+  /* ── Legacy aliases ── */
+  --background:          var(--color-page);
+  --foreground:          var(--color-text);
 }
+
+/* ────────────────────────────────────────────────────────
+   Base resets — applies to both themes
+   ──────────────────────────────────────────────────────── */
 
 * {
   box-sizing: border-box;
@@ -27,8 +168,8 @@ body {
 
 body {
   margin: 0;
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--color-page);
+  color: var(--color-text);
   font-family:
     Arial,
     Helvetica,
@@ -119,14 +260,13 @@ button:focus-visible,
 a:focus-visible,
 input:focus-visible,
 select:focus-visible {
-  outline: 3px solid rgba(24, 122, 82, 0.28);
+  outline: 3px solid var(--color-focus-ring);
   outline-offset: 2px;
 }
 
-.dark body {
-  background: var(--background);
-  color: var(--foreground);
-}
+/* ────────────────────────────────────────────────────────
+   Dark mode form element support
+   ──────────────────────────────────────────────────────── */
 
 .dark input,
 .dark select,
@@ -134,61 +274,18 @@ select:focus-visible {
   color-scheme: dark;
 }
 
-.dark .bg-\[\#f4f6f8\] {
-  background-color: #000000;
-}
+/* ────────────────────────────────────────────────────────
+   Smooth theme transitions (opt-in via class)
+   Applied to the root when toggling, removed after to
+   avoid initial load flash.
+   ──────────────────────────────────────────────────────── */
 
-.dark .bg-\[\#f4f6f8\]\/92 {
-  background-color: rgb(0 0 0 / 0.92);
-}
-
-.dark .bg-\[\#f8fafc\],
-.dark .bg-white,
-.dark .bg-white\/78 {
-  background-color: #080808;
-}
-
-.dark .bg-surface,
-.dark .bg-slate-100 {
-  background-color: #111111;
-}
-
-.dark .bg-slate-950 {
-  background-color: #000000;
-}
-
-.dark .bg-brand-50,
-.dark .bg-brand-100 {
-  background-color: #101010;
-}
-
-.dark .border-line,
-.dark .border-slate-200,
-.dark .border-white\/80,
-.dark .border-white\/90 {
-  border-color: #262626;
-}
-
-.dark .text-ink,
-.dark .text-slate-950,
-.dark .text-slate-900,
-.dark .text-slate-800,
-.dark .text-slate-700 {
-  color: #f5f5f5;
-}
-
-.dark .text-slate-600,
-.dark .text-slate-500,
-.dark .text-slate-400 {
-  color: #a3a3a3;
-}
-
-.dark .placeholder\:text-slate-400::placeholder {
-  color: #737373;
-}
-
-.dark .hover\:bg-white:hover,
-.dark .hover\:bg-slate-50:hover,
-.dark .hover\:bg-surface:hover {
-  background-color: #151515;
+.theme-transitioning,
+.theme-transitioning *,
+.theme-transitioning *::before,
+.theme-transitioning *::after {
+  transition: background-color 0.2s ease,
+              border-color 0.2s ease,
+              color 0.15s ease,
+              box-shadow 0.2s ease !important;
 }
