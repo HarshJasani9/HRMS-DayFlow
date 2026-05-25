@@ -27,18 +27,17 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { useQueryClient, type QueryClient } from "@tanstack/react-query";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
-import darkModeIcon from "@/assets/dark-mode.png";
 import { HrAssistantWidget } from "@/components/hr-assistant-widget";
 import { RealtimeNotifications } from "@/components/realtime-notifications";
 import { logout } from "@/lib/api";
 import { clearAuthSession } from "@/lib/auth";
 import { prefetchNavData } from "@/lib/nav-prefetch";
 import { hasEveryPermission, roleLabels } from "@/lib/permissions";
-import { applyTheme, getPreferredTheme, persistTheme, type ThemeMode } from "@/lib/theme";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { applyTheme, applyThemeWithTransition, getPreferredTheme, persistTheme, type ThemeMode } from "@/lib/theme";
 import type { AuthUser } from "@/types";
 
 type AppShellProps = {
@@ -427,7 +426,7 @@ export function AppShell({ user, token, children }: AppShellProps) {
 
     setTheme(nextTheme);
     persistTheme(nextTheme);
-    applyTheme(nextTheme);
+    applyThemeWithTransition(nextTheme);
   }
 
   function prefetchRoute(href: string) {
@@ -634,21 +633,7 @@ export function AppShell({ user, token, children }: AppShellProps) {
             </div>
 
             <div className="flex shrink-0 items-center gap-1 sm:gap-2">
-              <button
-                className="grid h-10 w-10 shrink-0 place-items-center rounded-md border border-slate-200 bg-white text-slate-600 shadow-sm transition-transform hover:-translate-y-0.5 hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 sm:h-9 sm:w-9 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:hover:border-slate-500 dark:hover:bg-slate-900 dark:hover:text-white"
-                type="button"
-                onClick={toggleTheme}
-                aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-                aria-pressed={theme === "dark"}
-                title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-              >
-                <Image
-                  src={darkModeIcon}
-                  alt=""
-                  className="h-[18px] w-[18px] dark:brightness-0 dark:invert"
-                  aria-hidden="true"
-                />
-              </button>
+              <ThemeToggle theme={theme} onToggle={toggleTheme} />
               <Link
                 href="/notifications"
                 className="grid h-10 w-10 shrink-0 place-items-center rounded-md border border-slate-200 bg-white text-slate-600 shadow-sm transition-transform hover:-translate-y-0.5 hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 sm:h-9 sm:w-9 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:hover:border-slate-500 dark:hover:bg-slate-900 dark:hover:text-white"
