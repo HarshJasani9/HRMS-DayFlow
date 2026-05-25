@@ -18,7 +18,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import landingHero from "@/assets/landing-hero.png";
-import { applyLightTheme } from "@/lib/theme";
+import { GlobalThemeToggle } from "@/components/theme-toggle";
 
 const PRODUCT_NAME = "DayFlow";
 
@@ -147,6 +147,7 @@ function Navbar() {
         </div>
 
         <div className="flex items-center gap-3">
+          <GlobalThemeToggle className="mr-1 border-transparent bg-transparent shadow-none" />
           <Link
             href="/login"
             className="hidden rounded-lg px-4 py-2 text-sm font-semibold text-text-secondary transition hover:bg-active sm:inline-flex"

@@ -63,3 +63,35 @@ export function ThemeToggle({ theme, onToggle, className = "" }: ThemeToggleProp
     </button>
   );
 }
+
+/**
+ * A wrapper around ThemeToggle that automatically manages the theme state.
+ * Useful for dropping into isolated pages (landing, auth) where you don't
+ * already have a global layout state managing the theme.
+ */
+import { useEffect, useState } from "react";
+import { getPreferredTheme, persistTheme, applyThemeWithTransition } from "@/lib/theme";
+
+export function GlobalThemeToggle({ className }: { className?: string }) {
+  const [theme, setTheme] = useState<ThemeMode>("light");
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setTheme(getPreferredTheme());
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    // Prevent hydration mismatch by returning a placeholder of the exact same size
+    return <div className={`h-10 w-10 sm:h-9 sm:w-9 shrink-0 ${className ?? ""}`} />;
+  }
+
+  function handleToggle() {
+    const nextTheme = theme === "dark" ? "light" : "dark";
+    setTheme(nextTheme);
+    persistTheme(nextTheme);
+    applyThemeWithTransition(nextTheme);
+  }
+
+  return <ThemeToggle theme={theme} onToggle={handleToggle} className={className} />;
+}
