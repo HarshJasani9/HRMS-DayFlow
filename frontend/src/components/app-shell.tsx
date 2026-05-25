@@ -421,12 +421,13 @@ export function AppShell({ user, token, children }: AppShellProps) {
     };
   }, [queryClient, token, visibleNavHrefs]);
 
-  function toggleTheme() {
+  function toggleTheme(e: React.MouseEvent<HTMLButtonElement>) {
     const nextTheme: ThemeMode = theme === "dark" ? "light" : "dark";
 
-    setTheme(nextTheme);
     persistTheme(nextTheme);
-    applyThemeWithTransition(nextTheme);
+    applyThemeWithTransition(nextTheme, e, () => {
+      setTheme(nextTheme);
+    });
   }
 
   function prefetchRoute(href: string) {

@@ -275,17 +275,11 @@ select:focus-visible {
 }
 
 /* ────────────────────────────────────────────────────────
-   Smooth theme transitions (opt-in via class)
-   Applied to the root when toggling, removed after to
-   avoid initial load flash.
+   View Transition API support (circle-spread animation)
    ──────────────────────────────────────────────────────── */
 
-.theme-transitioning,
-.theme-transitioning *,
-.theme-transitioning *::before,
-.theme-transitioning *::after {
-  transition: background-color 0.2s ease,
-              border-color 0.2s ease,
-              color 0.15s ease,
-              box-shadow 0.2s ease !important;
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }

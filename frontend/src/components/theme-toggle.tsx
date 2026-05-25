@@ -5,7 +5,7 @@ import type { ThemeMode } from "@/lib/theme";
 
 type ThemeToggleProps = {
   theme: ThemeMode;
-  onToggle: () => void;
+  onToggle: (e: React.MouseEvent<HTMLButtonElement>) => void;
   className?: string;
 };
 
@@ -86,11 +86,12 @@ export function GlobalThemeToggle({ className }: { className?: string }) {
     return <div className={`h-10 w-10 sm:h-9 sm:w-9 shrink-0 ${className ?? ""}`} />;
   }
 
-  function handleToggle() {
+  function handleToggle(e: React.MouseEvent<HTMLButtonElement>) {
     const nextTheme = theme === "dark" ? "light" : "dark";
-    setTheme(nextTheme);
     persistTheme(nextTheme);
-    applyThemeWithTransition(nextTheme);
+    applyThemeWithTransition(nextTheme, e, () => {
+      setTheme(nextTheme);
+    });
   }
 
   return <ThemeToggle theme={theme} onToggle={handleToggle} className={className} />;

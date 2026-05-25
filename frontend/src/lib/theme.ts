@@ -2,9 +2,6 @@ export type ThemeMode = "light" | "dark";
 
 export const THEME_STORAGE_KEY = "hrms-theme";
 
-const TRANSITION_CLASS = "theme-transitioning";
-const TRANSITION_DURATION_MS = 250;
-
 export function isThemeMode(value: string | null): value is ThemeMode {
   return value === "light" || value === "dark";
 }
@@ -28,19 +25,67 @@ export function applyTheme(theme: ThemeMode): void {
   document.documentElement.style.colorScheme = theme;
 }
 
-/**
- * Apply a theme with a smooth CSS transition.
- * Adds the `.theme-transitioning` class to enable transitions
- * on background, color, and border properties, then removes
- * it after the transition completes to keep normal interactions snappy.
- */
-export function applyThemeWithTransition(theme: ThemeMode): void {
-  document.documentElement.classList.add(TRANSITION_CLASS);
-  applyTheme(theme);
+import { flushSync } from "react-dom";
 
-  window.setTimeout(() => {
-    document.documentElement.classList.remove(TRANSITION_CLASS);
-  }, TRANSITION_DURATION_MS);
+/**
+ * Apply a theme using the View Transitions API for a circle-spread animation.
+ * Falls back to instant application on unsupported browsers.
+ */
+export function applyThemeWithTransition(
+  theme: ThemeMode,
+  e?: React.MouseEvent<HTMLButtonElement>,
+  updateReactState?: () => void
+): void {
+  if (!document.startViewTransition) {
+    applyTheme(theme);
+    updateReactState?.();
+    return;
+  }
+
+  // Calculate coordinates for the circle spread
+  let x = window.innerWidth / 2;
+  let y = window.innerHeight / 2;
+
+  if (e?.currentTarget) {
+    const rect = e.currentTarget.getBoundingClientRect();
+    x = rect.left + rect.width / 2;
+    y = rect.top + rect.height / 2;
+  } else if (e?.clientX) {
+    x = e.clientX;
+    y = e.clientY;
+  }
+
+  const maxRadius = Math.hypot(
+    Math.max(x, window.innerWidth - x),
+    Math.max(y, window.innerHeight - y)
+  );
+
+  const transition = document.startViewTransition(() => {
+    if (updateReactState) {
+      flushSync(() => {
+        applyTheme(theme);
+        updateReactState();
+      });
+    } else {
+      applyTheme(theme);
+    }
+  });
+
+  transition.ready.then(() => {
+    document.documentElement.animate(
+      {
+        clipPath: [
+          `circle(0px at ${x}px ${y}px)`,
+          `circle(${maxRadius}px at ${x}px ${y}px)`,
+        ],
+      },
+      {
+        duration: 400,
+        easing: "ease-in-out",
+        pseudoElement: "::view-transition-new(root)",
+      }
+    );
+  });
 }
 
 export function applyLightTheme(): void {
