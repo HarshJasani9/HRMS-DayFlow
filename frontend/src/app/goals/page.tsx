@@ -189,19 +189,19 @@ function GoalsContent({ user, token }: GoalsContentProps) {
         <section className="grid gap-4 xl:grid-cols-[0.8fr_1.2fr]">
           {canManagePerformance ? (
             <form
-              className="rounded-lg border border-line bg-white p-5 shadow-soft"
+              className="rounded-lg border border-line bg-card p-5 shadow-soft"
               onSubmit={handleSubmit(submit)}
             >
               <h2 className="text-lg font-semibold tracking-normal">Create Goal</h2>
               {message ? (
-                <div className="mt-5 rounded-md border border-line bg-surface px-3 py-2 text-sm text-slate-700">
+                <div className="mt-5 rounded-md border border-line bg-surface px-3 py-2 text-sm text-text-secondary">
                   {message}
                 </div>
               ) : null}
-              <label className="mt-5 block text-sm font-medium text-slate-700">
+              <label className="mt-5 block text-sm font-medium text-text-secondary">
                 Employee
                 <select
-                  className="mt-2 h-11 w-full rounded-md border border-line bg-white px-3 text-sm outline-none transition focus:border-brand-600"
+                  className="mt-2 h-11 w-full rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                   {...register("employeeId", { required: true })}
                 >
                   <option value="">Select employee</option>
@@ -212,7 +212,7 @@ function GoalsContent({ user, token }: GoalsContentProps) {
                   ))}
                 </select>
               </label>
-              <label className="mt-5 block text-sm font-medium text-slate-700">
+              <label className="mt-5 block text-sm font-medium text-text-secondary">
                 Title
                 <input
                   className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
@@ -220,10 +220,10 @@ function GoalsContent({ user, token }: GoalsContentProps) {
                 />
               </label>
               <div className="mt-5 grid gap-4 sm:grid-cols-2">
-                <label className="block text-sm font-medium text-slate-700">
+                <label className="block text-sm font-medium text-text-secondary">
                   Status
                   <select
-                    className="mt-2 h-11 w-full rounded-md border border-line bg-white px-3 text-sm outline-none transition focus:border-brand-600"
+                    className="mt-2 h-11 w-full rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                     {...register("status")}
                   >
                     {goalStatuses.map((goalStatus) => (
@@ -233,7 +233,7 @@ function GoalsContent({ user, token }: GoalsContentProps) {
                     ))}
                   </select>
                 </label>
-                <label className="block text-sm font-medium text-slate-700">
+                <label className="block text-sm font-medium text-text-secondary">
                   Progress
                   <input
                     className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
@@ -243,7 +243,7 @@ function GoalsContent({ user, token }: GoalsContentProps) {
                     {...register("progress", { valueAsNumber: true })}
                   />
                 </label>
-                <label className="block text-sm font-medium text-slate-700">
+                <label className="block text-sm font-medium text-text-secondary">
                   Start date
                   <input
                     className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
@@ -251,7 +251,7 @@ function GoalsContent({ user, token }: GoalsContentProps) {
                     {...register("startDate")}
                   />
                 </label>
-                <label className="block text-sm font-medium text-slate-700">
+                <label className="block text-sm font-medium text-text-secondary">
                   Due date
                   <input
                     className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
@@ -260,7 +260,7 @@ function GoalsContent({ user, token }: GoalsContentProps) {
                   />
                 </label>
               </div>
-              <label className="mt-5 block text-sm font-medium text-slate-700">
+              <label className="mt-5 block text-sm font-medium text-text-secondary">
                 Description
                 <textarea
                   className="mt-2 min-h-24 w-full rounded-md border border-line px-3 py-3 text-sm outline-none transition focus:border-brand-600"
@@ -278,10 +278,10 @@ function GoalsContent({ user, token }: GoalsContentProps) {
             </form>
           ) : null}
 
-          <div className="rounded-lg border border-line bg-white p-5 shadow-soft">
+          <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
             <div className="grid gap-3 sm:grid-cols-2">
               <select
-                className="h-11 rounded-md border border-line bg-white px-3 text-sm outline-none transition focus:border-brand-600"
+                className="h-11 rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                 value={employeeId}
                 onChange={(event) => setEmployeeId(event.target.value)}
                 aria-label="Filter goals by employee"
@@ -294,7 +294,7 @@ function GoalsContent({ user, token }: GoalsContentProps) {
                 ))}
               </select>
               <select
-                className="h-11 rounded-md border border-line bg-white px-3 text-sm outline-none transition focus:border-brand-600"
+                className="h-11 rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                 value={status}
                 onChange={(event) => setStatus(event.target.value as GoalStatus | "")}
                 aria-label="Filter goals by status"
@@ -322,7 +322,7 @@ function GoalsContent({ user, token }: GoalsContentProps) {
             ) : (
               <div className="mt-5 overflow-x-auto">
                 <table className="min-w-[760px] w-full text-left text-sm">
-                  <thead className="border-b border-line bg-surface text-xs uppercase text-slate-500">
+                  <thead className="border-b border-line bg-surface text-xs uppercase text-text-muted">
                     <tr>
                       <th className="px-4 py-3 font-semibold">Goal</th>
                       <th className="px-4 py-3 font-semibold">Employee</th>
@@ -336,7 +336,7 @@ function GoalsContent({ user, token }: GoalsContentProps) {
                       <tr key={goal.id}>
                         <td className="px-4 py-4">
                           <div className="font-medium text-ink">{goal.title}</div>
-                          <div className="mt-1 text-xs text-slate-500">
+                          <div className="mt-1 text-xs text-text-muted">
                             {goal.description ?? "No description"}
                           </div>
                         </td>
@@ -361,7 +361,7 @@ function GoalsContent({ user, token }: GoalsContentProps) {
                         </td>
                         <td className="px-4 py-4">
                           <select
-                            className="h-9 rounded-md border border-line bg-white px-2 text-sm outline-none"
+                            className="h-9 rounded-md border border-line bg-card px-2 text-sm outline-none"
                             value={goal.status}
                             disabled={!canManagePerformance}
                             onChange={(event) =>

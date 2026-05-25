@@ -98,7 +98,7 @@ function ApplyLeaveContent({ user, token }: ApplyLeaveContentProps) {
 
         <section className="grid gap-4 lg:grid-cols-[0.85fr_1.15fr]">
           <form
-            className="rounded-lg border border-line bg-white p-5 shadow-soft"
+            className="rounded-lg border border-line bg-card p-5 shadow-soft"
             onSubmit={handleSubmit(submit)}
           >
             <div className="flex min-w-0 items-center gap-3">
@@ -109,15 +109,15 @@ function ApplyLeaveContent({ user, token }: ApplyLeaveContentProps) {
             </div>
 
             {message ? (
-              <div className="mt-5 rounded-md border border-line bg-surface px-3 py-2 text-sm text-slate-700">
+              <div className="mt-5 rounded-md border border-line bg-surface px-3 py-2 text-sm text-text-secondary">
                 {message}
               </div>
             ) : null}
 
-            <label className="mt-5 block text-sm font-medium text-slate-700">
+            <label className="mt-5 block text-sm font-medium text-text-secondary">
               Leave type
               <select
-                className="mt-2 h-11 w-full rounded-md border border-line bg-white px-3 text-sm outline-none transition focus:border-brand-600"
+                className="mt-2 h-11 w-full rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                 {...register("leaveTypeId", { required: true })}
               >
                 <option value="">Select leave type</option>
@@ -130,7 +130,7 @@ function ApplyLeaveContent({ user, token }: ApplyLeaveContentProps) {
             </label>
 
             <div className="mt-5 grid gap-4 sm:grid-cols-3">
-              <label className="block text-sm font-medium text-slate-700">
+              <label className="block text-sm font-medium text-text-secondary">
                 Start
                 <input
                   className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
@@ -138,7 +138,7 @@ function ApplyLeaveContent({ user, token }: ApplyLeaveContentProps) {
                   {...register("startDate", { required: true })}
                 />
               </label>
-              <label className="block text-sm font-medium text-slate-700">
+              <label className="block text-sm font-medium text-text-secondary">
                 End
                 <input
                   className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
@@ -146,10 +146,10 @@ function ApplyLeaveContent({ user, token }: ApplyLeaveContentProps) {
                   {...register("endDate", { required: true })}
                 />
               </label>
-              <label className="block text-sm font-medium text-slate-700">
+              <label className="block text-sm font-medium text-text-secondary">
                 Day type
                 <select
-                  className="mt-2 h-11 w-full rounded-md border border-line bg-white px-3 text-sm outline-none transition focus:border-brand-600"
+                  className="mt-2 h-11 w-full rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                   {...register("dayType")}
                 >
                   {Object.entries(leaveDayTypeLabels).map(([value, label]) => (
@@ -161,7 +161,7 @@ function ApplyLeaveContent({ user, token }: ApplyLeaveContentProps) {
               </label>
             </div>
 
-            <label className="mt-5 block text-sm font-medium text-slate-700">
+            <label className="mt-5 block text-sm font-medium text-text-secondary">
               Reason
               <textarea
                 className="mt-2 min-h-28 w-full rounded-md border border-line px-3 py-3 text-sm outline-none transition focus:border-brand-600"
@@ -178,7 +178,7 @@ function ApplyLeaveContent({ user, token }: ApplyLeaveContentProps) {
             </button>
           </form>
 
-          <div className="rounded-lg border border-line bg-white p-5 shadow-soft">
+          <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
             <h2 className="text-lg font-semibold tracking-normal">Current Balances</h2>
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
               {leaveBalances.map((balance) => (
@@ -187,7 +187,7 @@ function ApplyLeaveContent({ user, token }: ApplyLeaveContentProps) {
                   <p className="mt-2 text-2xl font-semibold tracking-normal text-brand-700">
                     {balance.available}
                   </p>
-                  <p className="mt-1 text-xs text-slate-500">
+                  <p className="mt-1 text-xs text-text-muted">
                     Used {balance.used} | Pending {balance.pending}
                   </p>
                 </div>

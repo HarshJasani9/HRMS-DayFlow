@@ -81,35 +81,35 @@ function CandidateDetailContent({ user, token }: CandidateDetailContentProps) {
 
         {candidate ? (
           <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            <div className="rounded-lg border border-line bg-white p-5 shadow-soft">
-              <p className="text-sm text-slate-500">Email</p>
+            <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
+              <p className="text-sm text-text-muted">Email</p>
               <p className="mt-2 font-semibold text-ink">{candidate.email}</p>
             </div>
-            <div className="rounded-lg border border-line bg-white p-5 shadow-soft">
-              <p className="text-sm text-slate-500">Phone</p>
+            <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
+              <p className="text-sm text-text-muted">Phone</p>
               <p className="mt-2 font-semibold text-ink">{candidate.phone ?? "Not set"}</p>
             </div>
-            <div className="rounded-lg border border-line bg-white p-5 shadow-soft">
-              <p className="text-sm text-slate-500">Current role</p>
+            <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
+              <p className="text-sm text-text-muted">Current role</p>
               <p className="mt-2 font-semibold text-ink">
                 {candidate.currentTitle ?? "Not set"}
               </p>
             </div>
-            <div className="rounded-lg border border-line bg-white p-5 shadow-soft">
-              <p className="text-sm text-slate-500">Source</p>
+            <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
+              <p className="text-sm text-text-muted">Source</p>
               <p className="mt-2 font-semibold text-ink">{candidate.source ?? "Not set"}</p>
             </div>
           </section>
         ) : null}
 
-        <section className="rounded-lg border border-line bg-white p-5 shadow-soft">
+        <section className="rounded-lg border border-line bg-card p-5 shadow-soft">
           <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
             <h2 className="text-lg font-semibold tracking-normal">Applications</h2>
-            {error ? <p className="text-sm text-red-700">{error}</p> : null}
+            {error ? <p className="text-sm text-error-text">{error}</p> : null}
           </div>
           <div className="mt-5 overflow-x-auto">
             <table className="min-w-[760px] w-full text-left text-sm">
-              <thead className="border-b border-line bg-surface text-xs uppercase text-slate-500">
+              <thead className="border-b border-line bg-surface text-xs uppercase text-text-muted">
                 <tr>
                   <th className="px-4 py-3 font-semibold">Job</th>
                   <th className="px-4 py-3 font-semibold">Applied</th>
@@ -126,14 +126,14 @@ function CandidateDetailContent({ user, token }: CandidateDetailContentProps) {
                       >
                         {application.job.title}
                       </Link>
-                      <div className="mt-1 text-xs text-slate-500">
+                      <div className="mt-1 text-xs text-text-muted">
                         {application.job.department?.name ?? "Unassigned"}
                       </div>
                     </td>
                     <td className="px-4 py-4">{formatDate(application.appliedAt)}</td>
                     <td className="px-4 py-4">
                       <select
-                        className="h-9 rounded-md border border-line bg-white px-2 text-sm outline-none"
+                        className="h-9 rounded-md border border-line bg-card px-2 text-sm outline-none"
                         defaultValue={application.status}
                         disabled={!canManageRecruitment}
                         onChange={(event) =>
@@ -155,7 +155,7 @@ function CandidateDetailContent({ user, token }: CandidateDetailContentProps) {
         </section>
 
         <section className="grid gap-4 xl:grid-cols-2">
-          <div className="rounded-lg border border-line bg-white p-5 shadow-soft">
+          <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
             <h2 className="text-lg font-semibold tracking-normal">Interviews</h2>
             <div className="mt-5 divide-y divide-line">
               {(candidate?.interviews ?? []).map((interview) => (
@@ -163,7 +163,7 @@ function CandidateDetailContent({ user, token }: CandidateDetailContentProps) {
                   <p className="font-medium text-ink">
                     {formatDateTime(interview.scheduledAt)}
                   </p>
-                  <p className="mt-1 text-sm text-slate-600">
+                  <p className="mt-1 text-sm text-text-secondary">
                     {interviewStatusLabels[interview.status]} with{" "}
                     {interview.interviewer ? getEmployeeName(interview.interviewer) : "Unassigned"}
                   </p>
@@ -172,13 +172,13 @@ function CandidateDetailContent({ user, token }: CandidateDetailContentProps) {
             </div>
           </div>
 
-          <div className="rounded-lg border border-line bg-white p-5 shadow-soft">
+          <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
             <h2 className="text-lg font-semibold tracking-normal">Offers</h2>
             <div className="mt-5 divide-y divide-line">
               {(candidate?.offers ?? []).map((offer) => (
                 <div key={offer.id} className="py-4">
                   <p className="font-medium text-ink">{offer.job.title}</p>
-                  <p className="mt-1 text-sm text-slate-600">
+                  <p className="mt-1 text-sm text-text-secondary">
                     {offerStatusLabels[offer.status]} | {offer.offeredSalary ?? "Salary not set"}
                   </p>
                 </div>

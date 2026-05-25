@@ -78,41 +78,41 @@ function JobDetailContent({ user, token }: JobDetailContentProps) {
         </div>
 
         {job ? (
-          <section className="rounded-lg border border-line bg-white p-5 shadow-soft">
+          <section className="rounded-lg border border-line bg-card p-5 shadow-soft">
             <div className="grid gap-4 md:grid-cols-4">
               <div className="rounded-md bg-surface px-4 py-3">
-                <p className="text-xs font-medium uppercase text-slate-500">Status</p>
+                <p className="text-xs font-medium uppercase text-text-muted">Status</p>
                 <p className="mt-2 font-semibold text-ink">{jobStatusLabels[job.status]}</p>
               </div>
               <div className="rounded-md bg-surface px-4 py-3">
-                <p className="text-xs font-medium uppercase text-slate-500">Department</p>
+                <p className="text-xs font-medium uppercase text-text-muted">Department</p>
                 <p className="mt-2 font-semibold text-ink">
                   {job.department?.name ?? "Unassigned"}
                 </p>
               </div>
               <div className="rounded-md bg-surface px-4 py-3">
-                <p className="text-xs font-medium uppercase text-slate-500">Location</p>
+                <p className="text-xs font-medium uppercase text-text-muted">Location</p>
                 <p className="mt-2 font-semibold text-ink">{job.location ?? "Not set"}</p>
               </div>
               <div className="rounded-md bg-surface px-4 py-3">
-                <p className="text-xs font-medium uppercase text-slate-500">Applications</p>
+                <p className="text-xs font-medium uppercase text-text-muted">Applications</p>
                 <p className="mt-2 font-semibold text-ink">{job.applications.length}</p>
               </div>
             </div>
-            <p className="mt-5 whitespace-pre-line text-sm leading-6 text-slate-700">
+            <p className="mt-5 whitespace-pre-line text-sm leading-6 text-text-secondary">
               {job.description}
             </p>
           </section>
         ) : null}
 
-        <section className="rounded-lg border border-line bg-white p-5 shadow-soft">
+        <section className="rounded-lg border border-line bg-card p-5 shadow-soft">
           <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
             <h2 className="text-lg font-semibold tracking-normal">Applications</h2>
-            {error ? <p className="text-sm text-red-700">{error}</p> : null}
+            {error ? <p className="text-sm text-error-text">{error}</p> : null}
           </div>
           <div className="mt-5 overflow-x-auto">
             <table className="min-w-[760px] w-full text-left text-sm">
-              <thead className="border-b border-line bg-surface text-xs uppercase text-slate-500">
+              <thead className="border-b border-line bg-surface text-xs uppercase text-text-muted">
                 <tr>
                   <th className="px-4 py-3 font-semibold">Candidate</th>
                   <th className="px-4 py-3 font-semibold">Applied</th>
@@ -130,7 +130,7 @@ function JobDetailContent({ user, token }: JobDetailContentProps) {
                       >
                         {getCandidateName(application.candidate)}
                       </Link>
-                      <div className="mt-1 text-xs text-slate-500">
+                      <div className="mt-1 text-xs text-text-muted">
                         {application.candidate.email}
                       </div>
                     </td>
@@ -141,7 +141,7 @@ function JobDetailContent({ user, token }: JobDetailContentProps) {
                     <td className="px-4 py-4">
                       <div className="flex items-center gap-2">
                         <select
-                          className="h-9 rounded-md border border-line bg-white px-2 text-sm outline-none"
+                          className="h-9 rounded-md border border-line bg-card px-2 text-sm outline-none"
                           defaultValue={application.status}
                           disabled={!canManageRecruitment}
                           onChange={(event) =>
@@ -154,7 +154,7 @@ function JobDetailContent({ user, token }: JobDetailContentProps) {
                             </option>
                           ))}
                         </select>
-                        <Check size={16} className="text-slate-400" aria-hidden="true" />
+                        <Check size={16} className="text-text-faint" aria-hidden="true" />
                       </div>
                     </td>
                   </tr>

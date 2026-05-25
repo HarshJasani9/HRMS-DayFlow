@@ -48,10 +48,10 @@ function MyLeavesContent({ user, token }: MyLeavesContentProps) {
           </div>
         </div>
 
-        <section className="rounded-lg border border-line bg-white p-5 shadow-soft">
+        <section className="rounded-lg border border-line bg-card p-5 shadow-soft">
           <div className="overflow-x-auto">
             <table className="min-w-[760px] w-full text-left text-sm">
-              <thead className="border-b border-line bg-surface text-xs uppercase text-slate-500">
+              <thead className="border-b border-line bg-surface text-xs uppercase text-text-muted">
                 <tr>
                   <th className="px-4 py-3 font-semibold">Type</th>
                   <th className="px-4 py-3 font-semibold">Dates</th>
@@ -67,7 +67,7 @@ function MyLeavesContent({ user, token }: MyLeavesContentProps) {
                       <div className="font-medium text-ink">
                         {leaveRequest.leaveType.name}
                       </div>
-                      <div className="mt-1 text-xs text-slate-500">
+                      <div className="mt-1 text-xs text-text-muted">
                         {leaveDayTypeLabels[leaveRequest.dayType]}
                       </div>
                     </td>
@@ -76,7 +76,7 @@ function MyLeavesContent({ user, token }: MyLeavesContentProps) {
                     </td>
                     <td className="px-4 py-4">{leaveRequest.totalDays}</td>
                     <td className="px-4 py-4">{leaveStatusLabels[leaveRequest.status]}</td>
-                    <td className="px-4 py-4 text-slate-600">
+                    <td className="px-4 py-4 text-text-secondary">
                       {leaveRequest.decisionNote ?? "Not reviewed"}
                     </td>
                   </tr>
@@ -85,7 +85,7 @@ function MyLeavesContent({ user, token }: MyLeavesContentProps) {
             </table>
           </div>
           {!leavesQuery.isLoading && leaveRequests.length === 0 ? (
-            <p className="mt-5 rounded-md border border-dashed border-line px-4 py-5 text-sm text-slate-500">
+            <p className="mt-5 rounded-md border border-dashed border-line px-4 py-5 text-sm text-text-muted">
               No leave requests found.
             </p>
           ) : null}

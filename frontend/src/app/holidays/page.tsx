@@ -81,7 +81,7 @@ function HolidaysContent({ user, token }: HolidaysContentProps) {
 
         <section className="grid gap-4 lg:grid-cols-[0.8fr_1.2fr]">
           <form
-            className="rounded-lg border border-line bg-white p-5 shadow-soft"
+            className="rounded-lg border border-line bg-card p-5 shadow-soft"
             onSubmit={handleSubmit(submit)}
           >
             <div className="flex min-w-0 items-center gap-3">
@@ -92,12 +92,12 @@ function HolidaysContent({ user, token }: HolidaysContentProps) {
             </div>
 
             {error ? (
-              <div className="mt-5 rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">
+              <div className="mt-5 rounded-md border border-red-200 dark:border-red-800 bg-error-bg px-3 py-2 text-sm text-error-text">
                 {error}
               </div>
             ) : null}
 
-            <label className="mt-5 block text-sm font-medium text-slate-700">
+            <label className="mt-5 block text-sm font-medium text-text-secondary">
               Name
               <input
                 className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
@@ -105,7 +105,7 @@ function HolidaysContent({ user, token }: HolidaysContentProps) {
               />
             </label>
             <div className="mt-5 grid gap-4 sm:grid-cols-2">
-              <label className="block text-sm font-medium text-slate-700">
+              <label className="block text-sm font-medium text-text-secondary">
                 Date
                 <input
                   className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
@@ -113,10 +113,10 @@ function HolidaysContent({ user, token }: HolidaysContentProps) {
                   {...register("date", { required: true })}
                 />
               </label>
-              <label className="block text-sm font-medium text-slate-700">
+              <label className="block text-sm font-medium text-text-secondary">
                 Type
                 <select
-                  className="mt-2 h-11 w-full rounded-md border border-line bg-white px-3 text-sm outline-none transition focus:border-brand-600"
+                  className="mt-2 h-11 w-full rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                   {...register("type")}
                 >
                   {Object.entries(holidayTypeLabels).map(([value, label]) => (
@@ -127,7 +127,7 @@ function HolidaysContent({ user, token }: HolidaysContentProps) {
                 </select>
               </label>
             </div>
-            <label className="mt-5 block text-sm font-medium text-slate-700">
+            <label className="mt-5 block text-sm font-medium text-text-secondary">
               Description
               <textarea
                 className="mt-2 min-h-24 w-full rounded-md border border-line px-3 py-3 text-sm outline-none transition focus:border-brand-600"
@@ -144,7 +144,7 @@ function HolidaysContent({ user, token }: HolidaysContentProps) {
             </button>
           </form>
 
-          <div className="rounded-lg border border-line bg-white p-5 shadow-soft">
+          <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
             <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
               <h2 className="text-lg font-semibold tracking-normal">Calendar</h2>
               <input
@@ -162,11 +162,11 @@ function HolidaysContent({ user, token }: HolidaysContentProps) {
                 >
                   <div>
                     <p className="font-medium text-ink">{holiday.name}</p>
-                    <p className="mt-1 text-sm text-slate-500">
+                    <p className="mt-1 text-sm text-text-muted">
                       {formatDate(holiday.date)}
                     </p>
                   </div>
-                  <span className="self-start rounded-md bg-surface px-2 py-1 text-xs font-medium text-slate-600">
+                  <span className="self-start rounded-md bg-surface px-2 py-1 text-xs font-medium text-text-secondary">
                     {holidayTypeLabels[holiday.type]}
                   </span>
                 </div>

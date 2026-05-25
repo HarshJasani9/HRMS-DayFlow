@@ -150,7 +150,7 @@ function JobsContent({ user, token }: JobsContentProps) {
             </div>
           </div>
           <select
-            className="h-10 rounded-md border border-line bg-white px-3 text-sm outline-none transition focus:border-brand-600"
+            className="h-10 rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
             value={status}
             onChange={(event) => setStatus(event.target.value as JobStatus | "")}
             aria-label="Filter jobs by status"
@@ -167,16 +167,16 @@ function JobsContent({ user, token }: JobsContentProps) {
         <section className="grid gap-4 xl:grid-cols-[0.85fr_1.15fr]">
           {canManageRecruitment ? (
             <form
-              className="rounded-lg border border-line bg-white p-5 shadow-soft"
+              className="rounded-lg border border-line bg-card p-5 shadow-soft"
               onSubmit={handleSubmit(submit)}
             >
               <h2 className="text-lg font-semibold tracking-normal">Create Job</h2>
               {message ? (
-                <div className="mt-5 rounded-md border border-line bg-surface px-3 py-2 text-sm text-slate-700">
+                <div className="mt-5 rounded-md border border-line bg-surface px-3 py-2 text-sm text-text-secondary">
                   {message}
                 </div>
               ) : null}
-              <label className="mt-5 block text-sm font-medium text-slate-700">
+              <label className="mt-5 block text-sm font-medium text-text-secondary">
                 Title
                 <input
                   className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
@@ -184,10 +184,10 @@ function JobsContent({ user, token }: JobsContentProps) {
                 />
               </label>
               <div className="mt-5 grid gap-4 sm:grid-cols-2">
-                <label className="block text-sm font-medium text-slate-700">
+                <label className="block text-sm font-medium text-text-secondary">
                   Department
                   <select
-                    className="mt-2 h-11 w-full rounded-md border border-line bg-white px-3 text-sm outline-none transition focus:border-brand-600"
+                    className="mt-2 h-11 w-full rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                     {...register("departmentId")}
                   >
                     <option value="">Unassigned</option>
@@ -198,10 +198,10 @@ function JobsContent({ user, token }: JobsContentProps) {
                     ))}
                   </select>
                 </label>
-                <label className="block text-sm font-medium text-slate-700">
+                <label className="block text-sm font-medium text-text-secondary">
                   Designation
                   <select
-                    className="mt-2 h-11 w-full rounded-md border border-line bg-white px-3 text-sm outline-none transition focus:border-brand-600"
+                    className="mt-2 h-11 w-full rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                     {...register("designationId")}
                   >
                     <option value="">Unassigned</option>
@@ -212,24 +212,24 @@ function JobsContent({ user, token }: JobsContentProps) {
                     ))}
                   </select>
                 </label>
-                <label className="block text-sm font-medium text-slate-700">
+                <label className="block text-sm font-medium text-text-secondary">
                   Location
                   <input
                     className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
                     {...register("location")}
                   />
                 </label>
-                <label className="block text-sm font-medium text-slate-700">
+                <label className="block text-sm font-medium text-text-secondary">
                   Employment type
                   <input
                     className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
                     {...register("employmentType")}
                   />
                 </label>
-                <label className="block text-sm font-medium text-slate-700">
+                <label className="block text-sm font-medium text-text-secondary">
                   Status
                   <select
-                    className="mt-2 h-11 w-full rounded-md border border-line bg-white px-3 text-sm outline-none transition focus:border-brand-600"
+                    className="mt-2 h-11 w-full rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                     {...register("status")}
                   >
                     {Object.entries(jobStatusLabels).map(([value, label]) => (
@@ -240,7 +240,7 @@ function JobsContent({ user, token }: JobsContentProps) {
                   </select>
                 </label>
               </div>
-              <label className="mt-5 block text-sm font-medium text-slate-700">
+              <label className="mt-5 block text-sm font-medium text-text-secondary">
                 Description
                 <textarea
                   className="mt-2 min-h-32 w-full rounded-md border border-line px-3 py-3 text-sm outline-none transition focus:border-brand-600"
@@ -258,7 +258,7 @@ function JobsContent({ user, token }: JobsContentProps) {
             </form>
           ) : null}
 
-          <div className="rounded-lg border border-line bg-white p-5 shadow-soft">
+          <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
             <h2 className="text-lg font-semibold tracking-normal">Openings</h2>
             {jobsQuery.isLoading || jobsQuery.isError || jobs.length === 0 ? (
               <div className="mt-5">
@@ -274,7 +274,7 @@ function JobsContent({ user, token }: JobsContentProps) {
             ) : (
               <div className="mt-5 overflow-x-auto">
                 <table className="min-w-[760px] w-full text-left text-sm">
-                  <thead className="border-b border-line bg-surface text-xs uppercase text-slate-500">
+                  <thead className="border-b border-line bg-surface text-xs uppercase text-text-muted">
                     <tr>
                       <th className="px-4 py-3 font-semibold">Job</th>
                       <th className="px-4 py-3 font-semibold">Department</th>
@@ -292,7 +292,7 @@ function JobsContent({ user, token }: JobsContentProps) {
                           >
                             {job.title}
                           </Link>
-                          <div className="mt-1 text-xs text-slate-500">
+                          <div className="mt-1 text-xs text-text-muted">
                             {job.location ?? "Location not set"}
                           </div>
                         </td>

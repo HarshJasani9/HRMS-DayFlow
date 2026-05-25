@@ -105,7 +105,7 @@ function DepartmentsContent({ user, token }: DepartmentsContentProps) {
 
         <section className="grid gap-4 lg:grid-cols-[0.8fr_1.2fr]">
           <form
-            className="rounded-lg border border-line bg-white p-5 shadow-soft"
+            className="rounded-lg border border-line bg-card p-5 shadow-soft"
             onSubmit={handleSubmit(submit)}
           >
             <div className="flex min-w-0 items-center gap-3">
@@ -116,19 +116,19 @@ function DepartmentsContent({ user, token }: DepartmentsContentProps) {
             </div>
 
             {error ? (
-              <div className="mt-5 rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">
+              <div className="mt-5 rounded-md border border-red-200 dark:border-red-800 bg-error-bg px-3 py-2 text-sm text-error-text">
                 {error}
               </div>
             ) : null}
 
-            <label className="mt-5 block text-sm font-medium text-slate-700">
+            <label className="mt-5 block text-sm font-medium text-text-secondary">
               Name
               <input
                 className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
                 {...register("name", { required: true })}
               />
             </label>
-            <label className="mt-5 block text-sm font-medium text-slate-700">
+            <label className="mt-5 block text-sm font-medium text-text-secondary">
               Description
               <textarea
                 className="mt-2 min-h-28 w-full rounded-md border border-line px-3 py-3 text-sm outline-none transition focus:border-brand-600"
@@ -145,7 +145,7 @@ function DepartmentsContent({ user, token }: DepartmentsContentProps) {
             </button>
           </form>
 
-          <div className="rounded-lg border border-line bg-white p-5 shadow-soft">
+          <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
             <h2 className="text-lg font-semibold tracking-normal">Department List</h2>
             <div className="mt-5 overflow-hidden rounded-md border border-line">
               {departments.map((department) => (
@@ -155,11 +155,11 @@ function DepartmentsContent({ user, token }: DepartmentsContentProps) {
                 >
                   <div>
                     <p className="font-medium text-ink">{department.name}</p>
-                    <p className="mt-1 text-sm text-slate-500">
+                    <p className="mt-1 text-sm text-text-muted">
                       {department.description ?? "No description"}
                     </p>
                   </div>
-                  <div className="flex items-center gap-2 text-xs font-medium text-slate-600">
+                  <div className="flex items-center gap-2 text-xs font-medium text-text-secondary">
                     <span className="rounded-md bg-surface px-2 py-1">
                       {department._count?.employees ?? 0} employees
                     </span>
@@ -181,7 +181,7 @@ function DepartmentsContent({ user, token }: DepartmentsContentProps) {
               ))}
             </div>
             {!departmentsQuery.isLoading && departments.length === 0 ? (
-              <p className="mt-5 rounded-md border border-dashed border-line px-4 py-5 text-sm text-slate-500">
+              <p className="mt-5 rounded-md border border-dashed border-line px-4 py-5 text-sm text-text-muted">
                 No departments found.
               </p>
             ) : null}

@@ -104,7 +104,7 @@ function AttendanceReportContent({ user, token }: AttendanceReportContentProps) 
           </div>
         </div>
 
-        <section className="rounded-lg border border-line bg-white p-5 shadow-soft">
+        <section className="rounded-lg border border-line bg-card p-5 shadow-soft">
           <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-5">
             <input
               className="h-11 rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
@@ -120,7 +120,7 @@ function AttendanceReportContent({ user, token }: AttendanceReportContentProps) 
             />
             {canManageEmployees ? (
               <select
-                className="h-11 rounded-md border border-line bg-white px-3 text-sm outline-none transition focus:border-brand-600"
+                className="h-11 rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                 value={employeeId}
                 onChange={(event) => setEmployeeId(event.target.value)}
               >
@@ -132,12 +132,12 @@ function AttendanceReportContent({ user, token }: AttendanceReportContentProps) 
                 ))}
               </select>
             ) : (
-              <div className="flex h-11 items-center rounded-md border border-line bg-surface px-3 text-sm text-slate-500">
+              <div className="flex h-11 items-center rounded-md border border-line bg-surface px-3 text-sm text-text-muted">
                 Direct reports
               </div>
             )}
             <select
-              className="h-11 rounded-md border border-line bg-white px-3 text-sm outline-none transition focus:border-brand-600"
+              className="h-11 rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
               value={departmentId}
               onChange={(event) => setDepartmentId(event.target.value)}
             >
@@ -149,7 +149,7 @@ function AttendanceReportContent({ user, token }: AttendanceReportContentProps) 
               ))}
             </select>
             <select
-              className="h-11 rounded-md border border-line bg-white px-3 text-sm outline-none transition focus:border-brand-600"
+              className="h-11 rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
               value={status}
               onChange={(event) => setStatus(event.target.value as AttendanceStatus | "")}
             >
@@ -164,7 +164,7 @@ function AttendanceReportContent({ user, token }: AttendanceReportContentProps) 
 
           <div className="mt-5 overflow-x-auto">
             <table className="min-w-[760px] w-full text-left text-sm">
-              <thead className="border-b border-line bg-surface text-xs uppercase text-slate-500">
+              <thead className="border-b border-line bg-surface text-xs uppercase text-text-muted">
                 <tr>
                   <th className="px-4 py-3 font-semibold">Employee</th>
                   <th className="px-4 py-3 font-semibold">Date</th>
@@ -181,7 +181,7 @@ function AttendanceReportContent({ user, token }: AttendanceReportContentProps) 
                       <div className="font-medium text-ink">
                         {getEmployeeName(record.employee)}
                       </div>
-                      <div className="mt-1 text-xs text-slate-500">
+                      <div className="mt-1 text-xs text-text-muted">
                         {record.employee.employeeCode}
                       </div>
                     </td>
@@ -199,7 +199,7 @@ function AttendanceReportContent({ user, token }: AttendanceReportContentProps) 
           </div>
 
           {!reportQuery.isLoading && attendance.length === 0 ? (
-            <p className="mt-5 rounded-md border border-dashed border-line px-4 py-5 text-sm text-slate-500">
+            <p className="mt-5 rounded-md border border-dashed border-line px-4 py-5 text-sm text-text-muted">
               No attendance records found for the selected filters.
             </p>
           ) : null}

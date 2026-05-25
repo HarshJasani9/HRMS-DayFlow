@@ -186,19 +186,19 @@ function ReviewsContent({ user, token }: ReviewsContentProps) {
         <section className="grid gap-4 xl:grid-cols-[0.85fr_1.15fr]">
           {canManagePerformance ? (
             <form
-              className="rounded-lg border border-line bg-white p-5 shadow-soft"
+              className="rounded-lg border border-line bg-card p-5 shadow-soft"
               onSubmit={handleSubmit(submit)}
             >
               <h2 className="text-lg font-semibold tracking-normal">New Review</h2>
               {message ? (
-                <div className="mt-5 rounded-md border border-line bg-surface px-3 py-2 text-sm text-slate-700">
+                <div className="mt-5 rounded-md border border-line bg-surface px-3 py-2 text-sm text-text-secondary">
                   {message}
                 </div>
               ) : null}
-              <label className="mt-5 block text-sm font-medium text-slate-700">
+              <label className="mt-5 block text-sm font-medium text-text-secondary">
                 Employee
                 <select
-                  className="mt-2 h-11 w-full rounded-md border border-line bg-white px-3 text-sm outline-none transition focus:border-brand-600"
+                  className="mt-2 h-11 w-full rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                   {...register("employeeId", { required: true })}
                 >
                   <option value="">Select employee</option>
@@ -210,14 +210,14 @@ function ReviewsContent({ user, token }: ReviewsContentProps) {
                 </select>
               </label>
               <div className="mt-5 grid gap-4 sm:grid-cols-2">
-                <label className="block text-sm font-medium text-slate-700">
+                <label className="block text-sm font-medium text-text-secondary">
                   Cycle
                   <input
                     className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
                     {...register("cycle", { required: true })}
                   />
                 </label>
-                <label className="block text-sm font-medium text-slate-700">
+                <label className="block text-sm font-medium text-text-secondary">
                   Rating
                   <input
                     className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
@@ -227,7 +227,7 @@ function ReviewsContent({ user, token }: ReviewsContentProps) {
                     {...register("rating", { valueAsNumber: true })}
                   />
                 </label>
-                <label className="block text-sm font-medium text-slate-700">
+                <label className="block text-sm font-medium text-text-secondary">
                   Period start
                   <input
                     className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
@@ -235,7 +235,7 @@ function ReviewsContent({ user, token }: ReviewsContentProps) {
                     {...register("reviewPeriodStart", { required: true })}
                   />
                 </label>
-                <label className="block text-sm font-medium text-slate-700">
+                <label className="block text-sm font-medium text-text-secondary">
                   Period end
                   <input
                     className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
@@ -243,10 +243,10 @@ function ReviewsContent({ user, token }: ReviewsContentProps) {
                     {...register("reviewPeriodEnd", { required: true })}
                   />
                 </label>
-                <label className="block text-sm font-medium text-slate-700">
+                <label className="block text-sm font-medium text-text-secondary">
                   Status
                   <select
-                    className="mt-2 h-11 w-full rounded-md border border-line bg-white px-3 text-sm outline-none transition focus:border-brand-600"
+                    className="mt-2 h-11 w-full rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                     {...register("status")}
                   >
                     {reviewStatuses.map((reviewStatus) => (
@@ -257,7 +257,7 @@ function ReviewsContent({ user, token }: ReviewsContentProps) {
                   </select>
                 </label>
               </div>
-              <label className="mt-5 block text-sm font-medium text-slate-700">
+              <label className="mt-5 block text-sm font-medium text-text-secondary">
                 Summary
                 <textarea
                   className="mt-2 min-h-24 w-full rounded-md border border-line px-3 py-3 text-sm outline-none transition focus:border-brand-600"
@@ -265,14 +265,14 @@ function ReviewsContent({ user, token }: ReviewsContentProps) {
                 />
               </label>
               <div className="mt-5 grid gap-4 sm:grid-cols-2">
-                <label className="block text-sm font-medium text-slate-700">
+                <label className="block text-sm font-medium text-text-secondary">
                   Strengths
                   <textarea
                     className="mt-2 min-h-24 w-full rounded-md border border-line px-3 py-3 text-sm outline-none transition focus:border-brand-600"
                     {...register("strengths")}
                   />
                 </label>
-                <label className="block text-sm font-medium text-slate-700">
+                <label className="block text-sm font-medium text-text-secondary">
                   Improvements
                   <textarea
                     className="mt-2 min-h-24 w-full rounded-md border border-line px-3 py-3 text-sm outline-none transition focus:border-brand-600"
@@ -291,10 +291,10 @@ function ReviewsContent({ user, token }: ReviewsContentProps) {
             </form>
           ) : null}
 
-          <div className="rounded-lg border border-line bg-white p-5 shadow-soft">
+          <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
             <div className="grid gap-3 lg:grid-cols-[1fr_160px_140px]">
               <select
-                className="h-11 rounded-md border border-line bg-white px-3 text-sm outline-none transition focus:border-brand-600"
+                className="h-11 rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                 value={employeeId}
                 onChange={(event) => setEmployeeId(event.target.value)}
                 aria-label="Filter reviews by employee"
@@ -314,7 +314,7 @@ function ReviewsContent({ user, token }: ReviewsContentProps) {
                 aria-label="Filter reviews by cycle"
               />
               <select
-                className="h-11 rounded-md border border-line bg-white px-3 text-sm outline-none transition focus:border-brand-600"
+                className="h-11 rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                 value={status}
                 onChange={(event) =>
                   setStatus(event.target.value as PerformanceReviewStatus | "")
@@ -344,7 +344,7 @@ function ReviewsContent({ user, token }: ReviewsContentProps) {
             ) : (
               <div className="mt-5 overflow-x-auto">
                 <table className="min-w-[760px] w-full text-left text-sm">
-                  <thead className="border-b border-line bg-surface text-xs uppercase text-slate-500">
+                  <thead className="border-b border-line bg-surface text-xs uppercase text-text-muted">
                     <tr>
                       <th className="px-4 py-3 font-semibold">Employee</th>
                       <th className="px-4 py-3 font-semibold">Cycle</th>
@@ -360,7 +360,7 @@ function ReviewsContent({ user, token }: ReviewsContentProps) {
                           <div className="font-medium text-ink">
                             {getEmployeeName(review.employee)}
                           </div>
-                          <div className="mt-1 text-xs text-slate-500">
+                          <div className="mt-1 text-xs text-text-muted">
                             {formatDate(review.reviewPeriodStart)} to{" "}
                             {formatDate(review.reviewPeriodEnd)}
                           </div>
@@ -372,7 +372,7 @@ function ReviewsContent({ user, token }: ReviewsContentProps) {
                         </td>
                         <td className="px-4 py-4">
                           <select
-                            className="h-9 rounded-md border border-line bg-white px-2 text-sm outline-none"
+                            className="h-9 rounded-md border border-line bg-card px-2 text-sm outline-none"
                             value={review.status}
                             disabled={!canManagePerformance}
                             onChange={(event) =>

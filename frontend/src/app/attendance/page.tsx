@@ -121,7 +121,7 @@ function AttendanceContent({ user, token }: AttendanceContentProps) {
 
         <section className="grid gap-4 lg:grid-cols-[0.85fr_1.15fr]">
           <form
-            className="rounded-lg border border-line bg-white p-5 shadow-soft"
+            className="rounded-lg border border-line bg-card p-5 shadow-soft"
             onSubmit={handleSubmit(submitClockIn)}
           >
             <div className="flex min-w-0 items-center gap-3">
@@ -130,25 +130,25 @@ function AttendanceContent({ user, token }: AttendanceContentProps) {
               </div>
               <div>
                 <h2 className="text-lg font-semibold tracking-normal">Today</h2>
-                <p className="text-sm text-slate-500">{formatDate(getTodayInputValue())}</p>
+                <p className="text-sm text-text-muted">{formatDate(getTodayInputValue())}</p>
               </div>
             </div>
 
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
               <div className="rounded-md bg-surface px-4 py-3">
-                <p className="text-xs font-medium uppercase text-slate-500">Clock in</p>
+                <p className="text-xs font-medium uppercase text-text-muted">Clock in</p>
                 <p className="mt-1 text-sm font-medium text-ink">
                   {formatDateTime(todayAttendance?.clockInAt ?? null)}
                 </p>
               </div>
               <div className="rounded-md bg-surface px-4 py-3">
-                <p className="text-xs font-medium uppercase text-slate-500">Clock out</p>
+                <p className="text-xs font-medium uppercase text-text-muted">Clock out</p>
                 <p className="mt-1 text-sm font-medium text-ink">
                   {formatDateTime(todayAttendance?.clockOutAt ?? null)}
                 </p>
               </div>
               <div className="rounded-md bg-surface px-4 py-3">
-                <p className="text-xs font-medium uppercase text-slate-500">Status</p>
+                <p className="text-xs font-medium uppercase text-text-muted">Status</p>
                 <p className="mt-1 text-sm font-medium text-ink">
                   {todayAttendance
                     ? attendanceStatusLabels[todayAttendance.status]
@@ -156,7 +156,7 @@ function AttendanceContent({ user, token }: AttendanceContentProps) {
                 </p>
               </div>
               <div className="rounded-md bg-surface px-4 py-3">
-                <p className="text-xs font-medium uppercase text-slate-500">Mode</p>
+                <p className="text-xs font-medium uppercase text-text-muted">Mode</p>
                 <p className="mt-1 text-sm font-medium text-ink">
                   {todayAttendance
                     ? attendanceWorkModeLabels[todayAttendance.workMode]
@@ -166,14 +166,14 @@ function AttendanceContent({ user, token }: AttendanceContentProps) {
             </div>
 
             {error ? (
-              <div className="mt-5 rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">
+              <div className="mt-5 rounded-md border border-red-200 dark:border-red-800 bg-error-bg px-3 py-2 text-sm text-error-text">
                 {error}
               </div>
             ) : null}
 
             <div className="mt-5 grid gap-3 sm:grid-cols-[180px_1fr]">
               <select
-                className="h-11 rounded-md border border-line bg-white px-3 text-sm outline-none transition focus:border-brand-600"
+                className="h-11 rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                 disabled={Boolean(todayAttendance?.clockInAt)}
                 {...register("workMode")}
               >
@@ -198,7 +198,7 @@ function AttendanceContent({ user, token }: AttendanceContentProps) {
                 Clock in
               </button>
               <button
-                className="inline-flex h-11 items-center justify-center gap-2 rounded-md border border-line bg-white px-4 text-sm font-semibold text-slate-700 transition hover:bg-surface disabled:cursor-not-allowed disabled:opacity-60"
+                className="inline-flex h-11 items-center justify-center gap-2 rounded-md border border-line bg-card px-4 text-sm font-semibold text-text-secondary transition hover:bg-surface disabled:cursor-not-allowed disabled:opacity-60"
                 type="button"
                 onClick={submitClockOut}
                 disabled={!todayAttendance?.clockInAt || Boolean(todayAttendance.clockOutAt)}
@@ -209,7 +209,7 @@ function AttendanceContent({ user, token }: AttendanceContentProps) {
             </div>
           </form>
 
-          <div className="rounded-lg border border-line bg-white p-5 shadow-soft">
+          <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
             <h2 className="text-lg font-semibold tracking-normal">History</h2>
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
               <input
@@ -227,7 +227,7 @@ function AttendanceContent({ user, token }: AttendanceContentProps) {
             </div>
             <div className="mt-5 overflow-x-auto">
               <table className="min-w-[760px] w-full text-left text-sm">
-                <thead className="border-b border-line bg-surface text-xs uppercase text-slate-500">
+                <thead className="border-b border-line bg-surface text-xs uppercase text-text-muted">
                   <tr>
                     <th className="px-4 py-3 font-semibold">Date</th>
                     <th className="px-4 py-3 font-semibold">Status</th>

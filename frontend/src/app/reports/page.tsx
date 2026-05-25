@@ -120,11 +120,11 @@ function ReportsContent({ user, token }: ReportsContentProps) {
         </section>
 
         <section className="grid gap-4 xl:grid-cols-2">
-          <div className="rounded-lg border border-line bg-white p-5 shadow-soft">
+          <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
             <h2 className="text-lg font-semibold tracking-normal">Employee Report</h2>
             <div className="mt-5 overflow-x-auto">
               <table className="min-w-[760px] w-full text-left text-sm">
-                <thead className="border-b border-line bg-surface text-xs uppercase text-slate-500">
+                <thead className="border-b border-line bg-surface text-xs uppercase text-text-muted">
                   <tr>
                     <th className="px-4 py-3 font-semibold">Employee</th>
                     <th className="px-4 py-3 font-semibold">Department</th>
@@ -137,7 +137,7 @@ function ReportsContent({ user, token }: ReportsContentProps) {
                     <tr key={employee.id}>
                       <td className="px-4 py-4">
                         <div className="font-medium text-ink">{getEmployeeName(employee)}</div>
-                        <div className="mt-1 text-xs text-slate-500">{employee.employeeCode}</div>
+                        <div className="mt-1 text-xs text-text-muted">{employee.employeeCode}</div>
                       </td>
                       <td className="px-4 py-4">{employee.department?.name ?? "Unassigned"}</td>
                       <td className="px-4 py-4">{formatDate(employee.dateOfJoining)}</td>
@@ -149,11 +149,11 @@ function ReportsContent({ user, token }: ReportsContentProps) {
             </div>
           </div>
 
-          <div className="rounded-lg border border-line bg-white p-5 shadow-soft">
+          <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
             <h2 className="text-lg font-semibold tracking-normal">Leave Report</h2>
             <div className="mt-5 overflow-x-auto">
               <table className="min-w-[760px] w-full text-left text-sm">
-                <thead className="border-b border-line bg-surface text-xs uppercase text-slate-500">
+                <thead className="border-b border-line bg-surface text-xs uppercase text-text-muted">
                   <tr>
                     <th className="px-4 py-3 font-semibold">Employee</th>
                     <th className="px-4 py-3 font-semibold">Type</th>
@@ -175,7 +175,7 @@ function ReportsContent({ user, token }: ReportsContentProps) {
             </div>
           </div>
 
-          <div className="rounded-lg border border-line bg-white p-5 shadow-soft">
+          <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
             <h2 className="text-lg font-semibold tracking-normal">Attendance Summary</h2>
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
               {Object.entries(attendanceReport?.summary.byStatus ?? {}).map(([status, total]) => (
@@ -189,11 +189,11 @@ function ReportsContent({ user, token }: ReportsContentProps) {
             </div>
           </div>
 
-          <div className="rounded-lg border border-line bg-white p-5 shadow-soft">
+          <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
             <h2 className="text-lg font-semibold tracking-normal">Payroll Report</h2>
             <div className="mt-5 overflow-x-auto">
               <table className="min-w-[760px] w-full text-left text-sm">
-                <thead className="border-b border-line bg-surface text-xs uppercase text-slate-500">
+                <thead className="border-b border-line bg-surface text-xs uppercase text-text-muted">
                   <tr>
                     <th className="px-4 py-3 font-semibold">Month</th>
                     <th className="px-4 py-3 font-semibold">Employees</th>

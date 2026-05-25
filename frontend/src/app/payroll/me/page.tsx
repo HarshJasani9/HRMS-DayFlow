@@ -85,15 +85,15 @@ function MyPayslipsContent({ user, token }: MyPayslipsContentProps) {
         </div>
 
         {error ? (
-          <div className="rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">
+          <div className="rounded-md border border-red-200 dark:border-red-800 bg-error-bg px-3 py-2 text-sm text-error-text">
             {error}
           </div>
         ) : null}
 
-        <section className="rounded-lg border border-line bg-white p-5 shadow-soft">
+        <section className="rounded-lg border border-line bg-card p-5 shadow-soft">
           <div className="overflow-x-auto">
             <table className="min-w-[760px] w-full text-left text-sm">
-              <thead className="border-b border-line bg-surface text-xs uppercase text-slate-500">
+              <thead className="border-b border-line bg-surface text-xs uppercase text-text-muted">
                 <tr>
                   <th className="px-4 py-3 font-semibold">Month</th>
                   <th className="px-4 py-3 font-semibold">Payslip</th>
@@ -121,7 +121,7 @@ function MyPayslipsContent({ user, token }: MyPayslipsContentProps) {
                     <td className="px-4 py-4">{formatDateTime(payslip.issuedAt)}</td>
                     <td className="px-4 py-4">
                       <button
-                        className="grid h-9 w-9 place-items-center rounded-md border border-line text-slate-600 transition hover:bg-surface"
+                        className="grid h-9 w-9 place-items-center rounded-md border border-line text-text-secondary transition hover:bg-surface"
                         type="button"
                         onClick={() => downloadPayslip(payslip.payrollId)}
                         aria-label={`Download ${payslip.payslipNumber}`}
@@ -136,7 +136,7 @@ function MyPayslipsContent({ user, token }: MyPayslipsContentProps) {
           </div>
 
           {!payslipsQuery.isLoading && payslips.length === 0 ? (
-            <div className="mt-5 rounded-md border border-dashed border-line px-4 py-8 text-center text-sm text-slate-500">
+            <div className="mt-5 rounded-md border border-dashed border-line px-4 py-8 text-center text-sm text-text-muted">
               No payslips found.
             </div>
           ) : null}

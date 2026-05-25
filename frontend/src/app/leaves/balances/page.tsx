@@ -61,10 +61,10 @@ function LeaveBalancesContent({ user, token }: LeaveBalancesContentProps) {
           />
         </div>
 
-        <section className="rounded-lg border border-line bg-white p-5 shadow-soft">
+        <section className="rounded-lg border border-line bg-card p-5 shadow-soft">
           <div className="overflow-x-auto">
             <table className="min-w-[760px] w-full text-left text-sm">
-              <thead className="border-b border-line bg-surface text-xs uppercase text-slate-500">
+              <thead className="border-b border-line bg-surface text-xs uppercase text-text-muted">
                 <tr>
                   <th className="px-4 py-3 font-semibold">Employee</th>
                   <th className="px-4 py-3 font-semibold">Type</th>
@@ -81,7 +81,7 @@ function LeaveBalancesContent({ user, token }: LeaveBalancesContentProps) {
                       <div className="font-medium text-ink">
                         {getEmployeeName(balance.employee)}
                       </div>
-                      <div className="mt-1 text-xs text-slate-500">
+                      <div className="mt-1 text-xs text-text-muted">
                         {balance.employee.employeeCode}
                       </div>
                     </td>

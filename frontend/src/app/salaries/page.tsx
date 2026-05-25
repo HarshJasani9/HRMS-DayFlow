@@ -164,7 +164,7 @@ function SalariesContent({ user, token }: SalariesContentProps) {
             </h1>
           </div>
           <button
-            className="inline-flex h-10 items-center justify-center rounded-md border border-line bg-white px-4 text-sm font-semibold text-slate-700 transition hover:bg-surface"
+            className="inline-flex h-10 items-center justify-center rounded-md border border-line bg-card px-4 text-sm font-semibold text-text-secondary transition hover:bg-surface"
             type="button"
             onClick={startNewSetup}
           >
@@ -174,7 +174,7 @@ function SalariesContent({ user, token }: SalariesContentProps) {
 
         <section className="grid gap-4 xl:grid-cols-[0.85fr_1.15fr]">
           <form
-            className="rounded-lg border border-line bg-white p-5 shadow-soft"
+            className="rounded-lg border border-line bg-card p-5 shadow-soft"
             onSubmit={handleSubmit(submit)}
           >
             <div className="flex min-w-0 items-center gap-3">
@@ -187,15 +187,15 @@ function SalariesContent({ user, token }: SalariesContentProps) {
             </div>
 
             {message ? (
-              <div className="mt-5 rounded-md border border-line bg-surface px-3 py-2 text-sm text-slate-700">
+              <div className="mt-5 rounded-md border border-line bg-surface px-3 py-2 text-sm text-text-secondary">
                 {message}
               </div>
             ) : null}
 
-            <label className="mt-5 block text-sm font-medium text-slate-700">
+            <label className="mt-5 block text-sm font-medium text-text-secondary">
               Employee
               <select
-                className="mt-2 h-11 w-full rounded-md border border-line bg-white px-3 text-sm outline-none transition focus:border-brand-600"
+                className="mt-2 h-11 w-full rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                 {...register("employeeId", { required: true })}
               >
                 <option value="">Select employee</option>
@@ -208,7 +208,7 @@ function SalariesContent({ user, token }: SalariesContentProps) {
             </label>
 
             <div className="mt-5 grid gap-4 sm:grid-cols-2">
-              <label className="block text-sm font-medium text-slate-700">
+              <label className="block text-sm font-medium text-text-secondary">
                 Base salary
                 <input
                   className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
@@ -218,7 +218,7 @@ function SalariesContent({ user, token }: SalariesContentProps) {
                   {...register("baseSalary", { valueAsNumber: true })}
                 />
               </label>
-              <label className="block text-sm font-medium text-slate-700">
+              <label className="block text-sm font-medium text-text-secondary">
                 Allowances
                 <input
                   className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
@@ -228,7 +228,7 @@ function SalariesContent({ user, token }: SalariesContentProps) {
                   {...register("allowances", { valueAsNumber: true })}
                 />
               </label>
-              <label className="block text-sm font-medium text-slate-700">
+              <label className="block text-sm font-medium text-text-secondary">
                 Deductions
                 <input
                   className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
@@ -238,7 +238,7 @@ function SalariesContent({ user, token }: SalariesContentProps) {
                   {...register("deductions", { valueAsNumber: true })}
                 />
               </label>
-              <label className="block text-sm font-medium text-slate-700">
+              <label className="block text-sm font-medium text-text-secondary">
                 Effective from
                 <input
                   className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
@@ -248,7 +248,7 @@ function SalariesContent({ user, token }: SalariesContentProps) {
               </label>
             </div>
 
-            <label className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-slate-700">
+            <label className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-text-secondary">
               <input type="checkbox" {...register("isActive")} />
               Active salary setup
             </label>
@@ -263,11 +263,11 @@ function SalariesContent({ user, token }: SalariesContentProps) {
             </button>
           </form>
 
-          <div className="rounded-lg border border-line bg-white p-5 shadow-soft">
+          <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
             <h2 className="text-lg font-semibold tracking-normal">Current Salaries</h2>
             <div className="mt-5 overflow-x-auto">
               <table className="min-w-[760px] w-full text-left text-sm">
-                <thead className="border-b border-line bg-surface text-xs uppercase text-slate-500">
+                <thead className="border-b border-line bg-surface text-xs uppercase text-text-muted">
                   <tr>
                     <th className="px-4 py-3 font-semibold">Employee</th>
                     <th className="px-4 py-3 font-semibold">Gross</th>
@@ -288,7 +288,7 @@ function SalariesContent({ user, token }: SalariesContentProps) {
                           <div className="font-medium text-ink">
                             {getEmployeeName(salary.employee)}
                           </div>
-                          <div className="mt-1 text-xs text-slate-500">
+                          <div className="mt-1 text-xs text-text-muted">
                             {salary.employee.employeeCode}
                           </div>
                         </td>

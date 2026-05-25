@@ -86,7 +86,7 @@ function LeaveTypesContent({ user, token }: LeaveTypesContentProps) {
 
         <section className="grid gap-4 lg:grid-cols-[0.8fr_1.2fr]">
           <form
-            className="rounded-lg border border-line bg-white p-5 shadow-soft"
+            className="rounded-lg border border-line bg-card p-5 shadow-soft"
             onSubmit={handleSubmit(submit)}
           >
             <div className="flex min-w-0 items-center gap-3">
@@ -97,19 +97,19 @@ function LeaveTypesContent({ user, token }: LeaveTypesContentProps) {
             </div>
 
             {error ? (
-              <div className="mt-5 rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">
+              <div className="mt-5 rounded-md border border-red-200 dark:border-red-800 bg-error-bg px-3 py-2 text-sm text-error-text">
                 {error}
               </div>
             ) : null}
 
-            <label className="mt-5 block text-sm font-medium text-slate-700">
+            <label className="mt-5 block text-sm font-medium text-text-secondary">
               Name
               <input
                 className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
                 {...register("name", { required: true })}
               />
             </label>
-            <label className="mt-5 block text-sm font-medium text-slate-700">
+            <label className="mt-5 block text-sm font-medium text-text-secondary">
               Annual allowance
               <input
                 className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
@@ -118,14 +118,14 @@ function LeaveTypesContent({ user, token }: LeaveTypesContentProps) {
                 {...register("defaultAnnualAllowance", { valueAsNumber: true })}
               />
             </label>
-            <label className="mt-5 block text-sm font-medium text-slate-700">
+            <label className="mt-5 block text-sm font-medium text-text-secondary">
               Description
               <textarea
                 className="mt-2 min-h-24 w-full rounded-md border border-line px-3 py-3 text-sm outline-none transition focus:border-brand-600"
                 {...register("description")}
               />
             </label>
-            <div className="mt-5 flex flex-wrap gap-4 text-sm text-slate-700">
+            <div className="mt-5 flex flex-wrap gap-4 text-sm text-text-secondary">
               <label className="inline-flex items-center gap-2">
                 <input type="checkbox" {...register("isPaid")} />
                 Paid
@@ -149,7 +149,7 @@ function LeaveTypesContent({ user, token }: LeaveTypesContentProps) {
             </button>
           </form>
 
-          <div className="rounded-lg border border-line bg-white p-5 shadow-soft">
+          <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
             <h2 className="text-lg font-semibold tracking-normal">Leave Types</h2>
             <div className="mt-5 overflow-hidden rounded-md border border-line">
               {leaveTypes.map((leaveType) => (
@@ -159,11 +159,11 @@ function LeaveTypesContent({ user, token }: LeaveTypesContentProps) {
                 >
                   <div>
                     <p className="font-medium text-ink">{leaveType.name}</p>
-                    <p className="mt-1 text-sm text-slate-500">
+                    <p className="mt-1 text-sm text-text-muted">
                       {leaveType.description ?? "No description"}
                     </p>
                   </div>
-                  <div className="flex items-center gap-2 text-xs font-medium text-slate-600">
+                  <div className="flex items-center gap-2 text-xs font-medium text-text-secondary">
                     <span className="rounded-md bg-surface px-2 py-1">
                       {leaveType.defaultAnnualAllowance} days
                     </span>

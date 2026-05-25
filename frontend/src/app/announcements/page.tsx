@@ -110,26 +110,26 @@ function AnnouncementsContent({ user, token }: AnnouncementsContentProps) {
         <section className="grid gap-4 lg:grid-cols-[0.8fr_1.2fr]">
           {canManageAnnouncements ? (
             <form
-              className="rounded-lg border border-line bg-white p-5 shadow-soft"
+              className="rounded-lg border border-line bg-card p-5 shadow-soft"
               onSubmit={handleSubmit(submit)}
             >
               <h2 className="text-lg font-semibold tracking-normal">New Announcement</h2>
               {message ? (
-                <div className="mt-5 rounded-md border border-line bg-surface px-3 py-2 text-sm text-slate-700">
+                <div className="mt-5 rounded-md border border-line bg-surface px-3 py-2 text-sm text-text-secondary">
                   {message}
                 </div>
               ) : null}
-              <label className="mt-5 block text-sm font-medium text-slate-700">
+              <label className="mt-5 block text-sm font-medium text-text-secondary">
                 Title
                 <input
                   className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
                   {...register("title", { required: true })}
                 />
               </label>
-              <label className="mt-5 block text-sm font-medium text-slate-700">
+              <label className="mt-5 block text-sm font-medium text-text-secondary">
                 Audience
                 <select
-                  className="mt-2 h-11 w-full rounded-md border border-line bg-white px-3 text-sm outline-none transition focus:border-brand-600"
+                  className="mt-2 h-11 w-full rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                   {...register("audience")}
                 >
                   {Object.entries(audienceLabels).map(([value, label]) => (
@@ -139,14 +139,14 @@ function AnnouncementsContent({ user, token }: AnnouncementsContentProps) {
                   ))}
                 </select>
               </label>
-              <label className="mt-5 block text-sm font-medium text-slate-700">
+              <label className="mt-5 block text-sm font-medium text-text-secondary">
                 Message
                 <textarea
                   className="mt-2 min-h-32 w-full rounded-md border border-line px-3 py-3 text-sm outline-none transition focus:border-brand-600"
                   {...register("message", { required: true })}
                 />
               </label>
-              <label className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-slate-700">
+              <label className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-text-secondary">
                 <input type="checkbox" {...register("isPublished")} />
                 Publish now
               </label>
@@ -161,7 +161,7 @@ function AnnouncementsContent({ user, token }: AnnouncementsContentProps) {
             </form>
           ) : null}
 
-          <div className="rounded-lg border border-line bg-white p-5 shadow-soft">
+          <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
             <h2 className="text-lg font-semibold tracking-normal">Published Updates</h2>
             <div className="mt-5 divide-y divide-line">
               {announcements.map((announcement) => (
@@ -169,20 +169,20 @@ function AnnouncementsContent({ user, token }: AnnouncementsContentProps) {
                   <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-start">
                     <div>
                       <p className="font-semibold text-ink">{announcement.title}</p>
-                      <p className="mt-1 text-sm text-slate-600">{announcement.message}</p>
+                      <p className="mt-1 text-sm text-text-secondary">{announcement.message}</p>
                     </div>
-                    <span className="rounded-md bg-surface px-2 py-1 text-xs font-medium text-slate-600">
+                    <span className="rounded-md bg-surface px-2 py-1 text-xs font-medium text-text-secondary">
                       {audienceLabels[announcement.audience]}
                     </span>
                   </div>
-                  <p className="mt-3 text-xs text-slate-500">
+                  <p className="mt-3 text-xs text-text-muted">
                     {formatDateTime(announcement.publishedAt)}
                   </p>
                 </article>
               ))}
             </div>
             {!announcementsQuery.isLoading && announcements.length === 0 ? (
-              <div className="mt-5 rounded-md border border-dashed border-line px-4 py-8 text-center text-sm text-slate-500">
+              <div className="mt-5 rounded-md border border-dashed border-line px-4 py-8 text-center text-sm text-text-muted">
                 No announcements found.
               </div>
             ) : null}

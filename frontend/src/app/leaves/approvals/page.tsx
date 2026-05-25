@@ -93,10 +93,10 @@ function LeaveApprovalsContent({ user, token }: LeaveApprovalsContentProps) {
           </h1>
         </div>
 
-        <section className="rounded-lg border border-line bg-white p-5 shadow-soft">
+        <section className="rounded-lg border border-line bg-card p-5 shadow-soft">
           <div className="grid gap-3 sm:grid-cols-2">
             <select
-              className="h-11 rounded-md border border-line bg-white px-3 text-sm outline-none transition focus:border-brand-600"
+              className="h-11 rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
               value={status}
               onChange={(event) => setStatus(event.target.value as LeaveRequestStatus | "")}
             >
@@ -108,7 +108,7 @@ function LeaveApprovalsContent({ user, token }: LeaveApprovalsContentProps) {
               ))}
             </select>
             <select
-              className="h-11 rounded-md border border-line bg-white px-3 text-sm outline-none transition focus:border-brand-600"
+              className="h-11 rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
               value={departmentId}
               onChange={(event) => setDepartmentId(event.target.value)}
             >
@@ -122,14 +122,14 @@ function LeaveApprovalsContent({ user, token }: LeaveApprovalsContentProps) {
           </div>
 
           {actionError ? (
-            <div className="mt-4 rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">
+            <div className="mt-4 rounded-md border border-red-200 dark:border-red-800 bg-error-bg px-3 py-2 text-sm text-error-text">
               {actionError}
             </div>
           ) : null}
 
           <div className="mt-5 overflow-x-auto">
             <table className="min-w-[760px] w-full text-left text-sm">
-              <thead className="border-b border-line bg-surface text-xs uppercase text-slate-500">
+              <thead className="border-b border-line bg-surface text-xs uppercase text-text-muted">
                 <tr>
                   <th className="px-4 py-3 font-semibold">Employee</th>
                   <th className="px-4 py-3 font-semibold">Leave</th>
@@ -146,7 +146,7 @@ function LeaveApprovalsContent({ user, token }: LeaveApprovalsContentProps) {
                       <div className="font-medium text-ink">
                         {getEmployeeName(leaveRequest.employee)}
                       </div>
-                      <div className="mt-1 text-xs text-slate-500">
+                      <div className="mt-1 text-xs text-text-muted">
                         {leaveRequest.employee.department?.name ?? "Unassigned"}
                       </div>
                     </td>
@@ -168,7 +168,7 @@ function LeaveApprovalsContent({ user, token }: LeaveApprovalsContentProps) {
                           <Check size={16} aria-hidden="true" />
                         </button>
                         <button
-                          className="grid h-9 w-9 place-items-center rounded-md border border-line text-red-700 transition hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-50"
+                          className="grid h-9 w-9 place-items-center rounded-md border border-line text-error-text transition hover:bg-error-bg disabled:cursor-not-allowed disabled:opacity-50"
                           type="button"
                           onClick={() => reviewLeave(leaveRequest.id, "reject")}
                           disabled={leaveRequest.status !== "PENDING"}

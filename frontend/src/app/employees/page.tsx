@@ -168,12 +168,12 @@ function EmployeesContent({ user, token }: EmployeesContentProps) {
           ))}
         </section>
 
-        <section className="rounded-lg border border-line bg-white p-5 shadow-soft">
+        <section className="rounded-lg border border-line bg-card p-5 shadow-soft">
           <div className="grid gap-3 lg:grid-cols-[1fr_180px_220px]">
-            <label className="relative block text-sm font-medium text-slate-700">
+            <label className="relative block text-sm font-medium text-text-secondary">
               <span className="sr-only">Search employees</span>
               <Search
-                className="pointer-events-none absolute left-3 top-1/2 text-slate-400"
+                className="pointer-events-none absolute left-3 top-1/2 text-text-faint"
                 size={17}
                 aria-hidden="true"
               />
@@ -185,7 +185,7 @@ function EmployeesContent({ user, token }: EmployeesContentProps) {
               />
             </label>
             <select
-              className="h-11 rounded-md border border-line bg-white px-3 text-sm outline-none transition focus:border-brand-600"
+              className="h-11 rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
               value={status}
               onChange={(event) => setStatus(event.target.value as EmploymentStatus | "")}
               aria-label="Filter by status"
@@ -198,7 +198,7 @@ function EmployeesContent({ user, token }: EmployeesContentProps) {
               ))}
             </select>
             <select
-              className="h-11 rounded-md border border-line bg-white px-3 text-sm outline-none transition focus:border-brand-600"
+              className="h-11 rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
               value={departmentId}
               onChange={(event) => setDepartmentId(event.target.value)}
               aria-label="Filter by department"
@@ -213,14 +213,14 @@ function EmployeesContent({ user, token }: EmployeesContentProps) {
           </div>
 
           {actionError ? (
-            <div className="mt-4 rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">
+            <div className="mt-4 rounded-md border border-red-200 dark:border-red-800 bg-error-bg px-3 py-2 text-sm text-error-text">
               {actionError}
             </div>
           ) : null}
 
           <div className="mt-5 overflow-x-auto">
             <table className="min-w-[760px] w-full text-left text-sm">
-              <thead className="border-b border-line bg-surface text-xs uppercase text-slate-500">
+              <thead className="border-b border-line bg-surface text-xs uppercase text-text-muted">
                 <tr>
                   <th className="px-4 py-3 font-semibold">Employee</th>
                   <th className="px-4 py-3 font-semibold">Department</th>
@@ -235,14 +235,14 @@ function EmployeesContent({ user, token }: EmployeesContentProps) {
                   <tr key={employee.id}>
                     <td className="px-4 py-4">
                       <div className="font-medium text-ink">{getEmployeeName(employee)}</div>
-                      <div className="mt-1 text-xs text-slate-500">
+                      <div className="mt-1 text-xs text-text-muted">
                         {employee.employeeCode} | {employee.workEmail}
                       </div>
                     </td>
-                    <td className="px-4 py-4 text-slate-600">
+                    <td className="px-4 py-4 text-text-secondary">
                       {employee.department?.name ?? "Unassigned"}
                     </td>
-                    <td className="px-4 py-4 text-slate-600">
+                    <td className="px-4 py-4 text-text-secondary">
                       {employee.designation?.title ?? "Unassigned"}
                     </td>
                     <td className="px-4 py-4">
@@ -250,27 +250,27 @@ function EmployeesContent({ user, token }: EmployeesContentProps) {
                         {employmentStatusLabels[employee.status]}
                       </span>
                     </td>
-                    <td className="px-4 py-4 text-slate-600">
+                    <td className="px-4 py-4 text-text-secondary">
                       {employee.documents.length}
                     </td>
                     <td className="px-4 py-4">
                       <div className="flex items-center gap-2">
                         <Link
-                          className="grid h-9 w-9 place-items-center rounded-md border border-line text-slate-600 transition hover:bg-surface"
+                          className="grid h-9 w-9 place-items-center rounded-md border border-line text-text-secondary transition hover:bg-surface"
                           href={`/employees/${employee.id}`}
                           aria-label={`View ${getEmployeeName(employee)}`}
                         >
                           <Eye size={16} aria-hidden="true" />
                         </Link>
                         <Link
-                          className="grid h-9 w-9 place-items-center rounded-md border border-line text-slate-600 transition hover:bg-surface"
+                          className="grid h-9 w-9 place-items-center rounded-md border border-line text-text-secondary transition hover:bg-surface"
                           href={`/employees/${employee.id}/edit`}
                           aria-label={`Edit ${getEmployeeName(employee)}`}
                         >
                           <Pencil size={16} aria-hidden="true" />
                         </Link>
                         <button
-                          className="grid h-9 w-9 place-items-center rounded-md border border-line text-slate-600 transition hover:bg-surface disabled:cursor-not-allowed disabled:opacity-50"
+                          className="grid h-9 w-9 place-items-center rounded-md border border-line text-text-secondary transition hover:bg-surface disabled:cursor-not-allowed disabled:opacity-50"
                           type="button"
                           onClick={() => deactivate(employee.id)}
                           disabled={employee.status === "INACTIVE"}
@@ -287,7 +287,7 @@ function EmployeesContent({ user, token }: EmployeesContentProps) {
           </div>
 
           {!employeesQuery.isLoading && employees.length === 0 ? (
-            <div className="mt-5 rounded-md border border-dashed border-line px-4 py-8 text-center text-sm text-slate-500">
+            <div className="mt-5 rounded-md border border-dashed border-line px-4 py-8 text-center text-sm text-text-muted">
               No employee records found.
             </div>
           ) : null}

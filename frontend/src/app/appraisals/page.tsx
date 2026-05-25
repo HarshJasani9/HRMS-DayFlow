@@ -114,10 +114,10 @@ function AppraisalsContent({ user, token }: AppraisalsContentProps) {
           />
         </section>
 
-        <section className="rounded-lg border border-line bg-white p-5 shadow-soft">
+        <section className="rounded-lg border border-line bg-card p-5 shadow-soft">
           <div className="grid gap-3 sm:grid-cols-2">
             <select
-              className="h-11 rounded-md border border-line bg-white px-3 text-sm outline-none transition focus:border-brand-600"
+              className="h-11 rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
               value={employeeId}
               onChange={(event) => setEmployeeId(event.target.value)}
               aria-label="Filter appraisals by employee"
@@ -152,7 +152,7 @@ function AppraisalsContent({ user, token }: AppraisalsContentProps) {
           ) : (
             <div className="mt-5 overflow-x-auto">
               <table className="min-w-[760px] w-full text-left text-sm">
-                <thead className="border-b border-line bg-surface text-xs uppercase text-slate-500">
+                <thead className="border-b border-line bg-surface text-xs uppercase text-text-muted">
                   <tr>
                     <th className="px-4 py-3 font-semibold">Employee</th>
                     <th className="px-4 py-3 font-semibold">Cycle</th>
@@ -169,7 +169,7 @@ function AppraisalsContent({ user, token }: AppraisalsContentProps) {
                         <div className="font-medium text-ink">
                           {getEmployeeName(review.employee)}
                         </div>
-                        <div className="mt-1 text-xs text-slate-500">
+                        <div className="mt-1 text-xs text-text-muted">
                           {review.reviewer ? getEmployeeName(review.reviewer) : "Unassigned reviewer"}
                         </div>
                       </td>
