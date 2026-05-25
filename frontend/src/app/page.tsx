@@ -45,7 +45,7 @@ const features: Feature[] = [
     description:
       "Clock in/out with work modes, shift configurations, late/half-day thresholds, and holiday calendars.",
     color: "text-blue-600",
-    bgColor: "bg-blue-50",
+    bgColor: "bg-info-bg",
   },
   {
     icon: CalendarCheck,
@@ -61,7 +61,7 @@ const features: Feature[] = [
     description:
       "Salary setup, monthly payroll generation, payslip records, and detailed compensation reports.",
     color: "text-amber-600",
-    bgColor: "bg-amber-50",
+    bgColor: "bg-warning-bg",
   },
   {
     icon: BriefcaseBusiness,
@@ -69,7 +69,7 @@ const features: Feature[] = [
     description:
       "Job postings, candidate tracking, application stages, interview scheduling, and offer management.",
     color: "text-rose-600",
-    bgColor: "bg-rose-50",
+    bgColor: "bg-error-bg",
   },
   {
     icon: BarChart3,

@@ -11,7 +11,7 @@ type StatusCardProps = {
 const toneClasses: Record<StatusCardProps["tone"], string> = {
   brand: "bg-brand-50 text-brand-700",
   blue: "bg-sky-50 text-sky-700 dark:bg-sky-950/50 dark:text-sky-400",
-  amber: "bg-amber-50 text-amber-700 dark:bg-amber-950/50 dark:text-amber-400",
+  amber: "bg-warning-bg text-warning-text dark:bg-amber-950/50 dark:text-amber-400",
   slate: "bg-hover text-text-secondary"
 };
 

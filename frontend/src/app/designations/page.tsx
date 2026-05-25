@@ -195,7 +195,7 @@ function DesignationsContent({ user, token }: DesignationsContentProps) {
                       {designation._count?.employees ?? 0} employees
                     </span>
                     <button
-                      className="inline-flex h-8 items-center gap-1.5 rounded-full border border-rose-200 bg-rose-50 px-3 py-1 text-xs font-medium text-rose-700 shadow-sm transition hover:border-rose-300 hover:bg-rose-100 hover:text-rose-800 disabled:cursor-not-allowed disabled:opacity-60"
+                      className="inline-flex h-8 items-center gap-1.5 rounded-full border border-error-bg bg-error-bg px-3 py-1 text-xs font-medium text-error-text shadow-sm transition hover:border-red-800 hover:bg-red-900/40 hover:text-red-400 disabled:cursor-not-allowed disabled:opacity-60"
                       type="button"
                       onClick={() => removeDesignation(designation.id, designation.title)}
                       disabled={deletingDesignationId === designation.id}

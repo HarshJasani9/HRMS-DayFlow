@@ -167,7 +167,7 @@ function DepartmentsContent({ user, token }: DepartmentsContentProps) {
                       {department._count?.designations ?? 0} designations
                     </span>
                     <button
-                      className="inline-flex h-8 items-center gap-1.5 rounded-full border border-rose-200 bg-rose-50 px-3 py-1 text-rose-700 shadow-sm transition hover:border-rose-300 hover:bg-rose-100 hover:text-rose-800 disabled:cursor-not-allowed disabled:opacity-60"
+                      className="inline-flex h-8 items-center gap-1.5 rounded-full border border-error-bg bg-error-bg px-3 py-1 text-error-text shadow-sm transition hover:border-red-800 hover:bg-red-900/40 hover:text-red-400 disabled:cursor-not-allowed disabled:opacity-60"
                       type="button"
                       onClick={() => removeDepartment(department.id, department.name)}
                       disabled={deletingDepartmentId === department.id}

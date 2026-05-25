@@ -530,7 +530,7 @@ export function AppShell({ user, token, children }: AppShellProps) {
           }}
           aria-label="Go to dashboard"
         >
-          <div className="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-white text-[#020617] dark:bg-[#020617] dark:text-white">
+          <div className="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-card text-[#020617] dark:bg-[#020617] dark:text-white">
             <LayoutDashboard size={19} aria-hidden="true" />
           </div>
           <div className="min-w-0">

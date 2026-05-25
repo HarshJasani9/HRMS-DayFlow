@@ -48,7 +48,7 @@ const metricToneClasses: Record<DashboardCard["tone"], string> = {
 const metricIconClasses: Record<DashboardCard["tone"], string> = {
   brand: "bg-emerald-50 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-400",
   blue: "bg-sky-50 text-sky-700 dark:bg-sky-950/50 dark:text-sky-400",
-  amber: "bg-amber-50 text-amber-700 dark:bg-amber-950/50 dark:text-amber-400",
+  amber: "bg-warning-bg text-warning-text dark:bg-amber-950/50 dark:text-amber-400",
   slate: "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300"
 };
 

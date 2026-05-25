@@ -10,10 +10,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        /* ── Legacy semantic tokens (keep for backward compat) ── */
-        ink: "#17211d",
-        surface: "#f6f7f5",
-        line: "#dfe5df",
+        /* ── Legacy semantic tokens (mapped to theme vars for backward compat) ── */
+        ink: "var(--color-heading)",
+        surface: "var(--color-surface)",
+        line: "var(--color-border)",
         brand: {
           50: "var(--color-brand-50)",
           100: "var(--color-brand-100)",
@@ -62,7 +62,7 @@ const config: Config = {
         "info-text": "var(--color-info-text)"
       },
       boxShadow: {
-        soft: "0 12px 30px rgba(23, 33, 29, 0.08)",
+        soft: "var(--shadow-card)",
         card: "var(--shadow-card)",
         elevated: "var(--shadow-elevated)",
         header: "var(--shadow-header)"
