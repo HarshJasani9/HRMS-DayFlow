@@ -55,13 +55,13 @@ export function PaginationControls({
   const end = Math.min(values.page * values.pageSize, values.total);
 
   return (
-    <div className="mt-4 flex flex-col gap-3 border-t border-line pt-4 text-sm text-slate-600 sm:flex-row sm:items-center sm:justify-between">
+    <div className="mt-4 flex flex-col gap-3 border-t border-border pt-4 text-sm text-text-secondary sm:flex-row sm:items-center sm:justify-between">
       <span>
         Showing {start}-{end} of {values.total}
       </span>
       <div className="flex shrink-0 items-center gap-2">
         <button
-          className="grid h-9 w-9 place-items-center rounded-md border border-line text-slate-600 transition hover:bg-surface disabled:cursor-not-allowed disabled:opacity-50"
+          className="grid h-9 w-9 place-items-center rounded-md border border-border text-text-secondary transition hover:bg-hover disabled:cursor-not-allowed disabled:opacity-50"
           type="button"
           onClick={() => onPageChange(values.page - 1)}
           disabled={isFetching || values.page <= 1}
@@ -69,11 +69,11 @@ export function PaginationControls({
         >
           <ChevronLeft size={16} aria-hidden="true" />
         </button>
-        <span className="min-w-20 shrink-0 text-center text-xs font-medium text-slate-500">
+        <span className="min-w-20 shrink-0 text-center text-xs font-medium text-text-muted">
           Page {values.page} of {values.totalPages}
         </span>
         <button
-          className="grid h-9 w-9 place-items-center rounded-md border border-line text-slate-600 transition hover:bg-surface disabled:cursor-not-allowed disabled:opacity-50"
+          className="grid h-9 w-9 place-items-center rounded-md border border-border text-text-secondary transition hover:bg-hover disabled:cursor-not-allowed disabled:opacity-50"
           type="button"
           onClick={() => onPageChange(values.page + 1)}
           disabled={isFetching || values.page >= values.totalPages}

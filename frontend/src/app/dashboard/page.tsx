@@ -46,10 +46,10 @@ const metricToneClasses: Record<DashboardCard["tone"], string> = {
 };
 
 const metricIconClasses: Record<DashboardCard["tone"], string> = {
-  brand: "bg-emerald-50 text-emerald-700",
-  blue: "bg-sky-50 text-sky-700",
-  amber: "bg-amber-50 text-amber-700",
-  slate: "bg-slate-100 text-slate-700"
+  brand: "bg-emerald-50 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-400",
+  blue: "bg-sky-50 text-sky-700 dark:bg-sky-950/50 dark:text-sky-400",
+  amber: "bg-amber-50 text-amber-700 dark:bg-amber-950/50 dark:text-amber-400",
+  slate: "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300"
 };
 
 function getCardValue(card: DashboardCard): string {
@@ -88,30 +88,30 @@ function DashboardContent({ user, token }: DashboardContentProps) {
   return (
     <AppShell user={user} token={token}>
       <div className="space-y-4">
-        <section className="rounded-lg border border-slate-200 bg-white shadow-[0_14px_35px_rgba(15,23,42,0.04)]">
-          <div className="flex flex-col justify-between gap-4 border-b border-slate-200 px-5 py-5 md:flex-row md:items-start">
+        <section className="rounded-lg border border-border bg-card shadow-card">
+          <div className="flex flex-col justify-between gap-4 border-b border-border px-5 py-5 md:flex-row md:items-start">
             <div>
-              <h1 className="text-2xl font-semibold tracking-normal text-slate-950">
+              <h1 className="text-2xl font-semibold tracking-normal text-heading">
                 Hey, {getUserFirstName(user.name)}
               </h1>
-              <p className="mt-1 text-sm text-slate-500">
+              <p className="mt-1 text-sm text-text-muted">
                 Quickly access all information about you, your team, and your members
               </p>
             </div>
-            <div className="inline-flex h-9 items-center gap-2 self-start rounded-md border border-slate-200 bg-white px-3 text-sm font-semibold text-slate-700 shadow-[0_8px_20px_rgba(15,23,42,0.04)] md:self-auto">
+            <div className="inline-flex h-9 items-center gap-2 self-start rounded-md border border-border bg-card px-3 text-sm font-semibold text-text-secondary shadow-card md:self-auto">
               <CalendarDays size={16} aria-hidden="true" />
               {getCurrentDateLabel()}
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-2 border-b border-slate-200 px-5 py-3 text-xs font-semibold uppercase text-slate-400">
+          <div className="flex flex-wrap items-center gap-2 border-b border-border px-5 py-3 text-xs font-semibold uppercase text-text-faint">
             <span className="rounded-md px-2 py-1">Personal</span>
-            <span className="rounded-md bg-[#020617] px-2 py-1 text-white dark:border dark:border-[#dfe5df] dark:bg-[#f8fafc] dark:text-[#020617]">
+            <span className="rounded-md bg-[#020617] px-2 py-1 text-white dark:border dark:border-border dark:bg-sidebar dark:text-heading">
               {scopeLabel}
             </span>
             <span className="rounded-md px-2 py-1">Managed by me</span>
             <button
-              className="ml-auto grid h-8 w-8 place-items-center rounded-md text-slate-500 transition hover:bg-slate-50"
+              className="ml-auto grid h-8 w-8 place-items-center rounded-md text-text-muted transition hover:bg-hover"
               type="button"
               onClick={() => summaryQuery.refetch()}
               aria-label="Refresh dashboard"
@@ -126,15 +126,15 @@ function DashboardContent({ user, token }: DashboardContentProps) {
 
               return (
                 <article
-                  className="border-b border-slate-200 px-5 py-5 last:border-b-0 sm:[&:nth-last-child(-n+2)]:border-b-0 xl:border-b-0 xl:border-r xl:last:border-r-0"
+                  className="border-b border-border px-5 py-5 last:border-b-0 sm:[&:nth-last-child(-n+2)]:border-b-0 xl:border-b-0 xl:border-r xl:last:border-r-0"
                   key={card.key}
                 >
                   <div className="flex min-w-0 items-start justify-between gap-3">
                     <div>
-                      <p className="text-xs font-semibold uppercase text-slate-500">
+                      <p className="text-xs font-semibold uppercase text-text-muted">
                         {card.label}
                       </p>
-                      <p className="mt-2 text-3xl font-semibold tracking-normal text-slate-950">
+                      <p className="mt-2 text-3xl font-semibold tracking-normal text-heading">
                         {getCardValue(card)}
                       </p>
                     </div>
@@ -152,7 +152,7 @@ function DashboardContent({ user, token }: DashboardContentProps) {
             })}
 
             {summaryQuery.isLoading && cards.length === 0 ? (
-              <div className="col-span-full px-5 py-12 text-center text-sm text-slate-500">
+              <div className="col-span-full px-5 py-12 text-center text-sm text-text-muted">
                 Loading dashboard summary...
               </div>
             ) : null}
@@ -160,38 +160,38 @@ function DashboardContent({ user, token }: DashboardContentProps) {
         </section>
 
         <section className="grid gap-4 lg:grid-cols-[1fr_1fr]">
-          <div className="rounded-lg border border-slate-200 bg-white shadow-[0_14px_35px_rgba(15,23,42,0.04)]">
-            <div className="flex min-w-0 items-center justify-between gap-3 border-b border-slate-200 px-5 py-4">
+          <div className="rounded-lg border border-border bg-card shadow-card">
+            <div className="flex min-w-0 items-center justify-between gap-3 border-b border-border px-5 py-4">
               <div>
-                <h2 className="text-lg font-semibold tracking-normal text-slate-950">
+                <h2 className="text-lg font-semibold tracking-normal text-heading">
                   Notifications
                 </h2>
-                <p className="mt-1 text-xs text-slate-500">
+                <p className="mt-1 text-xs text-text-muted">
                   Recent alerts and workflow updates
                 </p>
               </div>
               <Link
-                className="rounded-md border border-slate-200 px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
+                className="rounded-md border border-border px-3 py-2 text-sm font-semibold text-text-secondary transition hover:bg-hover"
                 href="/notifications"
               >
                 View all
               </Link>
             </div>
 
-            <div className="divide-y divide-slate-100 px-5">
+            <div className="divide-y divide-border-light px-5">
               {notifications.map((notification) => (
                 <div key={notification.id} className="flex min-w-0 gap-3 py-4">
-                  <div className="mt-1 grid h-9 w-9 shrink-0 place-items-center rounded-md bg-slate-100 text-slate-700">
+                  <div className="mt-1 grid h-9 w-9 shrink-0 place-items-center rounded-md bg-hover text-text-secondary">
                     <Bell size={17} aria-hidden="true" />
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="flex min-w-0 items-start justify-between gap-3">
-                      <p className="font-semibold text-slate-950">{notification.title}</p>
-                      <span className="shrink-0 text-xs text-slate-400">
+                      <p className="font-semibold text-heading">{notification.title}</p>
+                      <span className="shrink-0 text-xs text-text-faint">
                         {formatDateTime(notification.createdAt)}
                       </span>
                     </div>
-                    <p className="mt-1 text-sm leading-6 text-slate-600">
+                    <p className="mt-1 text-sm leading-6 text-text-secondary">
                       {notification.message}
                     </p>
                   </div>
@@ -199,44 +199,44 @@ function DashboardContent({ user, token }: DashboardContentProps) {
               ))}
             </div>
             {!summaryQuery.isLoading && notifications.length === 0 ? (
-              <div className="m-5 rounded-md border border-dashed border-slate-200 px-4 py-8 text-center text-sm text-slate-500">
+              <div className="m-5 rounded-md border border-dashed border-border px-4 py-8 text-center text-sm text-text-muted">
                 No notifications found.
               </div>
             ) : null}
           </div>
 
-          <div className="rounded-lg border border-slate-200 bg-white shadow-[0_14px_35px_rgba(15,23,42,0.04)]">
-            <div className="flex min-w-0 items-center justify-between gap-3 border-b border-slate-200 px-5 py-4">
+          <div className="rounded-lg border border-border bg-card shadow-card">
+            <div className="flex min-w-0 items-center justify-between gap-3 border-b border-border px-5 py-4">
               <div>
-                <h2 className="text-lg font-semibold tracking-normal text-slate-950">
+                <h2 className="text-lg font-semibold tracking-normal text-heading">
                   Announcements
                 </h2>
-                <p className="mt-1 text-xs text-slate-500">
+                <p className="mt-1 text-xs text-text-muted">
                   Published updates for the workspace
                 </p>
               </div>
               <Link
-                className="rounded-md border border-slate-200 px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
+                className="rounded-md border border-border px-3 py-2 text-sm font-semibold text-text-secondary transition hover:bg-hover"
                 href="/announcements"
               >
                 View all
               </Link>
             </div>
 
-            <div className="divide-y divide-slate-100 px-5">
+            <div className="divide-y divide-border-light px-5">
               {announcements.map((announcement) => (
                 <div key={announcement.id} className="flex min-w-0 gap-3 py-4">
-                  <div className="mt-1 grid h-9 w-9 shrink-0 place-items-center rounded-md bg-slate-100 text-slate-700">
+                  <div className="mt-1 grid h-9 w-9 shrink-0 place-items-center rounded-md bg-hover text-text-secondary">
                     <Megaphone size={17} aria-hidden="true" />
                   </div>
                   <div className="min-w-0 flex-1">
                     <div className="flex min-w-0 items-start justify-between gap-3">
-                      <p className="font-semibold text-slate-950">{announcement.title}</p>
-                      <span className="shrink-0 text-xs text-slate-400">
+                      <p className="font-semibold text-heading">{announcement.title}</p>
+                      <span className="shrink-0 text-xs text-text-faint">
                         {formatDate(announcement.publishedAt)}
                       </span>
                     </div>
-                    <p className="mt-1 text-sm leading-6 text-slate-600">
+                    <p className="mt-1 text-sm leading-6 text-text-secondary">
                       {announcement.message}
                     </p>
                   </div>
@@ -244,7 +244,7 @@ function DashboardContent({ user, token }: DashboardContentProps) {
               ))}
             </div>
             {!summaryQuery.isLoading && announcements.length === 0 ? (
-              <div className="m-5 rounded-md border border-dashed border-slate-200 px-4 py-8 text-center text-sm text-slate-500">
+              <div className="m-5 rounded-md border border-dashed border-border px-4 py-8 text-center text-sm text-text-muted">
                 No announcements found.
               </div>
             ) : null}
