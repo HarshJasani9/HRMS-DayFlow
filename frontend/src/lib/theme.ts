@@ -25,8 +25,6 @@ export function applyTheme(theme: ThemeMode): void {
   document.documentElement.style.colorScheme = theme;
 }
 
-import { flushSync } from "react-dom";
-
 /**
  * Apply a theme using the View Transitions API for a circle-spread animation.
  * Falls back to instant application on unsupported browsers.
@@ -62,10 +60,8 @@ export function applyThemeWithTransition(
 
   const transition = document.startViewTransition(() => {
     if (updateReactState) {
-      flushSync(() => {
-        applyTheme(theme);
-        updateReactState();
-      });
+      updateReactState();
+      applyTheme(theme);
     } else {
       applyTheme(theme);
     }

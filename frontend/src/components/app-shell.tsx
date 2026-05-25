@@ -27,6 +27,7 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { useQueryClient, type QueryClient } from "@tanstack/react-query";
+import { flushSync } from "react-dom";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
@@ -426,7 +427,9 @@ export function AppShell({ user, token, children }: AppShellProps) {
 
     persistTheme(nextTheme);
     applyThemeWithTransition(nextTheme, e, () => {
-      setTheme(nextTheme);
+      flushSync(() => {
+        setTheme(nextTheme);
+      });
     });
   }
 

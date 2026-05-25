@@ -70,6 +70,7 @@ export function ThemeToggle({ theme, onToggle, className = "" }: ThemeToggleProp
  * already have a global layout state managing the theme.
  */
 import { useEffect, useState } from "react";
+import { flushSync } from "react-dom";
 import { getPreferredTheme, persistTheme, applyThemeWithTransition } from "@/lib/theme";
 
 export function GlobalThemeToggle({ className }: { className?: string }) {
@@ -90,7 +91,9 @@ export function GlobalThemeToggle({ className }: { className?: string }) {
     const nextTheme = theme === "dark" ? "light" : "dark";
     persistTheme(nextTheme);
     applyThemeWithTransition(nextTheme, e, () => {
-      setTheme(nextTheme);
+      flushSync(() => {
+        setTheme(nextTheme);
+      });
     });
   }
 
