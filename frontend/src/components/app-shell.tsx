@@ -460,8 +460,8 @@ export function AppShell({ user, token, children }: AppShellProps) {
         : false;
       const className = `flex min-h-10 w-full min-w-0 items-center gap-3 rounded-md border px-3 text-sm transition ${
         active
-          ? "border-slate-200 bg-white font-semibold text-slate-950 shadow-[0_8px_20px_rgba(15,23,42,0.06)]"
-          : "border-transparent text-slate-600 hover:border-slate-200 hover:bg-white"
+          ? "border-border bg-card font-semibold text-heading shadow-card"
+          : "border-transparent text-text-secondary hover:border-border hover:bg-card"
       }`;
 
       const href = item.href;
@@ -503,7 +503,7 @@ export function AppShell({ user, token, children }: AppShellProps) {
     return visibleNavSections.map((section) => {
       return (
         <div className="space-y-1.5" key={section.label}>
-          <p className="px-3 text-xs font-medium text-slate-400">{section.label}</p>
+          <p className="px-3 text-xs font-medium text-text-faint">{section.label}</p>
           <div className="space-y-1">{renderNavItems(section.items)}</div>
         </div>
       );
@@ -511,11 +511,11 @@ export function AppShell({ user, token, children }: AppShellProps) {
   }
 
   return (
-    <main className="min-h-screen overflow-x-hidden bg-[#f4f6f8] text-slate-950">
-      <aside className="fixed inset-y-3 left-3 hidden w-[232px] flex-col overflow-hidden rounded-lg border border-slate-200 bg-[#f8fafc] shadow-[0_18px_45px_rgba(15,23,42,0.08)] lg:flex">
+    <main className="min-h-screen overflow-x-hidden bg-page text-heading">
+      <aside className="fixed inset-y-3 left-3 hidden w-[232px] flex-col overflow-hidden rounded-lg border border-border bg-sidebar shadow-elevated lg:flex">
         <Link
           href="/dashboard"
-          className="m-2 flex h-12 min-w-0 items-center gap-3 rounded-lg bg-[#020617] px-3 text-white transition hover:bg-[#111827] dark:border dark:border-[#dfe5df] dark:bg-[#f8fafc] dark:text-[#020617] dark:hover:bg-[#ffffff]"
+          className="m-2 flex h-12 min-w-0 items-center gap-3 rounded-lg bg-[#020617] px-3 text-white transition hover:bg-[#111827] dark:border dark:border-border dark:bg-sidebar dark:text-heading dark:hover:bg-card"
           prefetch={true}
           onFocus={() => prefetchRoute("/dashboard")}
           onPointerDown={() => prefetchRoute("/dashboard")}
@@ -526,12 +526,12 @@ export function AppShell({ user, token, children }: AppShellProps) {
           }}
           aria-label="Go to dashboard"
         >
-          <div className="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-[#ffffff] text-[#020617] dark:bg-[#020617] dark:text-white">
+          <div className="grid h-8 w-8 shrink-0 place-items-center rounded-md bg-white text-[#020617] dark:bg-[#020617] dark:text-white">
             <LayoutDashboard size={19} aria-hidden="true" />
           </div>
           <div className="min-w-0">
             <p className="truncate text-sm font-semibold">HRMS</p>
-            <p className="truncate text-xs text-white/60 dark:text-slate-500">Organization</p>
+            <p className="truncate text-xs text-white/60 dark:text-text-muted">Organization</p>
           </div>
         </Link>
 
@@ -539,10 +539,10 @@ export function AppShell({ user, token, children }: AppShellProps) {
           {renderNavSections()}
         </nav>
 
-        <div className="border-t border-slate-200 p-3">
+        <div className="border-t border-border p-3">
           <Link
             href="/profile"
-            className="flex min-w-0 items-center gap-3 rounded-md px-2 py-2 transition hover:bg-white"
+            className="flex min-w-0 items-center gap-3 rounded-md px-2 py-2 transition hover:bg-card"
             prefetch={true}
             onFocus={() => prefetchRoute("/profile")}
             onPointerDown={() => prefetchRoute("/profile")}
@@ -552,12 +552,12 @@ export function AppShell({ user, token, children }: AppShellProps) {
               setPendingHref("/profile");
             }}
           >
-            <div className="grid h-9 w-9 shrink-0 place-items-center rounded-md bg-white text-slate-700 shadow-[0_8px_20px_rgba(15,23,42,0.06)]">
+            <div className="grid h-9 w-9 shrink-0 place-items-center rounded-md bg-card text-text-secondary shadow-card">
               <UserCircle size={20} aria-hidden="true" />
             </div>
             <div className="min-w-0">
-              <p className="truncate text-sm font-semibold text-slate-900">{user.name}</p>
-              <p className="truncate text-xs text-slate-500">{user.email}</p>
+              <p className="truncate text-sm font-semibold text-heading">{user.name}</p>
+              <p className="truncate text-xs text-text-muted">{user.email}</p>
             </div>
           </Link>
         </div>
@@ -566,13 +566,13 @@ export function AppShell({ user, token, children }: AppShellProps) {
       {isMobileNavOpen ? (
         <div className="fixed inset-0 z-40 lg:hidden">
           <button
-            className="absolute inset-0 bg-ink/30"
+            className="absolute inset-0 bg-overlay"
             type="button"
             onClick={() => setIsMobileNavOpen(false)}
             aria-label="Close navigation"
           />
-          <aside className="relative flex h-full w-[min(20rem,calc(100vw-1rem))] max-w-[92vw] flex-col border-r border-slate-200 bg-[#f8fafc] shadow-soft">
-            <div className="flex min-h-14 items-center justify-between gap-3 border-b border-slate-200 px-4">
+          <aside className="relative flex h-full w-[min(20rem,calc(100vw-1rem))] max-w-[92vw] flex-col border-r border-border bg-sidebar shadow-soft">
+            <div className="flex min-h-14 items-center justify-between gap-3 border-b border-border px-4">
               <Link
                 href="/dashboard"
                 className="flex min-w-0 items-center gap-3 rounded-md"
@@ -587,16 +587,16 @@ export function AppShell({ user, token, children }: AppShellProps) {
                 }}
                 aria-label="Go to dashboard"
               >
-                <div className="grid h-9 w-9 shrink-0 place-items-center rounded-md bg-[#020617] text-white dark:bg-[#f8fafc] dark:text-[#020617]">
+                <div className="grid h-9 w-9 shrink-0 place-items-center rounded-md bg-[#020617] text-white dark:bg-sidebar dark:text-heading">
                   <LayoutDashboard size={19} aria-hidden="true" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold">HRMS</p>
-                  <p className="text-xs text-slate-500">Organization</p>
+                  <p className="text-sm font-semibold text-heading">HRMS</p>
+                  <p className="text-xs text-text-muted">Organization</p>
                 </div>
               </Link>
               <button
-                className="grid h-9 w-9 shrink-0 place-items-center rounded-md border border-slate-200 text-slate-600"
+                className="grid h-9 w-9 shrink-0 place-items-center rounded-md border border-border text-text-secondary"
                 type="button"
                 onClick={() => setIsMobileNavOpen(false)}
                 aria-label="Close navigation"
@@ -610,11 +610,11 @@ export function AppShell({ user, token, children }: AppShellProps) {
       ) : null}
 
       <section className="min-w-0 lg:pl-[252px]">
-        <header className="sticky top-0 z-20 border-b border-slate-200 bg-[#f4f6f8]/92 px-3 py-2 backdrop-blur sm:px-5 sm:py-3">
-          <div className="flex min-h-12 items-center justify-between gap-2 rounded-lg border border-slate-200 bg-white px-2 py-2 shadow-[0_8px_26px_rgba(15,23,42,0.04)] sm:gap-3 sm:px-4">
+        <header className="sticky top-0 z-20 border-b border-border bg-header-bg px-3 py-2 backdrop-blur sm:px-5 sm:py-3">
+          <div className="flex min-h-12 items-center justify-between gap-2 rounded-lg border border-border bg-card px-2 py-2 shadow-header sm:gap-3 sm:px-4">
             <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
               <button
-                className="grid h-10 w-10 shrink-0 place-items-center rounded-md border border-slate-200 text-slate-600 lg:hidden"
+                className="grid h-10 w-10 shrink-0 place-items-center rounded-md border border-border text-text-secondary lg:hidden"
                 type="button"
                 onClick={() => setIsMobileNavOpen(true)}
                 aria-label="Open navigation"
@@ -622,11 +622,11 @@ export function AppShell({ user, token, children }: AppShellProps) {
                 <Menu size={18} aria-hidden="true" />
               </button>
               <div className="min-w-0">
-                <p className="truncate text-sm font-semibold text-slate-950">
+                <p className="truncate text-sm font-semibold text-heading">
                   <span className="sm:hidden">HRMS</span>
                   <span className="hidden sm:inline">Company Workspace</span>
                 </p>
-                <p className="hidden break-all text-xs text-slate-500 sm:block sm:truncate">
+                <p className="hidden break-all text-xs text-text-muted sm:block sm:truncate">
                   {primaryRole ? roleLabels[primaryRole] : "User"} | {user.email}
                 </p>
               </div>
@@ -636,7 +636,7 @@ export function AppShell({ user, token, children }: AppShellProps) {
               <ThemeToggle theme={theme} onToggle={toggleTheme} />
               <Link
                 href="/notifications"
-                className="grid h-10 w-10 shrink-0 place-items-center rounded-md border border-slate-200 bg-white text-slate-600 shadow-sm transition-transform hover:-translate-y-0.5 hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900 sm:h-9 sm:w-9 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:hover:border-slate-500 dark:hover:bg-slate-900 dark:hover:text-white"
+                className="grid h-10 w-10 shrink-0 place-items-center rounded-md border border-border bg-card text-text-secondary shadow-sm transition-transform hover:-translate-y-0.5 hover:border-border-strong hover:bg-card-hover hover:text-heading sm:h-9 sm:w-9"
                 aria-label="Notifications"
                 prefetch={true}
                 onFocus={() => prefetchRoute("/notifications")}
@@ -650,7 +650,7 @@ export function AppShell({ user, token, children }: AppShellProps) {
                 <Bell size={18} aria-hidden="true" />
               </Link>
               <button
-                className="inline-flex h-10 w-10 shrink-0 items-center justify-center gap-1 rounded-md border border-slate-200 bg-white px-0 text-sm font-semibold text-slate-700 shadow-sm transition-transform hover:-translate-y-0.5 hover:border-slate-300 hover:bg-slate-50 hover:text-slate-950 disabled:cursor-not-allowed disabled:opacity-60 sm:h-9 sm:w-auto sm:px-3 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-200 dark:hover:border-slate-500 dark:hover:bg-slate-900 dark:hover:text-white"
+                className="inline-flex h-10 w-10 shrink-0 items-center justify-center gap-1 rounded-md border border-border bg-card px-0 text-sm font-semibold text-text-secondary shadow-sm transition-transform hover:-translate-y-0.5 hover:border-border-strong hover:bg-card-hover hover:text-heading disabled:cursor-not-allowed disabled:opacity-60 sm:h-9 sm:w-auto sm:px-3"
                 type="button"
                 aria-label="Sign out"
                 onClick={signOut}
