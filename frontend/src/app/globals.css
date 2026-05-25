@@ -1,0 +1,194 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --background: #f6f7f5;
+  --foreground: #17211d;
+}
+
+.dark {
+  color-scheme: dark;
+  --background: #000000;
+  --foreground: #f5f5f5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+}
+
+main,
+section,
+article,
+aside,
+header,
+footer,
+nav,
+form,
+fieldset,
+div {
+  min-width: 0;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
+svg {
+  flex-shrink: 0;
+}
+
+input,
+textarea,
+select,
+button {
+  max-width: 100%;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+a,
+button,
+label,
+li,
+dd,
+dt,
+th,
+td {
+  overflow-wrap: anywhere;
+}
+
+textarea {
+  overflow-wrap: anywhere;
+  resize: vertical;
+}
+
+.overflow-x-auto {
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
+}
+
+table {
+  width: 100%;
+}
+
+th,
+td {
+  vertical-align: top;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid rgba(24, 122, 82, 0.28);
+  outline-offset: 2px;
+}
+
+.dark body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.dark input,
+.dark select,
+.dark textarea {
+  color-scheme: dark;
+}
+
+.dark .bg-\[\#f4f6f8\] {
+  background-color: #000000;
+}
+
+.dark .bg-\[\#f4f6f8\]\/92 {
+  background-color: rgb(0 0 0 / 0.92);
+}
+
+.dark .bg-\[\#f8fafc\],
+.dark .bg-white,
+.dark .bg-white\/78 {
+  background-color: #080808;
+}
+
+.dark .bg-surface,
+.dark .bg-slate-100 {
+  background-color: #111111;
+}
+
+.dark .bg-slate-950 {
+  background-color: #000000;
+}
+
+.dark .bg-brand-50,
+.dark .bg-brand-100 {
+  background-color: #101010;
+}
+
+.dark .border-line,
+.dark .border-slate-200,
+.dark .border-white\/80,
+.dark .border-white\/90 {
+  border-color: #262626;
+}
+
+.dark .text-ink,
+.dark .text-slate-950,
+.dark .text-slate-900,
+.dark .text-slate-800,
+.dark .text-slate-700 {
+  color: #f5f5f5;
+}
+
+.dark .text-slate-600,
+.dark .text-slate-500,
+.dark .text-slate-400 {
+  color: #a3a3a3;
+}
+
+.dark .placeholder\:text-slate-400::placeholder {
+  color: #737373;
+}
+
+.dark .hover\:bg-white:hover,
+.dark .hover\:bg-slate-50:hover,
+.dark .hover\:bg-surface:hover {
+  background-color: #151515;
+}
