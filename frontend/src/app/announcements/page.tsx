@@ -101,7 +101,7 @@ function AnnouncementsContent({ user, token }: AnnouncementsContentProps) {
           </div>
           <div>
             <p className="text-sm font-medium text-brand-700">Announcements</p>
-            <h1 className="mt-1 text-3xl font-semibold tracking-normal text-ink">
+            <h1 className="mt-1 text-3xl font-semibold tracking-normal text-heading">
               Company Updates
             </h1>
           </div>
@@ -110,26 +110,26 @@ function AnnouncementsContent({ user, token }: AnnouncementsContentProps) {
         <section className="grid gap-4 lg:grid-cols-[0.8fr_1.2fr]">
           {canManageAnnouncements ? (
             <form
-              className="rounded-lg border border-line bg-card p-5 shadow-soft"
+              className="rounded-lg border border-border bg-card p-5 shadow-soft"
               onSubmit={handleSubmit(submit)}
             >
               <h2 className="text-lg font-semibold tracking-normal">New Announcement</h2>
               {message ? (
-                <div className="mt-5 rounded-md border border-line bg-surface px-3 py-2 text-sm text-text-secondary">
+                <div className="mt-5 rounded-md border border-border bg-hover px-3 py-2 text-sm text-text-secondary">
                   {message}
                 </div>
               ) : null}
               <label className="mt-5 block text-sm font-medium text-text-secondary">
                 Title
                 <input
-                  className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+                  className="mt-2 h-11 w-full rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
                   {...register("title", { required: true })}
                 />
               </label>
               <label className="mt-5 block text-sm font-medium text-text-secondary">
                 Audience
                 <select
-                  className="mt-2 h-11 w-full rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
+                  className="mt-2 h-11 w-full rounded-md border border-border bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                   {...register("audience")}
                 >
                   {Object.entries(audienceLabels).map(([value, label]) => (
@@ -142,7 +142,7 @@ function AnnouncementsContent({ user, token }: AnnouncementsContentProps) {
               <label className="mt-5 block text-sm font-medium text-text-secondary">
                 Message
                 <textarea
-                  className="mt-2 min-h-32 w-full rounded-md border border-line px-3 py-3 text-sm outline-none transition focus:border-brand-600"
+                  className="mt-2 min-h-32 w-full rounded-md border border-border px-3 py-3 text-sm outline-none transition focus:border-brand-600"
                   {...register("message", { required: true })}
                 />
               </label>
@@ -161,17 +161,17 @@ function AnnouncementsContent({ user, token }: AnnouncementsContentProps) {
             </form>
           ) : null}
 
-          <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
+          <div className="rounded-lg border border-border bg-card p-5 shadow-soft">
             <h2 className="text-lg font-semibold tracking-normal">Published Updates</h2>
-            <div className="mt-5 divide-y divide-line">
+            <div className="mt-5 divide-y divide-border">
               {announcements.map((announcement) => (
                 <article key={announcement.id} className="py-4">
                   <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-start">
                     <div>
-                      <p className="font-semibold text-ink">{announcement.title}</p>
+                      <p className="font-semibold text-heading">{announcement.title}</p>
                       <p className="mt-1 text-sm text-text-secondary">{announcement.message}</p>
                     </div>
-                    <span className="rounded-md bg-surface px-2 py-1 text-xs font-medium text-text-secondary">
+                    <span className="rounded-md bg-hover px-2 py-1 text-xs font-medium text-text-secondary">
                       {audienceLabels[announcement.audience]}
                     </span>
                   </div>
@@ -182,7 +182,7 @@ function AnnouncementsContent({ user, token }: AnnouncementsContentProps) {
               ))}
             </div>
             {!announcementsQuery.isLoading && announcements.length === 0 ? (
-              <div className="mt-5 rounded-md border border-dashed border-line px-4 py-8 text-center text-sm text-text-muted">
+              <div className="mt-5 rounded-md border border-dashed border-border px-4 py-8 text-center text-sm text-text-muted">
                 No announcements found.
               </div>
             ) : null}

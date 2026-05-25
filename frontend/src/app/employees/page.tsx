@@ -149,7 +149,7 @@ function EmployeesContent({ user, token }: EmployeesContentProps) {
         <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
             <p className="text-sm font-medium text-brand-700">Employees</p>
-            <h1 className="mt-1 text-3xl font-semibold tracking-normal text-ink">
+            <h1 className="mt-1 text-3xl font-semibold tracking-normal text-heading">
               Employee Records
             </h1>
           </div>
@@ -168,7 +168,7 @@ function EmployeesContent({ user, token }: EmployeesContentProps) {
           ))}
         </section>
 
-        <section className="rounded-lg border border-line bg-card p-5 shadow-soft">
+        <section className="rounded-lg border border-border bg-card p-5 shadow-soft">
           <div className="grid gap-3 lg:grid-cols-[1fr_180px_220px]">
             <label className="relative block text-sm font-medium text-text-secondary">
               <span className="sr-only">Search employees</span>
@@ -178,14 +178,14 @@ function EmployeesContent({ user, token }: EmployeesContentProps) {
                 aria-hidden="true"
               />
               <input
-                className="h-11 w-full rounded-md border border-line pl-10 pr-3 text-sm outline-none transition focus:border-brand-600"
+                className="h-11 w-full rounded-md border border-border pl-10 pr-3 text-sm outline-none transition focus:border-brand-600"
                 placeholder="Search by name, code, or email"
                 value={search}
                 onChange={(event) => setSearch(event.target.value)}
               />
             </label>
             <select
-              className="h-11 rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
+              className="h-11 rounded-md border border-border bg-card px-3 text-sm outline-none transition focus:border-brand-600"
               value={status}
               onChange={(event) => setStatus(event.target.value as EmploymentStatus | "")}
               aria-label="Filter by status"
@@ -198,7 +198,7 @@ function EmployeesContent({ user, token }: EmployeesContentProps) {
               ))}
             </select>
             <select
-              className="h-11 rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
+              className="h-11 rounded-md border border-border bg-card px-3 text-sm outline-none transition focus:border-brand-600"
               value={departmentId}
               onChange={(event) => setDepartmentId(event.target.value)}
               aria-label="Filter by department"
@@ -220,7 +220,7 @@ function EmployeesContent({ user, token }: EmployeesContentProps) {
 
           <div className="mt-5 overflow-x-auto">
             <table className="min-w-[760px] w-full text-left text-sm">
-              <thead className="border-b border-line bg-surface text-xs uppercase text-text-muted">
+              <thead className="border-b border-border bg-hover text-xs uppercase text-text-muted">
                 <tr>
                   <th className="px-4 py-3 font-semibold">Employee</th>
                   <th className="px-4 py-3 font-semibold">Department</th>
@@ -230,11 +230,11 @@ function EmployeesContent({ user, token }: EmployeesContentProps) {
                   <th className="px-4 py-3 font-semibold">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-line">
+              <tbody className="divide-y divide-border">
                 {employees.map((employee) => (
                   <tr key={employee.id}>
                     <td className="px-4 py-4">
-                      <div className="font-medium text-ink">{getEmployeeName(employee)}</div>
+                      <div className="font-medium text-heading">{getEmployeeName(employee)}</div>
                       <div className="mt-1 text-xs text-text-muted">
                         {employee.employeeCode} | {employee.workEmail}
                       </div>
@@ -256,21 +256,21 @@ function EmployeesContent({ user, token }: EmployeesContentProps) {
                     <td className="px-4 py-4">
                       <div className="flex items-center gap-2">
                         <Link
-                          className="grid h-9 w-9 place-items-center rounded-md border border-line text-text-secondary transition hover:bg-surface"
+                          className="grid h-9 w-9 place-items-center rounded-md border border-border text-text-secondary transition hover:bg-hover"
                           href={`/employees/${employee.id}`}
                           aria-label={`View ${getEmployeeName(employee)}`}
                         >
                           <Eye size={16} aria-hidden="true" />
                         </Link>
                         <Link
-                          className="grid h-9 w-9 place-items-center rounded-md border border-line text-text-secondary transition hover:bg-surface"
+                          className="grid h-9 w-9 place-items-center rounded-md border border-border text-text-secondary transition hover:bg-hover"
                           href={`/employees/${employee.id}/edit`}
                           aria-label={`Edit ${getEmployeeName(employee)}`}
                         >
                           <Pencil size={16} aria-hidden="true" />
                         </Link>
                         <button
-                          className="grid h-9 w-9 place-items-center rounded-md border border-line text-text-secondary transition hover:bg-surface disabled:cursor-not-allowed disabled:opacity-50"
+                          className="grid h-9 w-9 place-items-center rounded-md border border-border text-text-secondary transition hover:bg-hover disabled:cursor-not-allowed disabled:opacity-50"
                           type="button"
                           onClick={() => deactivate(employee.id)}
                           disabled={employee.status === "INACTIVE"}
@@ -287,7 +287,7 @@ function EmployeesContent({ user, token }: EmployeesContentProps) {
           </div>
 
           {!employeesQuery.isLoading && employees.length === 0 ? (
-            <div className="mt-5 rounded-md border border-dashed border-line px-4 py-8 text-center text-sm text-text-muted">
+            <div className="mt-5 rounded-md border border-dashed border-border px-4 py-8 text-center text-sm text-text-muted">
               No employee records found.
             </div>
           ) : null}

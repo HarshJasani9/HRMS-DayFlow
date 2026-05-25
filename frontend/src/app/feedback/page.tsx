@@ -107,7 +107,7 @@ function FeedbackContent({ user, token }: FeedbackContentProps) {
           </div>
           <div>
             <p className="text-sm font-medium text-brand-700">Performance</p>
-            <h1 className="mt-1 text-3xl font-semibold tracking-normal text-ink">
+            <h1 className="mt-1 text-3xl font-semibold tracking-normal text-heading">
               Feedback
             </h1>
           </div>
@@ -116,19 +116,19 @@ function FeedbackContent({ user, token }: FeedbackContentProps) {
         <section className="grid gap-4 xl:grid-cols-[0.8fr_1.2fr]">
           {canManagePerformance ? (
             <form
-              className="rounded-lg border border-line bg-card p-5 shadow-soft"
+              className="rounded-lg border border-border bg-card p-5 shadow-soft"
               onSubmit={handleSubmit(submit)}
             >
               <h2 className="text-lg font-semibold tracking-normal">Add Feedback</h2>
               {message ? (
-                <div className="mt-5 rounded-md border border-line bg-surface px-3 py-2 text-sm text-text-secondary">
+                <div className="mt-5 rounded-md border border-border bg-hover px-3 py-2 text-sm text-text-secondary">
                   {message}
                 </div>
               ) : null}
               <label className="mt-5 block text-sm font-medium text-text-secondary">
                 Employee
                 <select
-                  className="mt-2 h-11 w-full rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
+                  className="mt-2 h-11 w-full rounded-md border border-border bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                   {...register("employeeId", { required: true })}
                 >
                   <option value="">Select employee</option>
@@ -142,7 +142,7 @@ function FeedbackContent({ user, token }: FeedbackContentProps) {
               <label className="mt-5 block text-sm font-medium text-text-secondary">
                 Category
                 <select
-                  className="mt-2 h-11 w-full rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
+                  className="mt-2 h-11 w-full rounded-md border border-border bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                   {...register("category")}
                 >
                   {feedbackCategories.map((feedbackCategory) => (
@@ -155,7 +155,7 @@ function FeedbackContent({ user, token }: FeedbackContentProps) {
               <label className="mt-5 block text-sm font-medium text-text-secondary">
                 Message
                 <textarea
-                  className="mt-2 min-h-32 w-full rounded-md border border-line px-3 py-3 text-sm outline-none transition focus:border-brand-600"
+                  className="mt-2 min-h-32 w-full rounded-md border border-border px-3 py-3 text-sm outline-none transition focus:border-brand-600"
                   {...register("message", { required: true })}
                 />
               </label>
@@ -174,10 +174,10 @@ function FeedbackContent({ user, token }: FeedbackContentProps) {
             </form>
           ) : null}
 
-          <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
+          <div className="rounded-lg border border-border bg-card p-5 shadow-soft">
             <div className="grid gap-3 sm:grid-cols-2">
               <select
-                className="h-11 rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
+                className="h-11 rounded-md border border-border bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                 value={employeeId}
                 onChange={(event) => setEmployeeId(event.target.value)}
                 aria-label="Filter feedback by employee"
@@ -190,7 +190,7 @@ function FeedbackContent({ user, token }: FeedbackContentProps) {
                 ))}
               </select>
               <select
-                className="h-11 rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
+                className="h-11 rounded-md border border-border bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                 value={category}
                 onChange={(event) => setCategory(event.target.value as FeedbackCategory | "")}
                 aria-label="Filter feedback by category"
@@ -216,17 +216,17 @@ function FeedbackContent({ user, token }: FeedbackContentProps) {
                 />
               </div>
             ) : (
-              <div className="mt-5 divide-y divide-line">
+              <div className="mt-5 divide-y divide-border">
                 {feedbackRecords.map((feedback) => (
                   <article key={feedback.id} className="py-4">
                     <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-start">
                       <div>
-                        <p className="font-semibold text-ink">
+                        <p className="font-semibold text-heading">
                           {getEmployeeName(feedback.employee)}
                         </p>
                         <p className="mt-1 text-sm text-text-secondary">{feedback.message}</p>
                       </div>
-                      <span className="rounded-md bg-surface px-2 py-1 text-xs font-medium text-text-secondary">
+                      <span className="rounded-md bg-hover px-2 py-1 text-xs font-medium text-text-secondary">
                         {feedbackCategoryLabels[feedback.category]}
                       </span>
                     </div>

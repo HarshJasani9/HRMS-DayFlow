@@ -48,23 +48,23 @@ function LeaveBalancesContent({ user, token }: LeaveBalancesContentProps) {
             </div>
             <div>
               <p className="text-sm font-medium text-brand-700">Leave</p>
-              <h1 className="mt-1 text-3xl font-semibold tracking-normal text-ink">
+              <h1 className="mt-1 text-3xl font-semibold tracking-normal text-heading">
                 Leave Balances
               </h1>
             </div>
           </div>
           <input
-            className="h-10 w-32 rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+            className="h-10 w-32 rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
             type="number"
             value={year}
             onChange={(event) => setYear(Number(event.target.value))}
           />
         </div>
 
-        <section className="rounded-lg border border-line bg-card p-5 shadow-soft">
+        <section className="rounded-lg border border-border bg-card p-5 shadow-soft">
           <div className="overflow-x-auto">
             <table className="min-w-[760px] w-full text-left text-sm">
-              <thead className="border-b border-line bg-surface text-xs uppercase text-text-muted">
+              <thead className="border-b border-border bg-hover text-xs uppercase text-text-muted">
                 <tr>
                   <th className="px-4 py-3 font-semibold">Employee</th>
                   <th className="px-4 py-3 font-semibold">Type</th>
@@ -74,11 +74,11 @@ function LeaveBalancesContent({ user, token }: LeaveBalancesContentProps) {
                   <th className="px-4 py-3 font-semibold">Available</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-line">
+              <tbody className="divide-y divide-border">
                 {leaveBalances.map((balance) => (
                   <tr key={balance.id}>
                     <td className="px-4 py-4">
-                      <div className="font-medium text-ink">
+                      <div className="font-medium text-heading">
                         {getEmployeeName(balance.employee)}
                       </div>
                       <div className="mt-1 text-xs text-text-muted">

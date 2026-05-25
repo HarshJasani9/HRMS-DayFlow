@@ -68,7 +68,7 @@ const heroMetrics: HeroMetric[] = [
 
 export function AuthShell({ children, subtitle, title }: AuthShellProps) {
   return (
-    <main className="min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_12%_12%,rgba(216,247,232,0.95),transparent_32%),linear-gradient(135deg,#f7fbff_0%,#eff8f3_46%,#f7f7f4_100%)] px-3 py-3 text-ink sm:px-5 sm:py-5 lg:px-8">
+    <main className="min-h-screen overflow-x-hidden bg-[radial-gradient(circle_at_12%_12%,rgba(216,247,232,0.95),transparent_32%),linear-gradient(135deg,#f7fbff_0%,#eff8f3_46%,#f7f7f4_100%)] px-3 py-3 text-heading sm:px-5 sm:py-5 lg:px-8">
       <section className="mx-auto grid min-w-0 min-h-[calc(100vh-1.5rem)] w-full max-w-6xl overflow-hidden rounded-lg border border-white/90 bg-card/78 shadow-[0_28px_80px_rgba(23,33,29,0.14)] lg:min-h-[calc(100vh-2.5rem)] lg:grid-cols-[minmax(360px,0.88fr)_minmax(460px,1fr)]">
         <section className="flex min-h-[calc(100vh-1.5rem)] min-w-0 flex-col px-6 py-6 sm:px-10 sm:py-8 lg:min-h-0 lg:px-14 lg:py-9">
           <div className="flex items-center justify-between">

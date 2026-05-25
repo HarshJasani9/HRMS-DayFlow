@@ -42,16 +42,16 @@ function MyLeavesContent({ user, token }: MyLeavesContentProps) {
           </div>
           <div>
             <p className="text-sm font-medium text-brand-700">Leave</p>
-            <h1 className="mt-1 text-3xl font-semibold tracking-normal text-ink">
+            <h1 className="mt-1 text-3xl font-semibold tracking-normal text-heading">
               My Leave History
             </h1>
           </div>
         </div>
 
-        <section className="rounded-lg border border-line bg-card p-5 shadow-soft">
+        <section className="rounded-lg border border-border bg-card p-5 shadow-soft">
           <div className="overflow-x-auto">
             <table className="min-w-[760px] w-full text-left text-sm">
-              <thead className="border-b border-line bg-surface text-xs uppercase text-text-muted">
+              <thead className="border-b border-border bg-hover text-xs uppercase text-text-muted">
                 <tr>
                   <th className="px-4 py-3 font-semibold">Type</th>
                   <th className="px-4 py-3 font-semibold">Dates</th>
@@ -60,11 +60,11 @@ function MyLeavesContent({ user, token }: MyLeavesContentProps) {
                   <th className="px-4 py-3 font-semibold">Decision</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-line">
+              <tbody className="divide-y divide-border">
                 {leaveRequests.map((leaveRequest) => (
                   <tr key={leaveRequest.id}>
                     <td className="px-4 py-4">
-                      <div className="font-medium text-ink">
+                      <div className="font-medium text-heading">
                         {leaveRequest.leaveType.name}
                       </div>
                       <div className="mt-1 text-xs text-text-muted">
@@ -85,7 +85,7 @@ function MyLeavesContent({ user, token }: MyLeavesContentProps) {
             </table>
           </div>
           {!leavesQuery.isLoading && leaveRequests.length === 0 ? (
-            <p className="mt-5 rounded-md border border-dashed border-line px-4 py-5 text-sm text-text-muted">
+            <p className="mt-5 rounded-md border border-dashed border-border px-4 py-5 text-sm text-text-muted">
               No leave requests found.
             </p>
           ) : null}

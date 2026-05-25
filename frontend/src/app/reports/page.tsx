@@ -61,26 +61,26 @@ function ReportsContent({ user, token }: ReportsContentProps) {
             </div>
             <div>
               <p className="text-sm font-medium text-brand-700">Reports</p>
-              <h1 className="mt-1 text-3xl font-semibold tracking-normal text-ink">
+              <h1 className="mt-1 text-3xl font-semibold tracking-normal text-heading">
                 HR Reports
               </h1>
             </div>
           </div>
           <div className="grid gap-3 sm:grid-cols-3">
             <input
-              className="h-10 rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+              className="h-10 rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
               type="date"
               value={dateFrom}
               onChange={(event) => setDateFrom(event.target.value)}
             />
             <input
-              className="h-10 rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+              className="h-10 rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
               type="date"
               value={dateTo}
               onChange={(event) => setDateTo(event.target.value)}
             />
             <input
-              className="h-10 rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+              className="h-10 rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
               type="number"
               value={year}
               onChange={(event) => setYear(Number(event.target.value))}
@@ -120,11 +120,11 @@ function ReportsContent({ user, token }: ReportsContentProps) {
         </section>
 
         <section className="grid gap-4 xl:grid-cols-2">
-          <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
+          <div className="rounded-lg border border-border bg-card p-5 shadow-soft">
             <h2 className="text-lg font-semibold tracking-normal">Employee Report</h2>
             <div className="mt-5 overflow-x-auto">
               <table className="min-w-[760px] w-full text-left text-sm">
-                <thead className="border-b border-line bg-surface text-xs uppercase text-text-muted">
+                <thead className="border-b border-border bg-hover text-xs uppercase text-text-muted">
                   <tr>
                     <th className="px-4 py-3 font-semibold">Employee</th>
                     <th className="px-4 py-3 font-semibold">Department</th>
@@ -132,11 +132,11 @@ function ReportsContent({ user, token }: ReportsContentProps) {
                     <th className="px-4 py-3 font-semibold">Status</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-line">
+                <tbody className="divide-y divide-border">
                   {(employeeReport?.employees ?? []).slice(0, 8).map((employee) => (
                     <tr key={employee.id}>
                       <td className="px-4 py-4">
-                        <div className="font-medium text-ink">{getEmployeeName(employee)}</div>
+                        <div className="font-medium text-heading">{getEmployeeName(employee)}</div>
                         <div className="mt-1 text-xs text-text-muted">{employee.employeeCode}</div>
                       </td>
                       <td className="px-4 py-4">{employee.department?.name ?? "Unassigned"}</td>
@@ -149,11 +149,11 @@ function ReportsContent({ user, token }: ReportsContentProps) {
             </div>
           </div>
 
-          <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
+          <div className="rounded-lg border border-border bg-card p-5 shadow-soft">
             <h2 className="text-lg font-semibold tracking-normal">Leave Report</h2>
             <div className="mt-5 overflow-x-auto">
               <table className="min-w-[760px] w-full text-left text-sm">
-                <thead className="border-b border-line bg-surface text-xs uppercase text-text-muted">
+                <thead className="border-b border-border bg-hover text-xs uppercase text-text-muted">
                   <tr>
                     <th className="px-4 py-3 font-semibold">Employee</th>
                     <th className="px-4 py-3 font-semibold">Type</th>
@@ -161,7 +161,7 @@ function ReportsContent({ user, token }: ReportsContentProps) {
                     <th className="px-4 py-3 font-semibold">Status</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-line">
+                <tbody className="divide-y divide-border">
                   {(leaveReport?.leaveRequests ?? []).slice(0, 8).map((leaveRequest) => (
                     <tr key={leaveRequest.id}>
                       <td className="px-4 py-4">{getEmployeeName(leaveRequest.employee)}</td>
@@ -175,12 +175,12 @@ function ReportsContent({ user, token }: ReportsContentProps) {
             </div>
           </div>
 
-          <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
+          <div className="rounded-lg border border-border bg-card p-5 shadow-soft">
             <h2 className="text-lg font-semibold tracking-normal">Attendance Summary</h2>
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
               {Object.entries(attendanceReport?.summary.byStatus ?? {}).map(([status, total]) => (
-                <div key={status} className="rounded-md bg-surface px-4 py-3">
-                  <p className="text-sm font-medium text-ink">{status}</p>
+                <div key={status} className="rounded-md bg-hover px-4 py-3">
+                  <p className="text-sm font-medium text-heading">{status}</p>
                   <p className="mt-2 text-2xl font-semibold tracking-normal text-brand-700">
                     {total}
                   </p>
@@ -189,11 +189,11 @@ function ReportsContent({ user, token }: ReportsContentProps) {
             </div>
           </div>
 
-          <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
+          <div className="rounded-lg border border-border bg-card p-5 shadow-soft">
             <h2 className="text-lg font-semibold tracking-normal">Payroll Report</h2>
             <div className="mt-5 overflow-x-auto">
               <table className="min-w-[760px] w-full text-left text-sm">
-                <thead className="border-b border-line bg-surface text-xs uppercase text-text-muted">
+                <thead className="border-b border-border bg-hover text-xs uppercase text-text-muted">
                   <tr>
                     <th className="px-4 py-3 font-semibold">Month</th>
                     <th className="px-4 py-3 font-semibold">Employees</th>
@@ -201,7 +201,7 @@ function ReportsContent({ user, token }: ReportsContentProps) {
                     <th className="px-4 py-3 font-semibold">Net</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-line">
+                <tbody className="divide-y divide-border">
                   {(payrollReport?.payrolls ?? []).map((payroll) => (
                     <tr key={payroll.id}>
                       <td className="px-4 py-4">

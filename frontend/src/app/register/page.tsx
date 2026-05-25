@@ -116,7 +116,7 @@ export default function RegisterPage() {
               {...register("password", { required: true })}
             />
             <button
-              className="absolute right-3 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-md text-text-muted transition hover:bg-surface hover:text-text-secondary"
+              className="absolute right-3 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-md text-text-muted transition hover:bg-hover hover:text-text-secondary"
               type="button"
               onClick={() => setIsPasswordVisible((currentValue) => !currentValue)}
               aria-label={isPasswordVisible ? "Hide password" : "Show password"}
@@ -146,7 +146,7 @@ export default function RegisterPage() {
         </div>
 
         <Link
-          className="mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-2xl border border-line bg-card px-4 text-sm font-semibold text-text-secondary transition hover:bg-surface"
+          className="mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-2xl border border-border bg-card px-4 text-sm font-semibold text-text-secondary transition hover:bg-hover"
           href="/login"
         >
           <LogIn size={18} aria-hidden="true" />

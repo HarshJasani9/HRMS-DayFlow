@@ -33,13 +33,13 @@ function ProfileContent({ user, token }: ProfileContentProps) {
       <div className="space-y-6">
         <div>
           <p className="text-sm font-medium text-brand-700">Profile</p>
-          <h1 className="mt-1 text-3xl font-semibold tracking-normal text-ink">
+          <h1 className="mt-1 text-3xl font-semibold tracking-normal text-heading">
             {user.name}
           </h1>
         </div>
 
         <section className="grid gap-4 lg:grid-cols-[0.8fr_1.2fr]">
-          <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
+          <div className="rounded-lg border border-border bg-card p-5 shadow-soft">
             <div className="flex min-w-0 items-center gap-4">
               <div className="grid h-14 w-14 place-items-center rounded-md bg-brand-50 text-brand-700">
                 <UserCircle size={32} aria-hidden="true" />
@@ -51,24 +51,24 @@ function ProfileContent({ user, token }: ProfileContentProps) {
             </div>
 
             <div className="mt-6 space-y-3 text-sm">
-              <div className="flex min-w-0 items-center gap-3 rounded-md bg-surface px-4 py-3">
+              <div className="flex min-w-0 items-center gap-3 rounded-md bg-hover px-4 py-3">
                 <Mail size={17} className="text-text-muted" aria-hidden="true" />
                 <span>{user.email}</span>
               </div>
-              <div className="flex min-w-0 items-center gap-3 rounded-md bg-surface px-4 py-3">
+              <div className="flex min-w-0 items-center gap-3 rounded-md bg-hover px-4 py-3">
                 <ShieldCheck size={17} className="text-text-muted" aria-hidden="true" />
                 <span>{user.roles.map((role) => roleLabels[role]).join(", ")}</span>
               </div>
             </div>
           </div>
 
-          <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
+          <div className="rounded-lg border border-border bg-card p-5 shadow-soft">
             <h2 className="text-lg font-semibold tracking-normal">Permissions</h2>
             <div className="mt-5 grid gap-2 sm:grid-cols-2">
               {user.permissions.map((permission) => (
                 <div
                   key={permission}
-                  className="rounded-md border border-line bg-surface px-3 py-2 text-sm text-text-secondary"
+                  className="rounded-md border border-border bg-hover px-3 py-2 text-sm text-text-secondary"
                 >
                   {permission}
                 </div>
@@ -77,61 +77,61 @@ function ProfileContent({ user, token }: ProfileContentProps) {
           </div>
         </section>
 
-        <section className="rounded-lg border border-line bg-card p-5 shadow-soft">
+        <section className="rounded-lg border border-border bg-card p-5 shadow-soft">
           <h2 className="text-lg font-semibold tracking-normal">Employee Record</h2>
           {employee ? (
             <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-              <div className="rounded-md bg-surface px-4 py-3">
+              <div className="rounded-md bg-hover px-4 py-3">
                 <p className="text-xs font-medium uppercase text-text-muted">Name</p>
-                <p className="mt-1 text-sm font-medium text-ink">
+                <p className="mt-1 text-sm font-medium text-heading">
                   {getEmployeeName(employee)}
                 </p>
               </div>
-              <div className="rounded-md bg-surface px-4 py-3">
+              <div className="rounded-md bg-hover px-4 py-3">
                 <p className="text-xs font-medium uppercase text-text-muted">Code</p>
-                <p className="mt-1 text-sm font-medium text-ink">
+                <p className="mt-1 text-sm font-medium text-heading">
                   {employee.employeeCode}
                 </p>
               </div>
-              <div className="rounded-md bg-surface px-4 py-3">
+              <div className="rounded-md bg-hover px-4 py-3">
                 <p className="text-xs font-medium uppercase text-text-muted">Status</p>
-                <p className="mt-1 text-sm font-medium text-ink">
+                <p className="mt-1 text-sm font-medium text-heading">
                   {employmentStatusLabels[employee.status]}
                 </p>
               </div>
-              <div className="rounded-md bg-surface px-4 py-3">
+              <div className="rounded-md bg-hover px-4 py-3">
                 <p className="text-xs font-medium uppercase text-text-muted">Joining</p>
-                <p className="mt-1 text-sm font-medium text-ink">
+                <p className="mt-1 text-sm font-medium text-heading">
                   {formatDate(employee.dateOfJoining)}
                 </p>
               </div>
-              <div className="rounded-md bg-surface px-4 py-3">
+              <div className="rounded-md bg-hover px-4 py-3">
                 <p className="text-xs font-medium uppercase text-text-muted">Department</p>
-                <p className="mt-1 text-sm font-medium text-ink">
+                <p className="mt-1 text-sm font-medium text-heading">
                   {employee.department?.name ?? "Unassigned"}
                 </p>
               </div>
-              <div className="rounded-md bg-surface px-4 py-3">
+              <div className="rounded-md bg-hover px-4 py-3">
                 <p className="text-xs font-medium uppercase text-text-muted">Designation</p>
-                <p className="mt-1 text-sm font-medium text-ink">
+                <p className="mt-1 text-sm font-medium text-heading">
                   {employee.designation?.title ?? "Unassigned"}
                 </p>
               </div>
-              <div className="rounded-md bg-surface px-4 py-3">
+              <div className="rounded-md bg-hover px-4 py-3">
                 <p className="text-xs font-medium uppercase text-text-muted">Manager</p>
-                <p className="mt-1 text-sm font-medium text-ink">
+                <p className="mt-1 text-sm font-medium text-heading">
                   {employee.manager ? getEmployeeName(employee.manager) : "Unassigned"}
                 </p>
               </div>
-              <div className="rounded-md bg-surface px-4 py-3">
+              <div className="rounded-md bg-hover px-4 py-3">
                 <p className="text-xs font-medium uppercase text-text-muted">Documents</p>
-                <p className="mt-1 text-sm font-medium text-ink">
+                <p className="mt-1 text-sm font-medium text-heading">
                   {employee.documents.length}
                 </p>
               </div>
             </div>
           ) : (
-            <p className="mt-5 rounded-md border border-dashed border-line px-4 py-5 text-sm text-text-muted">
+            <p className="mt-5 rounded-md border border-dashed border-border px-4 py-5 text-sm text-text-muted">
               {employeeQuery.isLoading
                 ? "Loading employee record."
                 : "No employee record linked."}

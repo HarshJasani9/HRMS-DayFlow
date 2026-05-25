@@ -73,7 +73,7 @@ function CandidateDetailContent({ user, token }: CandidateDetailContentProps) {
           </div>
           <div>
             <p className="text-sm font-medium text-brand-700">Recruitment</p>
-            <h1 className="mt-1 text-3xl font-semibold tracking-normal text-ink">
+            <h1 className="mt-1 text-3xl font-semibold tracking-normal text-heading">
               {candidate ? getCandidateName(candidate) : "Candidate Profile"}
             </h1>
           </div>
@@ -81,42 +81,42 @@ function CandidateDetailContent({ user, token }: CandidateDetailContentProps) {
 
         {candidate ? (
           <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
+            <div className="rounded-lg border border-border bg-card p-5 shadow-soft">
               <p className="text-sm text-text-muted">Email</p>
-              <p className="mt-2 font-semibold text-ink">{candidate.email}</p>
+              <p className="mt-2 font-semibold text-heading">{candidate.email}</p>
             </div>
-            <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
+            <div className="rounded-lg border border-border bg-card p-5 shadow-soft">
               <p className="text-sm text-text-muted">Phone</p>
-              <p className="mt-2 font-semibold text-ink">{candidate.phone ?? "Not set"}</p>
+              <p className="mt-2 font-semibold text-heading">{candidate.phone ?? "Not set"}</p>
             </div>
-            <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
+            <div className="rounded-lg border border-border bg-card p-5 shadow-soft">
               <p className="text-sm text-text-muted">Current role</p>
-              <p className="mt-2 font-semibold text-ink">
+              <p className="mt-2 font-semibold text-heading">
                 {candidate.currentTitle ?? "Not set"}
               </p>
             </div>
-            <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
+            <div className="rounded-lg border border-border bg-card p-5 shadow-soft">
               <p className="text-sm text-text-muted">Source</p>
-              <p className="mt-2 font-semibold text-ink">{candidate.source ?? "Not set"}</p>
+              <p className="mt-2 font-semibold text-heading">{candidate.source ?? "Not set"}</p>
             </div>
           </section>
         ) : null}
 
-        <section className="rounded-lg border border-line bg-card p-5 shadow-soft">
+        <section className="rounded-lg border border-border bg-card p-5 shadow-soft">
           <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
             <h2 className="text-lg font-semibold tracking-normal">Applications</h2>
             {error ? <p className="text-sm text-error-text">{error}</p> : null}
           </div>
           <div className="mt-5 overflow-x-auto">
             <table className="min-w-[760px] w-full text-left text-sm">
-              <thead className="border-b border-line bg-surface text-xs uppercase text-text-muted">
+              <thead className="border-b border-border bg-hover text-xs uppercase text-text-muted">
                 <tr>
                   <th className="px-4 py-3 font-semibold">Job</th>
                   <th className="px-4 py-3 font-semibold">Applied</th>
                   <th className="px-4 py-3 font-semibold">Status</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-line">
+              <tbody className="divide-y divide-border">
                 {(candidate?.applications ?? []).map((application) => (
                   <tr key={application.id}>
                     <td className="px-4 py-4">
@@ -133,7 +133,7 @@ function CandidateDetailContent({ user, token }: CandidateDetailContentProps) {
                     <td className="px-4 py-4">{formatDate(application.appliedAt)}</td>
                     <td className="px-4 py-4">
                       <select
-                        className="h-9 rounded-md border border-line bg-card px-2 text-sm outline-none"
+                        className="h-9 rounded-md border border-border bg-card px-2 text-sm outline-none"
                         defaultValue={application.status}
                         disabled={!canManageRecruitment}
                         onChange={(event) =>
@@ -155,12 +155,12 @@ function CandidateDetailContent({ user, token }: CandidateDetailContentProps) {
         </section>
 
         <section className="grid gap-4 xl:grid-cols-2">
-          <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
+          <div className="rounded-lg border border-border bg-card p-5 shadow-soft">
             <h2 className="text-lg font-semibold tracking-normal">Interviews</h2>
-            <div className="mt-5 divide-y divide-line">
+            <div className="mt-5 divide-y divide-border">
               {(candidate?.interviews ?? []).map((interview) => (
                 <div key={interview.id} className="py-4">
-                  <p className="font-medium text-ink">
+                  <p className="font-medium text-heading">
                     {formatDateTime(interview.scheduledAt)}
                   </p>
                   <p className="mt-1 text-sm text-text-secondary">
@@ -172,12 +172,12 @@ function CandidateDetailContent({ user, token }: CandidateDetailContentProps) {
             </div>
           </div>
 
-          <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
+          <div className="rounded-lg border border-border bg-card p-5 shadow-soft">
             <h2 className="text-lg font-semibold tracking-normal">Offers</h2>
-            <div className="mt-5 divide-y divide-line">
+            <div className="mt-5 divide-y divide-border">
               {(candidate?.offers ?? []).map((offer) => (
                 <div key={offer.id} className="py-4">
-                  <p className="font-medium text-ink">{offer.job.title}</p>
+                  <p className="font-medium text-heading">{offer.job.title}</p>
                   <p className="mt-1 text-sm text-text-secondary">
                     {offerStatusLabels[offer.status]} | {offer.offeredSalary ?? "Salary not set"}
                   </p>

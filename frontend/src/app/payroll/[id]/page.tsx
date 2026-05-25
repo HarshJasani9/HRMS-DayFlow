@@ -72,7 +72,7 @@ function PayrollDetailContent({ user, token }: PayrollDetailContentProps) {
           </div>
           <div>
             <p className="text-sm font-medium text-brand-700">Payroll</p>
-            <h1 className="mt-1 text-3xl font-semibold tracking-normal text-ink">
+            <h1 className="mt-1 text-3xl font-semibold tracking-normal text-heading">
               {payroll
                 ? formatPayrollMonth(payroll.month, payroll.year)
                 : "Payroll Detail"}
@@ -82,25 +82,25 @@ function PayrollDetailContent({ user, token }: PayrollDetailContentProps) {
 
         {payroll ? (
           <section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            <div className="rounded-lg border border-line bg-white p-5 shadow-soft">
+            <div className="rounded-lg border border-border bg-white p-5 shadow-soft">
               <p className="text-sm text-slate-500">Employees</p>
-              <p className="mt-2 text-2xl font-semibold tracking-normal text-ink">
+              <p className="mt-2 text-2xl font-semibold tracking-normal text-heading">
                 {payroll.itemCount}
               </p>
             </div>
-            <div className="rounded-lg border border-line bg-white p-5 shadow-soft">
+            <div className="rounded-lg border border-border bg-white p-5 shadow-soft">
               <p className="text-sm text-slate-500">Gross</p>
-              <p className="mt-2 text-2xl font-semibold tracking-normal text-ink">
+              <p className="mt-2 text-2xl font-semibold tracking-normal text-heading">
                 {formatMoney(payroll.totalGross)}
               </p>
             </div>
-            <div className="rounded-lg border border-line bg-white p-5 shadow-soft">
+            <div className="rounded-lg border border-border bg-white p-5 shadow-soft">
               <p className="text-sm text-slate-500">Deductions</p>
-              <p className="mt-2 text-2xl font-semibold tracking-normal text-ink">
+              <p className="mt-2 text-2xl font-semibold tracking-normal text-heading">
                 {formatMoney(payroll.totalDeductions)}
               </p>
             </div>
-            <div className="rounded-lg border border-line bg-white p-5 shadow-soft">
+            <div className="rounded-lg border border-border bg-white p-5 shadow-soft">
               <p className="text-sm text-slate-500">Net</p>
               <p className="mt-2 text-2xl font-semibold tracking-normal text-brand-700">
                 {formatMoney(payroll.totalNet)}
@@ -112,14 +112,14 @@ function PayrollDetailContent({ user, token }: PayrollDetailContentProps) {
           </section>
         ) : null}
 
-        <section className="rounded-lg border border-line bg-white p-5 shadow-soft">
+        <section className="rounded-lg border border-border bg-white p-5 shadow-soft">
           <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
             <h2 className="text-lg font-semibold tracking-normal">Payroll Items</h2>
             {error ? <p className="text-sm text-red-700">{error}</p> : null}
           </div>
           <div className="mt-5 overflow-x-auto">
             <table className="min-w-[760px] w-full text-left text-sm">
-              <thead className="border-b border-line bg-surface text-xs uppercase text-slate-500">
+              <thead className="border-b border-border bg-hover text-xs uppercase text-slate-500">
                 <tr>
                   <th className="px-4 py-3 font-semibold">Employee</th>
                   <th className="px-4 py-3 font-semibold">Base</th>
@@ -129,11 +129,11 @@ function PayrollDetailContent({ user, token }: PayrollDetailContentProps) {
                   <th className="px-4 py-3 font-semibold">Payslip</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-line">
+              <tbody className="divide-y divide-border">
                 {items.map((item) => (
                   <tr key={item.id}>
                     <td className="px-4 py-4">
-                      <div className="font-medium text-ink">
+                      <div className="font-medium text-heading">
                         {getEmployeeName(item.employee)}
                       </div>
                       <div className="mt-1 text-xs text-slate-500">
@@ -148,7 +148,7 @@ function PayrollDetailContent({ user, token }: PayrollDetailContentProps) {
                     </td>
                     <td className="px-4 py-4">
                       <button
-                        className="grid h-9 w-9 place-items-center rounded-md border border-line text-slate-600 transition hover:bg-surface"
+                        className="grid h-9 w-9 place-items-center rounded-md border border-border text-slate-600 transition hover:bg-hover"
                         type="button"
                         onClick={() => downloadPayslip(item.employeeId)}
                         aria-label={`Download payslip for ${getEmployeeName(item.employee)}`}

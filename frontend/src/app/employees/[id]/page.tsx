@@ -58,9 +58,9 @@ function readFileAsDataUrl(file: File): Promise<string> {
 
 function DetailRow({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-md bg-surface px-4 py-3">
+    <div className="rounded-md bg-hover px-4 py-3">
       <p className="text-xs font-medium uppercase text-text-muted">{label}</p>
-      <p className="mt-1 text-sm font-medium text-ink">{value}</p>
+      <p className="mt-1 text-sm font-medium text-heading">{value}</p>
     </div>
   );
 }
@@ -68,7 +68,7 @@ function DetailRow({ label, value }: { label: string; value: string }) {
 function EmployeeProfile({ employee }: { employee: Employee }) {
   return (
     <section className="grid gap-4 lg:grid-cols-[0.75fr_1.25fr]">
-      <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
+      <div className="rounded-lg border border-border bg-card p-5 shadow-soft">
         <div className="flex min-w-0 items-center gap-4">
           <div className="grid h-14 w-14 place-items-center rounded-md bg-brand-50 text-brand-700">
             <UserCircle size={32} aria-hidden="true" />
@@ -81,22 +81,22 @@ function EmployeeProfile({ employee }: { employee: Employee }) {
           </div>
         </div>
         <div className="mt-6 space-y-3 text-sm">
-          <div className="flex min-w-0 items-center gap-3 rounded-md bg-surface px-4 py-3">
+          <div className="flex min-w-0 items-center gap-3 rounded-md bg-hover px-4 py-3">
             <Mail size={17} className="text-text-muted" aria-hidden="true" />
             <span>{employee.workEmail}</span>
           </div>
-          <div className="flex min-w-0 items-center gap-3 rounded-md bg-surface px-4 py-3">
+          <div className="flex min-w-0 items-center gap-3 rounded-md bg-hover px-4 py-3">
             <Phone size={17} className="text-text-muted" aria-hidden="true" />
             <span>{employee.phone ?? "Not set"}</span>
           </div>
-          <div className="flex min-w-0 items-center gap-3 rounded-md bg-surface px-4 py-3">
+          <div className="flex min-w-0 items-center gap-3 rounded-md bg-hover px-4 py-3">
             <ShieldCheck size={17} className="text-text-muted" aria-hidden="true" />
             <span>{employmentStatusLabels[employee.status]}</span>
           </div>
         </div>
       </div>
 
-      <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
+      <div className="rounded-lg border border-border bg-card p-5 shadow-soft">
         <h2 className="text-lg font-semibold tracking-normal">Employment</h2>
         <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
           <DetailRow label="Department" value={employee.department?.name ?? "Unassigned"} />
@@ -188,7 +188,7 @@ function EmployeeProfileContent({ user, token }: EmployeeProfileContentProps) {
         <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>
             <p className="text-sm font-medium text-brand-700">Employees</p>
-            <h1 className="mt-1 text-3xl font-semibold tracking-normal text-ink">
+            <h1 className="mt-1 text-3xl font-semibold tracking-normal text-heading">
               {employee ? getEmployeeName(employee) : "Employee Profile"}
             </h1>
           </div>
@@ -208,7 +208,7 @@ function EmployeeProfileContent({ user, token }: EmployeeProfileContentProps) {
         ) : null}
 
         {!employeeQuery.isLoading && !employee ? (
-          <section className="rounded-lg border border-line bg-card p-6 text-sm text-text-secondary shadow-soft">
+          <section className="rounded-lg border border-border bg-card p-6 text-sm text-text-secondary shadow-soft">
             Employee record could not be loaded.
           </section>
         ) : null}
@@ -218,15 +218,15 @@ function EmployeeProfileContent({ user, token }: EmployeeProfileContentProps) {
             <EmployeeProfile employee={employee} />
 
             <section className="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
-              <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
+              <div className="rounded-lg border border-border bg-card p-5 shadow-soft">
                 <h2 className="text-lg font-semibold tracking-normal">
                   Emergency Contacts
                 </h2>
                 <div className="mt-5 space-y-3">
                   {employee.emergencyContacts.map((contact) => (
-                    <div key={contact.id} className="rounded-md bg-surface px-4 py-3">
+                    <div key={contact.id} className="rounded-md bg-hover px-4 py-3">
                       <div className="flex min-w-0 items-center justify-between gap-3">
-                        <p className="font-medium text-ink">{contact.name}</p>
+                        <p className="font-medium text-heading">{contact.name}</p>
                         {contact.isPrimary ? (
                           <span className="rounded-md bg-brand-50 px-2 py-1 text-xs font-medium text-brand-700">
                             Primary
@@ -239,14 +239,14 @@ function EmployeeProfileContent({ user, token }: EmployeeProfileContentProps) {
                     </div>
                   ))}
                   {employee.emergencyContacts.length === 0 ? (
-                    <p className="rounded-md border border-dashed border-line px-4 py-5 text-sm text-text-muted">
+                    <p className="rounded-md border border-dashed border-border px-4 py-5 text-sm text-text-muted">
                       No emergency contacts.
                     </p>
                   ) : null}
                 </div>
               </div>
 
-              <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
+              <div className="rounded-lg border border-border bg-card p-5 shadow-soft">
                 <div className="flex min-w-0 items-center gap-3">
                   <div className="grid h-10 w-10 place-items-center rounded-md bg-brand-50 text-brand-700">
                     <BriefcaseBusiness size={20} aria-hidden="true" />
@@ -256,12 +256,12 @@ function EmployeeProfileContent({ user, token }: EmployeeProfileContentProps) {
 
                 <form className="mt-5 grid gap-3 sm:grid-cols-[180px_1fr_auto]" onSubmit={handleSubmit(submitDocument)}>
                   <input
-                    className="h-11 rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+                    className="h-11 rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
                     placeholder="Document type"
                     {...register("documentType", { required: true })}
                   />
                   <input
-                    className="h-11 rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+                    className="h-11 rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
                     type="file"
                     {...register("file", { required: true })}
                   />
@@ -274,7 +274,7 @@ function EmployeeProfileContent({ user, token }: EmployeeProfileContentProps) {
                     Upload
                   </button>
                   <input
-                    className="h-11 rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600 sm:col-span-3"
+                    className="h-11 rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600 sm:col-span-3"
                     placeholder="Notes"
                     {...register("notes")}
                   />
@@ -290,13 +290,13 @@ function EmployeeProfileContent({ user, token }: EmployeeProfileContentProps) {
                   {employee.documents.map((document) => (
                     <a
                       key={document.id}
-                      className="block rounded-md border border-line bg-surface px-4 py-3 transition hover:border-brand-600"
+                      className="block rounded-md border border-border bg-hover px-4 py-3 transition hover:border-brand-600"
                       href={document.fileUrl}
                       target="_blank"
                       rel="noreferrer"
                     >
                       <div className="flex min-w-0 items-center justify-between gap-3">
-                        <p className="font-medium text-ink">{document.fileName}</p>
+                        <p className="font-medium text-heading">{document.fileName}</p>
                         <span className="rounded-md bg-card px-2 py-1 text-xs font-medium text-text-secondary">
                           {document.documentType}
                         </span>
@@ -307,7 +307,7 @@ function EmployeeProfileContent({ user, token }: EmployeeProfileContentProps) {
                     </a>
                   ))}
                   {employee.documents.length === 0 ? (
-                    <p className="rounded-md border border-dashed border-line px-4 py-5 text-sm text-text-muted">
+                    <p className="rounded-md border border-dashed border-border px-4 py-5 text-sm text-text-muted">
                       No documents uploaded.
                     </p>
                   ) : null}

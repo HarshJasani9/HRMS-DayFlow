@@ -159,12 +159,12 @@ function SalariesContent({ user, token }: SalariesContentProps) {
         <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <div>
             <p className="text-sm font-medium text-brand-700">Payroll</p>
-            <h1 className="mt-1 text-3xl font-semibold tracking-normal text-ink">
+            <h1 className="mt-1 text-3xl font-semibold tracking-normal text-heading">
               Salary Setup
             </h1>
           </div>
           <button
-            className="inline-flex h-10 items-center justify-center rounded-md border border-line bg-card px-4 text-sm font-semibold text-text-secondary transition hover:bg-surface"
+            className="inline-flex h-10 items-center justify-center rounded-md border border-border bg-card px-4 text-sm font-semibold text-text-secondary transition hover:bg-hover"
             type="button"
             onClick={startNewSetup}
           >
@@ -174,7 +174,7 @@ function SalariesContent({ user, token }: SalariesContentProps) {
 
         <section className="grid gap-4 xl:grid-cols-[0.85fr_1.15fr]">
           <form
-            className="rounded-lg border border-line bg-card p-5 shadow-soft"
+            className="rounded-lg border border-border bg-card p-5 shadow-soft"
             onSubmit={handleSubmit(submit)}
           >
             <div className="flex min-w-0 items-center gap-3">
@@ -187,7 +187,7 @@ function SalariesContent({ user, token }: SalariesContentProps) {
             </div>
 
             {message ? (
-              <div className="mt-5 rounded-md border border-line bg-surface px-3 py-2 text-sm text-text-secondary">
+              <div className="mt-5 rounded-md border border-border bg-hover px-3 py-2 text-sm text-text-secondary">
                 {message}
               </div>
             ) : null}
@@ -195,7 +195,7 @@ function SalariesContent({ user, token }: SalariesContentProps) {
             <label className="mt-5 block text-sm font-medium text-text-secondary">
               Employee
               <select
-                className="mt-2 h-11 w-full rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
+                className="mt-2 h-11 w-full rounded-md border border-border bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                 {...register("employeeId", { required: true })}
               >
                 <option value="">Select employee</option>
@@ -211,7 +211,7 @@ function SalariesContent({ user, token }: SalariesContentProps) {
               <label className="block text-sm font-medium text-text-secondary">
                 Base salary
                 <input
-                  className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+                  className="mt-2 h-11 w-full rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
                   min="0"
                   step="0.01"
                   type="number"
@@ -221,7 +221,7 @@ function SalariesContent({ user, token }: SalariesContentProps) {
               <label className="block text-sm font-medium text-text-secondary">
                 Allowances
                 <input
-                  className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+                  className="mt-2 h-11 w-full rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
                   min="0"
                   step="0.01"
                   type="number"
@@ -231,7 +231,7 @@ function SalariesContent({ user, token }: SalariesContentProps) {
               <label className="block text-sm font-medium text-text-secondary">
                 Deductions
                 <input
-                  className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+                  className="mt-2 h-11 w-full rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
                   min="0"
                   step="0.01"
                   type="number"
@@ -241,7 +241,7 @@ function SalariesContent({ user, token }: SalariesContentProps) {
               <label className="block text-sm font-medium text-text-secondary">
                 Effective from
                 <input
-                  className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+                  className="mt-2 h-11 w-full rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
                   type="date"
                   {...register("effectiveFrom", { required: true })}
                 />
@@ -263,11 +263,11 @@ function SalariesContent({ user, token }: SalariesContentProps) {
             </button>
           </form>
 
-          <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
+          <div className="rounded-lg border border-border bg-card p-5 shadow-soft">
             <h2 className="text-lg font-semibold tracking-normal">Current Salaries</h2>
             <div className="mt-5 overflow-x-auto">
               <table className="min-w-[760px] w-full text-left text-sm">
-                <thead className="border-b border-line bg-surface text-xs uppercase text-text-muted">
+                <thead className="border-b border-border bg-hover text-xs uppercase text-text-muted">
                   <tr>
                     <th className="px-4 py-3 font-semibold">Employee</th>
                     <th className="px-4 py-3 font-semibold">Gross</th>
@@ -277,7 +277,7 @@ function SalariesContent({ user, token }: SalariesContentProps) {
                     <th className="px-4 py-3 font-semibold">Status</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-line">
+                <tbody className="divide-y divide-border">
                   {salaries.map((salary) => {
                     const grossPay = salary.baseSalary + salary.allowances;
                     const netPay = grossPay - salary.deductions;
@@ -285,7 +285,7 @@ function SalariesContent({ user, token }: SalariesContentProps) {
                     return (
                       <tr key={salary.id}>
                         <td className="px-4 py-4">
-                          <div className="font-medium text-ink">
+                          <div className="font-medium text-heading">
                             {getEmployeeName(salary.employee)}
                           </div>
                           <div className="mt-1 text-xs text-text-muted">

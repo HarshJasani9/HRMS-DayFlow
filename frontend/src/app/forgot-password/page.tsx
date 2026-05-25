@@ -46,8 +46,8 @@ export default function ForgotPasswordPage() {
   }
 
   return (
-    <main className="grid min-h-screen place-items-center bg-surface px-5 py-10">
-      <section className="w-full max-w-md rounded-lg border border-line bg-card p-6 shadow-soft">
+    <main className="grid min-h-screen place-items-center bg-hover px-5 py-10">
+      <section className="w-full max-w-md rounded-lg border border-border bg-card p-6 shadow-soft">
         <div className="flex min-w-0 items-center gap-3">
           <div className="grid h-10 w-10 place-items-center rounded-md bg-brand-50 text-brand-700">
             <KeyRound size={21} aria-hidden="true" />
@@ -71,7 +71,7 @@ export default function ForgotPasswordPage() {
             <p>{result.message}</p>
             {result.resetToken ? (
               <div className="mt-3 rounded-md bg-card p-3 text-xs text-text-secondary">
-                <p className="font-semibold text-ink">Development reset token</p>
+                <p className="font-semibold text-heading">Development reset token</p>
                 <p className="mt-2 break-all">{result.resetToken}</p>
                 <Link
                   className="mt-3 inline-flex font-medium text-brand-700"
@@ -88,7 +88,7 @@ export default function ForgotPasswordPage() {
           <label className="block text-sm font-medium text-text-secondary">
             Email
             <input
-              className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+              className="mt-2 h-11 w-full rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
               type="email"
               autoComplete="email"
               {...register("email", { required: true })}

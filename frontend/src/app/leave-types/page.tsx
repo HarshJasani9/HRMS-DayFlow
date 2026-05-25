@@ -79,14 +79,14 @@ function LeaveTypesContent({ user, token }: LeaveTypesContentProps) {
       <div className="space-y-6">
         <div>
           <p className="text-sm font-medium text-brand-700">Leave</p>
-          <h1 className="mt-1 text-3xl font-semibold tracking-normal text-ink">
+          <h1 className="mt-1 text-3xl font-semibold tracking-normal text-heading">
             Leave Settings
           </h1>
         </div>
 
         <section className="grid gap-4 lg:grid-cols-[0.8fr_1.2fr]">
           <form
-            className="rounded-lg border border-line bg-card p-5 shadow-soft"
+            className="rounded-lg border border-border bg-card p-5 shadow-soft"
             onSubmit={handleSubmit(submit)}
           >
             <div className="flex min-w-0 items-center gap-3">
@@ -105,14 +105,14 @@ function LeaveTypesContent({ user, token }: LeaveTypesContentProps) {
             <label className="mt-5 block text-sm font-medium text-text-secondary">
               Name
               <input
-                className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+                className="mt-2 h-11 w-full rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
                 {...register("name", { required: true })}
               />
             </label>
             <label className="mt-5 block text-sm font-medium text-text-secondary">
               Annual allowance
               <input
-                className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+                className="mt-2 h-11 w-full rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
                 type="number"
                 step="0.5"
                 {...register("defaultAnnualAllowance", { valueAsNumber: true })}
@@ -121,7 +121,7 @@ function LeaveTypesContent({ user, token }: LeaveTypesContentProps) {
             <label className="mt-5 block text-sm font-medium text-text-secondary">
               Description
               <textarea
-                className="mt-2 min-h-24 w-full rounded-md border border-line px-3 py-3 text-sm outline-none transition focus:border-brand-600"
+                className="mt-2 min-h-24 w-full rounded-md border border-border px-3 py-3 text-sm outline-none transition focus:border-brand-600"
                 {...register("description")}
               />
             </label>
@@ -149,25 +149,25 @@ function LeaveTypesContent({ user, token }: LeaveTypesContentProps) {
             </button>
           </form>
 
-          <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
+          <div className="rounded-lg border border-border bg-card p-5 shadow-soft">
             <h2 className="text-lg font-semibold tracking-normal">Leave Types</h2>
-            <div className="mt-5 overflow-hidden rounded-md border border-line">
+            <div className="mt-5 overflow-hidden rounded-md border border-border">
               {leaveTypes.map((leaveType) => (
                 <div
                   key={leaveType.id}
-                  className="grid gap-3 border-b border-line px-4 py-4 last:border-0 sm:grid-cols-[1fr_auto]"
+                  className="grid gap-3 border-b border-border px-4 py-4 last:border-0 sm:grid-cols-[1fr_auto]"
                 >
                   <div>
-                    <p className="font-medium text-ink">{leaveType.name}</p>
+                    <p className="font-medium text-heading">{leaveType.name}</p>
                     <p className="mt-1 text-sm text-text-muted">
                       {leaveType.description ?? "No description"}
                     </p>
                   </div>
                   <div className="flex items-center gap-2 text-xs font-medium text-text-secondary">
-                    <span className="rounded-md bg-surface px-2 py-1">
+                    <span className="rounded-md bg-hover px-2 py-1">
                       {leaveType.defaultAnnualAllowance} days
                     </span>
-                    <span className="rounded-md bg-surface px-2 py-1">
+                    <span className="rounded-md bg-hover px-2 py-1">
                       {leaveType.isActive ? "Active" : "Inactive"}
                     </span>
                   </div>

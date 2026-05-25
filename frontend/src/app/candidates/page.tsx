@@ -139,7 +139,7 @@ function CandidatesContent({ user, token }: CandidatesContentProps) {
           </div>
           <div>
             <p className="text-sm font-medium text-brand-700">Recruitment</p>
-            <h1 className="mt-1 text-3xl font-semibold tracking-normal text-ink">
+            <h1 className="mt-1 text-3xl font-semibold tracking-normal text-heading">
               Candidates
             </h1>
           </div>
@@ -148,12 +148,12 @@ function CandidatesContent({ user, token }: CandidatesContentProps) {
         <section className="grid gap-4 xl:grid-cols-[0.85fr_1.15fr]">
           {canManageRecruitment ? (
             <form
-              className="rounded-lg border border-line bg-card p-5 shadow-soft"
+              className="rounded-lg border border-border bg-card p-5 shadow-soft"
               onSubmit={handleSubmit(submit)}
             >
               <h2 className="text-lg font-semibold tracking-normal">Add Candidate</h2>
               {message ? (
-                <div className="mt-5 rounded-md border border-line bg-surface px-3 py-2 text-sm text-text-secondary">
+                <div className="mt-5 rounded-md border border-border bg-hover px-3 py-2 text-sm text-text-secondary">
                   {message}
                 </div>
               ) : null}
@@ -161,21 +161,21 @@ function CandidatesContent({ user, token }: CandidatesContentProps) {
                 <label className="block text-sm font-medium text-text-secondary">
                   First name
                   <input
-                    className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+                    className="mt-2 h-11 w-full rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
                     {...register("firstName", { required: true })}
                   />
                 </label>
                 <label className="block text-sm font-medium text-text-secondary">
                   Last name
                   <input
-                    className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+                    className="mt-2 h-11 w-full rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
                     {...register("lastName", { required: true })}
                   />
                 </label>
                 <label className="block text-sm font-medium text-text-secondary">
                   Email
                   <input
-                    className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+                    className="mt-2 h-11 w-full rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
                     type="email"
                     {...register("email", { required: true })}
                   />
@@ -183,35 +183,35 @@ function CandidatesContent({ user, token }: CandidatesContentProps) {
                 <label className="block text-sm font-medium text-text-secondary">
                   Phone
                   <input
-                    className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+                    className="mt-2 h-11 w-full rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
                     {...register("phone")}
                   />
                 </label>
                 <label className="block text-sm font-medium text-text-secondary">
                   Source
                   <input
-                    className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+                    className="mt-2 h-11 w-full rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
                     {...register("source")}
                   />
                 </label>
                 <label className="block text-sm font-medium text-text-secondary">
                   Current title
                   <input
-                    className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+                    className="mt-2 h-11 w-full rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
                     {...register("currentTitle")}
                   />
                 </label>
                 <label className="block text-sm font-medium text-text-secondary">
                   Current company
                   <input
-                    className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+                    className="mt-2 h-11 w-full rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
                     {...register("currentCompany")}
                   />
                 </label>
                 <label className="block text-sm font-medium text-text-secondary">
                   Resume URL
                   <input
-                    className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+                    className="mt-2 h-11 w-full rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
                     {...register("resumeUrl")}
                   />
                 </label>
@@ -219,7 +219,7 @@ function CandidatesContent({ user, token }: CandidatesContentProps) {
               <label className="mt-5 block text-sm font-medium text-text-secondary">
                 Apply to job
                 <select
-                  className="mt-2 h-11 w-full rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
+                  className="mt-2 h-11 w-full rounded-md border border-border bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                   {...register("jobId")}
                 >
                   <option value="">No application</option>
@@ -233,7 +233,7 @@ function CandidatesContent({ user, token }: CandidatesContentProps) {
               <label className="mt-5 block text-sm font-medium text-text-secondary">
                 Notes
                 <textarea
-                  className="mt-2 min-h-24 w-full rounded-md border border-line px-3 py-3 text-sm outline-none transition focus:border-brand-600"
+                  className="mt-2 min-h-24 w-full rounded-md border border-border px-3 py-3 text-sm outline-none transition focus:border-brand-600"
                   {...register("notes")}
                 />
               </label>
@@ -248,7 +248,7 @@ function CandidatesContent({ user, token }: CandidatesContentProps) {
             </form>
           ) : null}
 
-          <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
+          <div className="rounded-lg border border-border bg-card p-5 shadow-soft">
             <label className="relative block text-sm font-medium text-text-secondary">
               <span className="sr-only">Search candidates</span>
               <Search
@@ -257,7 +257,7 @@ function CandidatesContent({ user, token }: CandidatesContentProps) {
                 aria-hidden="true"
               />
               <input
-                className="h-11 w-full rounded-md border border-line pl-10 pr-3 text-sm outline-none transition focus:border-brand-600"
+                className="h-11 w-full rounded-md border border-border pl-10 pr-3 text-sm outline-none transition focus:border-brand-600"
                 placeholder="Search candidates"
                 value={search}
                 onChange={(event) => setSearch(event.target.value)}
@@ -277,14 +277,14 @@ function CandidatesContent({ user, token }: CandidatesContentProps) {
             ) : (
               <div className="mt-5 overflow-x-auto">
                 <table className="min-w-[760px] w-full text-left text-sm">
-                  <thead className="border-b border-line bg-surface text-xs uppercase text-text-muted">
+                  <thead className="border-b border-border bg-hover text-xs uppercase text-text-muted">
                     <tr>
                       <th className="px-4 py-3 font-semibold">Candidate</th>
                       <th className="px-4 py-3 font-semibold">Current role</th>
                       <th className="px-4 py-3 font-semibold">Applications</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-line">
+                  <tbody className="divide-y divide-border">
                     {candidates.map((candidate) => (
                       <tr key={candidate.id}>
                         <td className="px-4 py-4">

@@ -78,7 +78,7 @@ function MyPayslipsContent({ user, token }: MyPayslipsContentProps) {
           </div>
           <div>
             <p className="text-sm font-medium text-brand-700">Payroll</p>
-            <h1 className="mt-1 text-3xl font-semibold tracking-normal text-ink">
+            <h1 className="mt-1 text-3xl font-semibold tracking-normal text-heading">
               My Payslips
             </h1>
           </div>
@@ -90,10 +90,10 @@ function MyPayslipsContent({ user, token }: MyPayslipsContentProps) {
           </div>
         ) : null}
 
-        <section className="rounded-lg border border-line bg-card p-5 shadow-soft">
+        <section className="rounded-lg border border-border bg-card p-5 shadow-soft">
           <div className="overflow-x-auto">
             <table className="min-w-[760px] w-full text-left text-sm">
-              <thead className="border-b border-line bg-surface text-xs uppercase text-text-muted">
+              <thead className="border-b border-border bg-hover text-xs uppercase text-text-muted">
                 <tr>
                   <th className="px-4 py-3 font-semibold">Month</th>
                   <th className="px-4 py-3 font-semibold">Payslip</th>
@@ -104,7 +104,7 @@ function MyPayslipsContent({ user, token }: MyPayslipsContentProps) {
                   <th className="px-4 py-3 font-semibold">Download</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-line">
+              <tbody className="divide-y divide-border">
                 {payslips.map((payslip) => (
                   <tr key={payslip.id}>
                     <td className="px-4 py-4">
@@ -121,7 +121,7 @@ function MyPayslipsContent({ user, token }: MyPayslipsContentProps) {
                     <td className="px-4 py-4">{formatDateTime(payslip.issuedAt)}</td>
                     <td className="px-4 py-4">
                       <button
-                        className="grid h-9 w-9 place-items-center rounded-md border border-line text-text-secondary transition hover:bg-surface"
+                        className="grid h-9 w-9 place-items-center rounded-md border border-border text-text-secondary transition hover:bg-hover"
                         type="button"
                         onClick={() => downloadPayslip(payslip.payrollId)}
                         aria-label={`Download ${payslip.payslipNumber}`}
@@ -136,7 +136,7 @@ function MyPayslipsContent({ user, token }: MyPayslipsContentProps) {
           </div>
 
           {!payslipsQuery.isLoading && payslips.length === 0 ? (
-            <div className="mt-5 rounded-md border border-dashed border-line px-4 py-8 text-center text-sm text-text-muted">
+            <div className="mt-5 rounded-md border border-dashed border-border px-4 py-8 text-center text-sm text-text-muted">
               No payslips found.
             </div>
           ) : null}

@@ -88,15 +88,15 @@ function LeaveApprovalsContent({ user, token }: LeaveApprovalsContentProps) {
       <div className="space-y-6">
         <div>
           <p className="text-sm font-medium text-brand-700">Leave</p>
-          <h1 className="mt-1 text-3xl font-semibold tracking-normal text-ink">
+          <h1 className="mt-1 text-3xl font-semibold tracking-normal text-heading">
             Leave Approvals
           </h1>
         </div>
 
-        <section className="rounded-lg border border-line bg-card p-5 shadow-soft">
+        <section className="rounded-lg border border-border bg-card p-5 shadow-soft">
           <div className="grid gap-3 sm:grid-cols-2">
             <select
-              className="h-11 rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
+              className="h-11 rounded-md border border-border bg-card px-3 text-sm outline-none transition focus:border-brand-600"
               value={status}
               onChange={(event) => setStatus(event.target.value as LeaveRequestStatus | "")}
             >
@@ -108,7 +108,7 @@ function LeaveApprovalsContent({ user, token }: LeaveApprovalsContentProps) {
               ))}
             </select>
             <select
-              className="h-11 rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
+              className="h-11 rounded-md border border-border bg-card px-3 text-sm outline-none transition focus:border-brand-600"
               value={departmentId}
               onChange={(event) => setDepartmentId(event.target.value)}
             >
@@ -129,7 +129,7 @@ function LeaveApprovalsContent({ user, token }: LeaveApprovalsContentProps) {
 
           <div className="mt-5 overflow-x-auto">
             <table className="min-w-[760px] w-full text-left text-sm">
-              <thead className="border-b border-line bg-surface text-xs uppercase text-text-muted">
+              <thead className="border-b border-border bg-hover text-xs uppercase text-text-muted">
                 <tr>
                   <th className="px-4 py-3 font-semibold">Employee</th>
                   <th className="px-4 py-3 font-semibold">Leave</th>
@@ -139,11 +139,11 @@ function LeaveApprovalsContent({ user, token }: LeaveApprovalsContentProps) {
                   <th className="px-4 py-3 font-semibold">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-line">
+              <tbody className="divide-y divide-border">
                 {leaveRequests.map((leaveRequest) => (
                   <tr key={leaveRequest.id}>
                     <td className="px-4 py-4">
-                      <div className="font-medium text-ink">
+                      <div className="font-medium text-heading">
                         {getEmployeeName(leaveRequest.employee)}
                       </div>
                       <div className="mt-1 text-xs text-text-muted">
@@ -159,7 +159,7 @@ function LeaveApprovalsContent({ user, token }: LeaveApprovalsContentProps) {
                     <td className="px-4 py-4">
                       <div className="flex items-center gap-2">
                         <button
-                          className="grid h-9 w-9 place-items-center rounded-md border border-line text-brand-700 transition hover:bg-brand-50 disabled:cursor-not-allowed disabled:opacity-50"
+                          className="grid h-9 w-9 place-items-center rounded-md border border-border text-brand-700 transition hover:bg-brand-50 disabled:cursor-not-allowed disabled:opacity-50"
                           type="button"
                           onClick={() => reviewLeave(leaveRequest.id, "approve")}
                           disabled={leaveRequest.status !== "PENDING"}
@@ -168,7 +168,7 @@ function LeaveApprovalsContent({ user, token }: LeaveApprovalsContentProps) {
                           <Check size={16} aria-hidden="true" />
                         </button>
                         <button
-                          className="grid h-9 w-9 place-items-center rounded-md border border-line text-error-text transition hover:bg-error-bg disabled:cursor-not-allowed disabled:opacity-50"
+                          className="grid h-9 w-9 place-items-center rounded-md border border-border text-error-text transition hover:bg-error-bg disabled:cursor-not-allowed disabled:opacity-50"
                           type="button"
                           onClick={() => reviewLeave(leaveRequest.id, "reject")}
                           disabled={leaveRequest.status !== "PENDING"}

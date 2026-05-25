@@ -98,29 +98,29 @@ function AttendanceReportContent({ user, token }: AttendanceReportContentProps) 
           </div>
           <div>
             <p className="text-sm font-medium text-brand-700">Attendance</p>
-            <h1 className="mt-1 text-3xl font-semibold tracking-normal text-ink">
+            <h1 className="mt-1 text-3xl font-semibold tracking-normal text-heading">
               Attendance Report
             </h1>
           </div>
         </div>
 
-        <section className="rounded-lg border border-line bg-card p-5 shadow-soft">
+        <section className="rounded-lg border border-border bg-card p-5 shadow-soft">
           <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-5">
             <input
-              className="h-11 rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+              className="h-11 rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
               type="date"
               value={dateFrom}
               onChange={(event) => setDateFrom(event.target.value)}
             />
             <input
-              className="h-11 rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+              className="h-11 rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
               type="date"
               value={dateTo}
               onChange={(event) => setDateTo(event.target.value)}
             />
             {canManageEmployees ? (
               <select
-                className="h-11 rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
+                className="h-11 rounded-md border border-border bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                 value={employeeId}
                 onChange={(event) => setEmployeeId(event.target.value)}
               >
@@ -132,12 +132,12 @@ function AttendanceReportContent({ user, token }: AttendanceReportContentProps) 
                 ))}
               </select>
             ) : (
-              <div className="flex h-11 items-center rounded-md border border-line bg-surface px-3 text-sm text-text-muted">
+              <div className="flex h-11 items-center rounded-md border border-border bg-hover px-3 text-sm text-text-muted">
                 Direct reports
               </div>
             )}
             <select
-              className="h-11 rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
+              className="h-11 rounded-md border border-border bg-card px-3 text-sm outline-none transition focus:border-brand-600"
               value={departmentId}
               onChange={(event) => setDepartmentId(event.target.value)}
             >
@@ -149,7 +149,7 @@ function AttendanceReportContent({ user, token }: AttendanceReportContentProps) 
               ))}
             </select>
             <select
-              className="h-11 rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
+              className="h-11 rounded-md border border-border bg-card px-3 text-sm outline-none transition focus:border-brand-600"
               value={status}
               onChange={(event) => setStatus(event.target.value as AttendanceStatus | "")}
             >
@@ -164,7 +164,7 @@ function AttendanceReportContent({ user, token }: AttendanceReportContentProps) 
 
           <div className="mt-5 overflow-x-auto">
             <table className="min-w-[760px] w-full text-left text-sm">
-              <thead className="border-b border-line bg-surface text-xs uppercase text-text-muted">
+              <thead className="border-b border-border bg-hover text-xs uppercase text-text-muted">
                 <tr>
                   <th className="px-4 py-3 font-semibold">Employee</th>
                   <th className="px-4 py-3 font-semibold">Date</th>
@@ -174,11 +174,11 @@ function AttendanceReportContent({ user, token }: AttendanceReportContentProps) 
                   <th className="px-4 py-3 font-semibold">Department</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-line">
+              <tbody className="divide-y divide-border">
                 {attendance.map((record) => (
                   <tr key={record.id}>
                     <td className="px-4 py-4">
-                      <div className="font-medium text-ink">
+                      <div className="font-medium text-heading">
                         {getEmployeeName(record.employee)}
                       </div>
                       <div className="mt-1 text-xs text-text-muted">
@@ -199,7 +199,7 @@ function AttendanceReportContent({ user, token }: AttendanceReportContentProps) 
           </div>
 
           {!reportQuery.isLoading && attendance.length === 0 ? (
-            <p className="mt-5 rounded-md border border-dashed border-line px-4 py-5 text-sm text-text-muted">
+            <p className="mt-5 rounded-md border border-dashed border-border px-4 py-5 text-sm text-text-muted">
               No attendance records found for the selected filters.
             </p>
           ) : null}

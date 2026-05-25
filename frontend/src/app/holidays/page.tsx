@@ -74,14 +74,14 @@ function HolidaysContent({ user, token }: HolidaysContentProps) {
       <div className="space-y-6">
         <div>
           <p className="text-sm font-medium text-brand-700">Attendance</p>
-          <h1 className="mt-1 text-3xl font-semibold tracking-normal text-ink">
+          <h1 className="mt-1 text-3xl font-semibold tracking-normal text-heading">
             Holiday Calendar
           </h1>
         </div>
 
         <section className="grid gap-4 lg:grid-cols-[0.8fr_1.2fr]">
           <form
-            className="rounded-lg border border-line bg-card p-5 shadow-soft"
+            className="rounded-lg border border-border bg-card p-5 shadow-soft"
             onSubmit={handleSubmit(submit)}
           >
             <div className="flex min-w-0 items-center gap-3">
@@ -100,7 +100,7 @@ function HolidaysContent({ user, token }: HolidaysContentProps) {
             <label className="mt-5 block text-sm font-medium text-text-secondary">
               Name
               <input
-                className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+                className="mt-2 h-11 w-full rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
                 {...register("name", { required: true })}
               />
             </label>
@@ -108,7 +108,7 @@ function HolidaysContent({ user, token }: HolidaysContentProps) {
               <label className="block text-sm font-medium text-text-secondary">
                 Date
                 <input
-                  className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+                  className="mt-2 h-11 w-full rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
                   type="date"
                   {...register("date", { required: true })}
                 />
@@ -116,7 +116,7 @@ function HolidaysContent({ user, token }: HolidaysContentProps) {
               <label className="block text-sm font-medium text-text-secondary">
                 Type
                 <select
-                  className="mt-2 h-11 w-full rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
+                  className="mt-2 h-11 w-full rounded-md border border-border bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                   {...register("type")}
                 >
                   {Object.entries(holidayTypeLabels).map(([value, label]) => (
@@ -130,7 +130,7 @@ function HolidaysContent({ user, token }: HolidaysContentProps) {
             <label className="mt-5 block text-sm font-medium text-text-secondary">
               Description
               <textarea
-                className="mt-2 min-h-24 w-full rounded-md border border-line px-3 py-3 text-sm outline-none transition focus:border-brand-600"
+                className="mt-2 min-h-24 w-full rounded-md border border-border px-3 py-3 text-sm outline-none transition focus:border-brand-600"
                 {...register("description")}
               />
             </label>
@@ -144,29 +144,29 @@ function HolidaysContent({ user, token }: HolidaysContentProps) {
             </button>
           </form>
 
-          <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
+          <div className="rounded-lg border border-border bg-card p-5 shadow-soft">
             <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
               <h2 className="text-lg font-semibold tracking-normal">Calendar</h2>
               <input
-                className="h-10 w-32 rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+                className="h-10 w-32 rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
                 type="number"
                 value={year}
                 onChange={(event) => setYear(Number(event.target.value))}
               />
             </div>
-            <div className="mt-5 overflow-hidden rounded-md border border-line">
+            <div className="mt-5 overflow-hidden rounded-md border border-border">
               {holidays.map((holiday) => (
                 <div
                   key={holiday.id}
-                  className="grid gap-3 border-b border-line px-4 py-4 last:border-0 sm:grid-cols-[1fr_auto]"
+                  className="grid gap-3 border-b border-border px-4 py-4 last:border-0 sm:grid-cols-[1fr_auto]"
                 >
                   <div>
-                    <p className="font-medium text-ink">{holiday.name}</p>
+                    <p className="font-medium text-heading">{holiday.name}</p>
                     <p className="mt-1 text-sm text-text-muted">
                       {formatDate(holiday.date)}
                     </p>
                   </div>
-                  <span className="self-start rounded-md bg-surface px-2 py-1 text-xs font-medium text-text-secondary">
+                  <span className="self-start rounded-md bg-hover px-2 py-1 text-xs font-medium text-text-secondary">
                     {holidayTypeLabels[holiday.type]}
                   </span>
                 </div>

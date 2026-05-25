@@ -194,7 +194,7 @@ function InterviewsContent({ user, token }: InterviewsContentProps) {
           </div>
           <div>
             <p className="text-sm font-medium text-brand-700">Recruitment</p>
-            <h1 className="mt-1 text-3xl font-semibold tracking-normal text-ink">
+            <h1 className="mt-1 text-3xl font-semibold tracking-normal text-heading">
               Interviews
             </h1>
           </div>
@@ -203,19 +203,19 @@ function InterviewsContent({ user, token }: InterviewsContentProps) {
         <section className="grid gap-4 xl:grid-cols-[0.85fr_1.15fr]">
           {canManageRecruitment ? (
             <form
-              className="rounded-lg border border-line bg-card p-5 shadow-soft"
+              className="rounded-lg border border-border bg-card p-5 shadow-soft"
               onSubmit={handleSubmit(submit)}
             >
               <h2 className="text-lg font-semibold tracking-normal">Schedule Interview</h2>
               {message ? (
-                <div className="mt-5 rounded-md border border-line bg-surface px-3 py-2 text-sm text-text-secondary">
+                <div className="mt-5 rounded-md border border-border bg-hover px-3 py-2 text-sm text-text-secondary">
                   {message}
                 </div>
               ) : null}
               <label className="mt-5 block text-sm font-medium text-text-secondary">
                 Application
                 <select
-                  className="mt-2 h-11 w-full rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
+                  className="mt-2 h-11 w-full rounded-md border border-border bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                   {...register("applicationId", { required: true })}
                 >
                   <option value="">Select application</option>
@@ -230,7 +230,7 @@ function InterviewsContent({ user, token }: InterviewsContentProps) {
                 <label className="block text-sm font-medium text-text-secondary">
                   Interviewer
                   <select
-                    className="mt-2 h-11 w-full rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
+                    className="mt-2 h-11 w-full rounded-md border border-border bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                     {...register("interviewerId")}
                   >
                     <option value="">Unassigned</option>
@@ -244,7 +244,7 @@ function InterviewsContent({ user, token }: InterviewsContentProps) {
                 <label className="block text-sm font-medium text-text-secondary">
                   Scheduled at
                   <input
-                    className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+                    className="mt-2 h-11 w-full rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
                     type="datetime-local"
                     {...register("scheduledAt", { required: true })}
                   />
@@ -252,7 +252,7 @@ function InterviewsContent({ user, token }: InterviewsContentProps) {
                 <label className="block text-sm font-medium text-text-secondary">
                   Mode
                   <select
-                    className="mt-2 h-11 w-full rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
+                    className="mt-2 h-11 w-full rounded-md border border-border bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                     {...register("mode")}
                   >
                     {interviewModes.map((mode) => (
@@ -265,7 +265,7 @@ function InterviewsContent({ user, token }: InterviewsContentProps) {
                 <label className="block text-sm font-medium text-text-secondary">
                   Status
                   <select
-                    className="mt-2 h-11 w-full rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
+                    className="mt-2 h-11 w-full rounded-md border border-border bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                     {...register("status")}
                   >
                     {interviewStatuses.map((status) => (
@@ -279,14 +279,14 @@ function InterviewsContent({ user, token }: InterviewsContentProps) {
               <label className="mt-5 block text-sm font-medium text-text-secondary">
                 Location or link
                 <input
-                  className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+                  className="mt-2 h-11 w-full rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
                   {...register("location")}
                 />
               </label>
               <label className="mt-5 block text-sm font-medium text-text-secondary">
                 Feedback
                 <textarea
-                  className="mt-2 min-h-24 w-full rounded-md border border-line px-3 py-3 text-sm outline-none transition focus:border-brand-600"
+                  className="mt-2 min-h-24 w-full rounded-md border border-border px-3 py-3 text-sm outline-none transition focus:border-brand-600"
                   {...register("feedback")}
                 />
               </label>
@@ -301,7 +301,7 @@ function InterviewsContent({ user, token }: InterviewsContentProps) {
             </form>
           ) : null}
 
-          <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
+          <div className="rounded-lg border border-border bg-card p-5 shadow-soft">
             <h2 className="text-lg font-semibold tracking-normal">Interview Pipeline</h2>
             {interviewsQuery.isLoading || interviewsQuery.isError || interviews.length === 0 ? (
               <div className="mt-5">
@@ -317,7 +317,7 @@ function InterviewsContent({ user, token }: InterviewsContentProps) {
             ) : (
               <div className="mt-5 overflow-x-auto">
                 <table className="min-w-[760px] w-full text-left text-sm">
-                  <thead className="border-b border-line bg-surface text-xs uppercase text-text-muted">
+                  <thead className="border-b border-border bg-hover text-xs uppercase text-text-muted">
                     <tr>
                       <th className="px-4 py-3 font-semibold">Candidate</th>
                       <th className="px-4 py-3 font-semibold">Job</th>
@@ -326,7 +326,7 @@ function InterviewsContent({ user, token }: InterviewsContentProps) {
                       <th className="px-4 py-3 font-semibold">Status</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-line">
+                  <tbody className="divide-y divide-border">
                     {interviews.map((interview) => (
                       <tr key={interview.id}>
                         <td className="px-4 py-4">
@@ -358,7 +358,7 @@ function InterviewsContent({ user, token }: InterviewsContentProps) {
                         </td>
                         <td className="px-4 py-4">
                           <select
-                            className="h-9 rounded-md border border-line bg-card px-2 text-sm outline-none"
+                            className="h-9 rounded-md border border-border bg-card px-2 text-sm outline-none"
                             value={interview.status}
                             disabled={!canManageRecruitment}
                             onChange={(event) =>

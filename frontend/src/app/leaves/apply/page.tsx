@@ -91,14 +91,14 @@ function ApplyLeaveContent({ user, token }: ApplyLeaveContentProps) {
       <div className="space-y-6">
         <div>
           <p className="text-sm font-medium text-brand-700">Leave</p>
-          <h1 className="mt-1 text-3xl font-semibold tracking-normal text-ink">
+          <h1 className="mt-1 text-3xl font-semibold tracking-normal text-heading">
             Apply Leave
           </h1>
         </div>
 
         <section className="grid gap-4 lg:grid-cols-[0.85fr_1.15fr]">
           <form
-            className="rounded-lg border border-line bg-card p-5 shadow-soft"
+            className="rounded-lg border border-border bg-card p-5 shadow-soft"
             onSubmit={handleSubmit(submit)}
           >
             <div className="flex min-w-0 items-center gap-3">
@@ -109,7 +109,7 @@ function ApplyLeaveContent({ user, token }: ApplyLeaveContentProps) {
             </div>
 
             {message ? (
-              <div className="mt-5 rounded-md border border-line bg-surface px-3 py-2 text-sm text-text-secondary">
+              <div className="mt-5 rounded-md border border-border bg-hover px-3 py-2 text-sm text-text-secondary">
                 {message}
               </div>
             ) : null}
@@ -117,7 +117,7 @@ function ApplyLeaveContent({ user, token }: ApplyLeaveContentProps) {
             <label className="mt-5 block text-sm font-medium text-text-secondary">
               Leave type
               <select
-                className="mt-2 h-11 w-full rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
+                className="mt-2 h-11 w-full rounded-md border border-border bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                 {...register("leaveTypeId", { required: true })}
               >
                 <option value="">Select leave type</option>
@@ -133,7 +133,7 @@ function ApplyLeaveContent({ user, token }: ApplyLeaveContentProps) {
               <label className="block text-sm font-medium text-text-secondary">
                 Start
                 <input
-                  className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+                  className="mt-2 h-11 w-full rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
                   type="date"
                   {...register("startDate", { required: true })}
                 />
@@ -141,7 +141,7 @@ function ApplyLeaveContent({ user, token }: ApplyLeaveContentProps) {
               <label className="block text-sm font-medium text-text-secondary">
                 End
                 <input
-                  className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+                  className="mt-2 h-11 w-full rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
                   type="date"
                   {...register("endDate", { required: true })}
                 />
@@ -149,7 +149,7 @@ function ApplyLeaveContent({ user, token }: ApplyLeaveContentProps) {
               <label className="block text-sm font-medium text-text-secondary">
                 Day type
                 <select
-                  className="mt-2 h-11 w-full rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
+                  className="mt-2 h-11 w-full rounded-md border border-border bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                   {...register("dayType")}
                 >
                   {Object.entries(leaveDayTypeLabels).map(([value, label]) => (
@@ -164,7 +164,7 @@ function ApplyLeaveContent({ user, token }: ApplyLeaveContentProps) {
             <label className="mt-5 block text-sm font-medium text-text-secondary">
               Reason
               <textarea
-                className="mt-2 min-h-28 w-full rounded-md border border-line px-3 py-3 text-sm outline-none transition focus:border-brand-600"
+                className="mt-2 min-h-28 w-full rounded-md border border-border px-3 py-3 text-sm outline-none transition focus:border-brand-600"
                 {...register("reason", { required: true })}
               />
             </label>
@@ -178,12 +178,12 @@ function ApplyLeaveContent({ user, token }: ApplyLeaveContentProps) {
             </button>
           </form>
 
-          <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
+          <div className="rounded-lg border border-border bg-card p-5 shadow-soft">
             <h2 className="text-lg font-semibold tracking-normal">Current Balances</h2>
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
               {leaveBalances.map((balance) => (
-                <div key={balance.id} className="rounded-md bg-surface px-4 py-3">
-                  <p className="font-medium text-ink">{balance.leaveType.name}</p>
+                <div key={balance.id} className="rounded-md bg-hover px-4 py-3">
+                  <p className="font-medium text-heading">{balance.leaveType.name}</p>
                   <p className="mt-2 text-2xl font-semibold tracking-normal text-brand-700">
                     {balance.available}
                   </p>

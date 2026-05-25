@@ -44,8 +44,8 @@ export default function ResetPasswordPage() {
   }
 
   return (
-    <main className="grid min-h-screen place-items-center bg-surface px-5 py-10">
-      <section className="w-full max-w-md rounded-lg border border-line bg-card p-6 shadow-soft">
+    <main className="grid min-h-screen place-items-center bg-hover px-5 py-10">
+      <section className="w-full max-w-md rounded-lg border border-border bg-card p-6 shadow-soft">
         <div className="flex min-w-0 items-center gap-3">
           <div className="grid h-10 w-10 place-items-center rounded-md bg-brand-50 text-brand-700">
             <KeyRound size={21} aria-hidden="true" />
@@ -72,7 +72,7 @@ export default function ResetPasswordPage() {
           <label className="block text-sm font-medium text-text-secondary">
             Reset token
             <input
-              className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+              className="mt-2 h-11 w-full rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
               type="text"
               autoComplete="off"
               {...register("token", { required: true })}
@@ -82,7 +82,7 @@ export default function ResetPasswordPage() {
           <label className="block text-sm font-medium text-text-secondary">
             New password
             <input
-              className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+              className="mt-2 h-11 w-full rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
               type="password"
               autoComplete="new-password"
               {...register("password", { required: true })}

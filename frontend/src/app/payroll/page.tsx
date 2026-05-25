@@ -93,12 +93,12 @@ function PayrollContent({ user, token }: PayrollContentProps) {
         <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <div>
             <p className="text-sm font-medium text-brand-700">Payroll</p>
-            <h1 className="mt-1 text-3xl font-semibold tracking-normal text-ink">
+            <h1 className="mt-1 text-3xl font-semibold tracking-normal text-heading">
               Payroll Runs
             </h1>
           </div>
           <input
-            className="h-10 w-32 rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+            className="h-10 w-32 rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
             type="number"
             value={year}
             onChange={(event) => setYear(Number(event.target.value))}
@@ -108,7 +108,7 @@ function PayrollContent({ user, token }: PayrollContentProps) {
 
         <section className="grid gap-4 xl:grid-cols-[0.75fr_1.25fr]">
           <form
-            className="rounded-lg border border-line bg-card p-5 shadow-soft"
+            className="rounded-lg border border-border bg-card p-5 shadow-soft"
             onSubmit={handleSubmit(submit)}
           >
             <div className="flex min-w-0 items-center gap-3">
@@ -119,7 +119,7 @@ function PayrollContent({ user, token }: PayrollContentProps) {
             </div>
 
             {message ? (
-              <div className="mt-5 rounded-md border border-line bg-surface px-3 py-2 text-sm text-text-secondary">
+              <div className="mt-5 rounded-md border border-border bg-hover px-3 py-2 text-sm text-text-secondary">
                 {message}
               </div>
             ) : null}
@@ -128,7 +128,7 @@ function PayrollContent({ user, token }: PayrollContentProps) {
               <label className="block text-sm font-medium text-text-secondary">
                 Month
                 <select
-                  className="mt-2 h-11 w-full rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
+                  className="mt-2 h-11 w-full rounded-md border border-border bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                   {...register("month", { valueAsNumber: true })}
                 >
                   {months.map((month) => (
@@ -141,7 +141,7 @@ function PayrollContent({ user, token }: PayrollContentProps) {
               <label className="block text-sm font-medium text-text-secondary">
                 Year
                 <input
-                  className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+                  className="mt-2 h-11 w-full rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
                   min="2000"
                   max="2100"
                   type="number"
@@ -160,11 +160,11 @@ function PayrollContent({ user, token }: PayrollContentProps) {
             </button>
           </form>
 
-          <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
+          <div className="rounded-lg border border-border bg-card p-5 shadow-soft">
             <h2 className="text-lg font-semibold tracking-normal">Payroll History</h2>
             <div className="mt-5 overflow-x-auto">
               <table className="min-w-[760px] w-full text-left text-sm">
-                <thead className="border-b border-line bg-surface text-xs uppercase text-text-muted">
+                <thead className="border-b border-border bg-hover text-xs uppercase text-text-muted">
                   <tr>
                     <th className="px-4 py-3 font-semibold">Month</th>
                     <th className="px-4 py-3 font-semibold">Employees</th>
@@ -174,7 +174,7 @@ function PayrollContent({ user, token }: PayrollContentProps) {
                     <th className="px-4 py-3 font-semibold">Generated</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-line">
+                <tbody className="divide-y divide-border">
                   {payrolls.map((payroll) => (
                     <tr key={payroll.id}>
                       <td className="px-4 py-4">

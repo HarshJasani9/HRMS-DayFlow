@@ -67,25 +67,25 @@ function NotificationsContent({ user, token }: NotificationsContentProps) {
           </div>
           <div>
             <p className="text-sm font-medium text-brand-700">Notifications</p>
-            <h1 className="mt-1 text-3xl font-semibold tracking-normal text-ink">
+            <h1 className="mt-1 text-3xl font-semibold tracking-normal text-heading">
               In-app Alerts
             </h1>
           </div>
         </div>
 
-        <section className="rounded-lg border border-line bg-card p-5 shadow-soft">
+        <section className="rounded-lg border border-border bg-card p-5 shadow-soft">
           <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
             <h2 className="text-lg font-semibold tracking-normal">
               {unreadCount} unread
             </h2>
             {error ? <p className="text-sm text-error-text">{error}</p> : null}
           </div>
-          <div className="mt-5 divide-y divide-line">
+          <div className="mt-5 divide-y divide-border">
             {notifications.map((notification) => (
               <div
                 key={notification.id}
                 className={`grid gap-4 py-4 sm:grid-cols-[1fr_auto] ${
-                  notification.isRead ? "text-text-secondary" : "text-ink"
+                  notification.isRead ? "text-text-secondary" : "text-heading"
                 }`}
               >
                 <div>
@@ -103,7 +103,7 @@ function NotificationsContent({ user, token }: NotificationsContentProps) {
                   </p>
                 </div>
                 <button
-                  className="grid h-9 w-9 place-items-center rounded-md border border-line text-text-secondary transition hover:bg-surface disabled:cursor-not-allowed disabled:opacity-50"
+                  className="grid h-9 w-9 place-items-center rounded-md border border-border text-text-secondary transition hover:bg-hover disabled:cursor-not-allowed disabled:opacity-50"
                   type="button"
                   onClick={() => markRead(notification.id)}
                   disabled={notification.isRead}
@@ -115,7 +115,7 @@ function NotificationsContent({ user, token }: NotificationsContentProps) {
             ))}
           </div>
           {!notificationsQuery.isLoading && notifications.length === 0 ? (
-            <div className="mt-5 rounded-md border border-dashed border-line px-4 py-8 text-center text-sm text-text-muted">
+            <div className="mt-5 rounded-md border border-dashed border-border px-4 py-8 text-center text-sm text-text-muted">
               No notifications found.
             </div>
           ) : null}

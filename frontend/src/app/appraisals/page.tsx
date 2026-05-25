@@ -84,7 +84,7 @@ function AppraisalsContent({ user, token }: AppraisalsContentProps) {
           </div>
           <div>
             <p className="text-sm font-medium text-brand-700">Performance</p>
-            <h1 className="mt-1 text-3xl font-semibold tracking-normal text-ink">
+            <h1 className="mt-1 text-3xl font-semibold tracking-normal text-heading">
               Appraisal History
             </h1>
           </div>
@@ -114,10 +114,10 @@ function AppraisalsContent({ user, token }: AppraisalsContentProps) {
           />
         </section>
 
-        <section className="rounded-lg border border-line bg-card p-5 shadow-soft">
+        <section className="rounded-lg border border-border bg-card p-5 shadow-soft">
           <div className="grid gap-3 sm:grid-cols-2">
             <select
-              className="h-11 rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
+              className="h-11 rounded-md border border-border bg-card px-3 text-sm outline-none transition focus:border-brand-600"
               value={employeeId}
               onChange={(event) => setEmployeeId(event.target.value)}
               aria-label="Filter appraisals by employee"
@@ -130,7 +130,7 @@ function AppraisalsContent({ user, token }: AppraisalsContentProps) {
               ))}
             </select>
             <input
-              className="h-11 rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+              className="h-11 rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
               value={cycle}
               onChange={(event) => setCycle(event.target.value)}
               placeholder="Cycle"
@@ -152,7 +152,7 @@ function AppraisalsContent({ user, token }: AppraisalsContentProps) {
           ) : (
             <div className="mt-5 overflow-x-auto">
               <table className="min-w-[760px] w-full text-left text-sm">
-                <thead className="border-b border-line bg-surface text-xs uppercase text-text-muted">
+                <thead className="border-b border-border bg-hover text-xs uppercase text-text-muted">
                   <tr>
                     <th className="px-4 py-3 font-semibold">Employee</th>
                     <th className="px-4 py-3 font-semibold">Cycle</th>
@@ -162,11 +162,11 @@ function AppraisalsContent({ user, token }: AppraisalsContentProps) {
                     <th className="px-4 py-3 font-semibold">Status</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-line">
+                <tbody className="divide-y divide-border">
                   {reviews.map((review) => (
                     <tr key={review.id}>
                       <td className="px-4 py-4">
-                        <div className="font-medium text-ink">
+                        <div className="font-medium text-heading">
                           {getEmployeeName(review.employee)}
                         </div>
                         <div className="mt-1 text-xs text-text-muted">

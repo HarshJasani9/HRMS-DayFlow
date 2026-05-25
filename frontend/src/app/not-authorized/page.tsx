@@ -3,8 +3,8 @@ import { LockKeyhole } from "lucide-react";
 
 export default function NotAuthorizedPage() {
   return (
-    <main className="grid min-h-screen place-items-center bg-surface px-5">
-      <section className="w-full max-w-md rounded-lg border border-line bg-card p-6 text-center shadow-soft">
+    <main className="grid min-h-screen place-items-center bg-hover px-5">
+      <section className="w-full max-w-md rounded-lg border border-border bg-card p-6 text-center shadow-soft">
         <div className="mx-auto grid h-12 w-12 place-items-center rounded-md bg-brand-50 text-brand-700">
           <LockKeyhole size={24} aria-hidden="true" />
         </div>

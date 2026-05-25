@@ -123,7 +123,7 @@ function EditEmployeeContent({ user, token }: EditEmployeeContentProps) {
           </div>
           <div>
             <p className="text-sm font-medium text-brand-700">Employees</p>
-            <h1 className="mt-1 text-3xl font-semibold tracking-normal text-ink">
+            <h1 className="mt-1 text-3xl font-semibold tracking-normal text-heading">
               {employee ? `Edit ${getEmployeeName(employee)}` : "Edit Employee"}
             </h1>
           </div>

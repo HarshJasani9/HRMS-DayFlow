@@ -114,7 +114,7 @@ function ProtectedPageContent({
     !isAuthorized
   ) {
     return (
-      <main className="grid min-h-screen place-items-center bg-surface">
+      <main className="grid min-h-screen place-items-center bg-hover">
         <div className="h-10 w-10 animate-pulse rounded-md bg-brand-100" />
       </main>
     );

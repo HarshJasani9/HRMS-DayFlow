@@ -172,7 +172,7 @@ function OffersContent({ user, token }: OffersContentProps) {
           </div>
           <div>
             <p className="text-sm font-medium text-brand-700">Recruitment</p>
-            <h1 className="mt-1 text-3xl font-semibold tracking-normal text-ink">
+            <h1 className="mt-1 text-3xl font-semibold tracking-normal text-heading">
               Offers
             </h1>
           </div>
@@ -181,19 +181,19 @@ function OffersContent({ user, token }: OffersContentProps) {
         <section className="grid gap-4 xl:grid-cols-[0.8fr_1.2fr]">
           {canManageRecruitment ? (
             <form
-              className="rounded-lg border border-line bg-card p-5 shadow-soft"
+              className="rounded-lg border border-border bg-card p-5 shadow-soft"
               onSubmit={handleSubmit(submit)}
             >
               <h2 className="text-lg font-semibold tracking-normal">Create Offer</h2>
               {message ? (
-                <div className="mt-5 rounded-md border border-line bg-surface px-3 py-2 text-sm text-text-secondary">
+                <div className="mt-5 rounded-md border border-border bg-hover px-3 py-2 text-sm text-text-secondary">
                   {message}
                 </div>
               ) : null}
               <label className="mt-5 block text-sm font-medium text-text-secondary">
                 Application
                 <select
-                  className="mt-2 h-11 w-full rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
+                  className="mt-2 h-11 w-full rounded-md border border-border bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                   {...register("applicationId", { required: true })}
                 >
                   <option value="">Select application</option>
@@ -208,7 +208,7 @@ function OffersContent({ user, token }: OffersContentProps) {
                 <label className="block text-sm font-medium text-text-secondary">
                   Offered salary
                   <input
-                    className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+                    className="mt-2 h-11 w-full rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
                     min="0"
                     step="0.01"
                     type="number"
@@ -218,7 +218,7 @@ function OffersContent({ user, token }: OffersContentProps) {
                 <label className="block text-sm font-medium text-text-secondary">
                   Start date
                   <input
-                    className="mt-2 h-11 w-full rounded-md border border-line px-3 text-sm outline-none transition focus:border-brand-600"
+                    className="mt-2 h-11 w-full rounded-md border border-border px-3 text-sm outline-none transition focus:border-brand-600"
                     type="date"
                     {...register("startDate")}
                   />
@@ -226,7 +226,7 @@ function OffersContent({ user, token }: OffersContentProps) {
                 <label className="block text-sm font-medium text-text-secondary">
                   Status
                   <select
-                    className="mt-2 h-11 w-full rounded-md border border-line bg-card px-3 text-sm outline-none transition focus:border-brand-600"
+                    className="mt-2 h-11 w-full rounded-md border border-border bg-card px-3 text-sm outline-none transition focus:border-brand-600"
                     {...register("status")}
                   >
                     {offerStatuses.map((status) => (
@@ -240,7 +240,7 @@ function OffersContent({ user, token }: OffersContentProps) {
               <label className="mt-5 block text-sm font-medium text-text-secondary">
                 Notes
                 <textarea
-                  className="mt-2 min-h-24 w-full rounded-md border border-line px-3 py-3 text-sm outline-none transition focus:border-brand-600"
+                  className="mt-2 min-h-24 w-full rounded-md border border-border px-3 py-3 text-sm outline-none transition focus:border-brand-600"
                   {...register("notes")}
                 />
               </label>
@@ -255,7 +255,7 @@ function OffersContent({ user, token }: OffersContentProps) {
             </form>
           ) : null}
 
-          <div className="rounded-lg border border-line bg-card p-5 shadow-soft">
+          <div className="rounded-lg border border-border bg-card p-5 shadow-soft">
             <h2 className="text-lg font-semibold tracking-normal">Offer Pipeline</h2>
             {offersQuery.isLoading || offersQuery.isError || offers.length === 0 ? (
               <div className="mt-5">
@@ -271,7 +271,7 @@ function OffersContent({ user, token }: OffersContentProps) {
             ) : (
               <div className="mt-5 overflow-x-auto">
                 <table className="min-w-[760px] w-full text-left text-sm">
-                  <thead className="border-b border-line bg-surface text-xs uppercase text-text-muted">
+                  <thead className="border-b border-border bg-hover text-xs uppercase text-text-muted">
                     <tr>
                       <th className="px-4 py-3 font-semibold">Candidate</th>
                       <th className="px-4 py-3 font-semibold">Job</th>
@@ -280,7 +280,7 @@ function OffersContent({ user, token }: OffersContentProps) {
                       <th className="px-4 py-3 font-semibold">Status</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-line">
+                  <tbody className="divide-y divide-border">
                     {offers.map((offer) => (
                       <tr key={offer.id}>
                         <td className="px-4 py-4">
@@ -313,7 +313,7 @@ function OffersContent({ user, token }: OffersContentProps) {
                         <td className="px-4 py-4">{formatDate(offer.startDate)}</td>
                         <td className="px-4 py-4">
                           <select
-                            className="h-9 rounded-md border border-line bg-card px-2 text-sm outline-none"
+                            className="h-9 rounded-md border border-border bg-card px-2 text-sm outline-none"
                             value={offer.status}
                             disabled={!canManageRecruitment}
                             onChange={(event) =>
