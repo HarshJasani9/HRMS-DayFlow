@@ -1,0 +1,71 @@
+[33mcommit 9e917da925e2ea02ef017768081ba5017e458af7[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: HarshJasani9 <your-harsh-email@gmail.com>
+Date:   Tue May 26 01:26:26 2026 +0530
+
+    fix: replace legacy ink, surface, and line tokens with standard theme semantic tokens across all pages
+
+[33mcommit 6af7ea29bf380929c30563e12f3bb132ca637f13[m
+Author: HarshJasani9 <your-harsh-email@gmail.com>
+Date:   Tue May 26 01:22:25 2026 +0530
+
+    fix: map legacy tokens (ink, surface, line) to dynamic theme variables and replace hardcoded colors
+
+[33mcommit 16d331982a61cb8bbe9910dcd0d6e6da7dd7c5de[m
+Author: HarshJasani9 <your-harsh-email@gmail.com>
+Date:   Tue May 26 01:17:35 2026 +0530
+
+    fix: remove flushSync from theme.ts to fix server component import error
+
+[33mcommit a8a28e4d811b1e4e714a5239de597d74666503bd[m
+Author: HarshJasani9 <your-harsh-email@gmail.com>
+Date:   Tue May 26 01:13:47 2026 +0530
+
+    feat: migrate theme transition to native View Transition circle-spread animation
+
+[33mcommit 96e98b35656b98b174bf1409d78c31002434f31e[m
+Author: HarshJasani9 <your-harsh-email@gmail.com>
+Date:   Tue May 26 01:07:39 2026 +0530
+
+    feat: add global theme toggle to landing and auth pages
+
+[33mcommit e59f9b52eb7d67f88ab5a6d070e506dcc15b7afe[m
+Author: HarshJasani9 <your-harsh-email@gmail.com>
+Date:   Tue May 26 01:05:58 2026 +0530
+
+    feat: apply dark mode tokens to landing page and auth pages
+
+[33mcommit d583bf660deffbf845b070c11bd2de1e8b0a8d26[m
+Author: HarshJasani9 <your-harsh-email@gmail.com>
+Date:   Tue May 26 01:03:08 2026 +0530
+
+    feat: apply dark mode tokens to all remaining pages
+
+[33mcommit 37b2be9b6d1cfe8c703033de854208e6159c1220[m
+Author: HarshJasani9 <your-harsh-email@gmail.com>
+Date:   Tue May 26 00:58:54 2026 +0530
+
+    feat: apply dark mode tokens to dashboard and shared components
+
+[33mcommit ae5c6352addd04e54d6b7f0cc7827d50feaf7382[m
+Author: HarshJasani9 <your-harsh-email@gmail.com>
+Date:   Tue May 26 00:54:45 2026 +0530
+
+    feat: apply dark mode tokens to app shell and sidebar
+
+[33mcommit 7224bf905b0ae1007c8c4fb65031549262761c29[m
+Author: HarshJasani9 <your-harsh-email@gmail.com>
+Date:   Tue May 26 00:50:21 2026 +0530
+
+    feat: add theme toggle component with Sun/Moon icons
+
+[33mcommit 124a8cbef249842f3a15375fc9e93d827392f56f[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: HarshJasani9 <your-harsh-email@gmail.com>
+Date:   Tue May 26 00:46:29 2026 +0530
+
+    feat: add CSS design tokens for dark mode
+
+[33mcommit 4e909916917b352e47dfdf22b12e83b3fcce460d[m
+Author: HarshJasani9 <your-harsh-email@gmail.com>
+Date:   Tue May 26 00:31:28 2026 +0530
+
+    intial commit
