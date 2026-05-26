@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import hrmsIcon from "@/assets/hrms-icon.png";
+import hrmsIcon from "@/assets/dayflow-favicon.png";
 import { THEME_STORAGE_KEY } from "@/lib/theme";
 import "./globals.css";
 
