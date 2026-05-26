@@ -20,11 +20,11 @@ import { recruitmentRouter } from "./modules/recruitment/recruitment.routes";
 import { reportsRouter } from "./modules/reports/reports.routes";
 
 function getAllowedCorsOrigins(): string[] {
+  const configuredOrigin = env.CORS_ORIGIN.replace(/\/+$/, "");
   const origins = new Set([
-    env.CORS_ORIGIN,
+    configuredOrigin,
     "http://localhost:3000",
-    "http://127.0.0.1:3000",
-    "https://hrms-frontend-tawny.vercel.app"
+    "http://127.0.0.1:3000"
   ]);
 
   return [...origins];

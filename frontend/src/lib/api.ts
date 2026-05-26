@@ -46,10 +46,8 @@ import type {
   Shift
 } from "@/types";
 
-const API_URL = (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:5000/api").replace(
-  /\/+$/,
-  ""
-);
+const rawUrl = (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:5000/api").replace(/\/+$/, "");
+const API_URL = rawUrl.endsWith("/api") ? rawUrl : `${rawUrl}/api`;
 
 type ApiSuccess<T> = {
   success: true;
