@@ -11,6 +11,7 @@
     "dev:backend": "npm run dev --workspace backend",
     "dev:frontend": "npm run dev --workspace frontend",
     "build": "npm run build --workspace backend && npm run build --workspace frontend",
+    "start": "npm run start --workspace backend",
     "typecheck": "npm run typecheck --workspace backend && npm run typecheck --workspace frontend",
     "lint": "npm run lint --workspace frontend",
     "test:smoke": "npm run test:smoke --workspace backend",
