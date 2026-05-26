@@ -359,16 +359,41 @@ psql "postgresql://postgres:postgres@localhost:5432/hrms"
 
 ## Deployment
 
-### Backend → Render
+The project is structured as a Monorepo. The best practice is to deploy the frontend to Vercel and the backend to Render, backed by a cloud PostgreSQL database (like Neon or Supabase).
 
-The `render.yaml` blueprint creates a web service and PostgreSQL database. Set `CORS_ORIGIN` to your Vercel frontend URL.
+### 1. Database Setup (Neon / Supabase)
+1. Create a free PostgreSQL database on Neon.tech or Supabase.
+2. Copy the **Connection String** (`postgresql://user:password@host/dbname?sslmode=require`).
 
-### Frontend → Vercel
+### 2. Backend Setup (Render.com)
+1. Create a new **Web Service** on Render and connect your repository.
+2. **Name**: `dayflow-backend` (or similar)
+3. **Root Directory**: *(Leave blank)*
+4. **Environment**: `Node`
+5. **Build Command**: `npm install && npm run prisma:generate --workspace backend && npm run build --workspace backend`
+6. **Start Command**: `npm run start --workspace backend`
+7. Add **Environment Variables**:
+   - `DATABASE_URL`: *(Your Postgres URL from Step 1)*
+   - `JWT_SECRET`: *(A long, secure random string, minimum 32 characters)*
+   - `CORS_ORIGIN`: `https://your-future-vercel-domain.vercel.app` (Update this later once frontend is deployed)
+   - `NODE_ENV`: `production`
+8. Deploy, then run database migrations from the Render Shell:
+   ```bash
+   npm run prisma:migrate:deploy --workspace backend
+   ```
 
-Import the repository, set root directory to `frontend`, and add:
-```
-NEXT_PUBLIC_API_URL=https://<your-render-service>.onrender.com/api
-```
+### 3. Frontend Setup (Vercel)
+1. Create a new Project on Vercel and import your repository.
+2. **Root Directory**: `frontend`
+3. Add **Environment Variables**:
+   - `NEXT_PUBLIC_API_URL`: `https://<your-render-backend-url>.onrender.com/api`
+4. Deploy the frontend.
+
+### 4. Final Connection
+1. Copy your live Vercel frontend URL.
+2. Go back to Render's Environment settings.
+3. Update the `CORS_ORIGIN` variable with your live Vercel domain.
+4. Save to trigger a quick redeploy on Render.
 
 ## Useful Commands
 
