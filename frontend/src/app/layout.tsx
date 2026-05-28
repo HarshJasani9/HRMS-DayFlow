@@ -16,25 +16,8 @@ export const metadata: Metadata = {
   }
 };
 
-const lightOnlyThemePaths = [
-  "/",
-  "/login",
-  "/register",
-  "/forgot-password",
-  "/reset-password"
-];
-
 const themeInitializer = `
 (function () {
-  var lightOnlyThemePaths = ${JSON.stringify(lightOnlyThemePaths)};
-  var isLightOnlyThemePath = lightOnlyThemePaths.indexOf(window.location.pathname) !== -1;
-
-  if (isLightOnlyThemePath) {
-    document.documentElement.classList.remove("dark");
-    document.documentElement.style.colorScheme = "light";
-    return;
-  }
-
   var storedTheme = window.localStorage.getItem("${THEME_STORAGE_KEY}");
   var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   var theme = storedTheme === "dark" || storedTheme === "light"
